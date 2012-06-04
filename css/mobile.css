@@ -1,0 +1,39 @@
+.user_menu, .nav_buttons {
+    float: none;
+}
+
+#navigation {
+  float: none;
+  width: auto;
+}
+
+#navigation ul.user_menu {
+  margin-top: 5px;
+}
+
+#navigation {
+  height: 5.5em;
+}
+
+#monthly-fees {
+  margin: 0;
+  padding: 0;
+  float: none;
+}
+
+#budget {
+  padding: 0;
+}
+
+#navigation li {
+  margin-left: 0;
+}
+
+#main {
+margin-top: 0;
+padding: 0;
+}
+
+.column{
+float: none;
+}
