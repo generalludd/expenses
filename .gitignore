@@ -1,5 +1,6 @@
 /user_guide
 /system
+/application/config/database.php
 <<<<<<< HEAD
 /application/config/email.php
 =======
