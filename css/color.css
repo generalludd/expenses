@@ -263,3 +263,28 @@ input.link {
 .over-budget {
 	background-color: orange;
 }
+
+.new, a.new {
+    *border: 1px solid #DFE119;
+    background-color: #DFE119;
+    background-image: url(images/new_button.png);
+    color: black;
+}
+
+.new:hover {
+    background-color: #DFE119;
+    background-image: url(images/new_button_hover.png);
+}
+
+
+.button.edit {
+    border: 1px solid #0077bd;
+    background-color: #0077bd;
+    background-image: url(images/edit_button.png);
+    color: #fff;
+}
+
+.button.edit:hover {
+    background-color: #6caadc;
+    background-image: url(images/edit_button_hover.png);
+}

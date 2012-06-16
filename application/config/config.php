@@ -32,6 +32,7 @@ if($my_server == "localhost" || $my_server == "cerebratorium.local"){
 	$config['index_page'] = 'index.php';
 }else{
 	$config['index_page'] = '';
+	
 }
 /*
  |--------------------------------------------------------------------------

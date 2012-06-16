@@ -131,20 +131,19 @@ div.login-title {
 	box-shadow: 1px 1px 1px #000;
 }
 
-#login_form .login-text, .reset-fields input, .reset-fields label {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
+#login_form .login-text,.reset-fields input,.reset-fields label {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
 }
 
 #password-resetter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 300px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
 }
-
 
 /* general notices */
 #notice {
@@ -243,6 +242,8 @@ ul.button-list li {
 	display: inline;
 }
 
+
+
 .help {
 	
 }
@@ -284,14 +285,14 @@ legend {
 	margin-bottom: .5em;
 }
 
-#navigation ul {
+ul.menu {
 	padding: 0;
 	margin: 0;
 	position: relative;
 	min-width: 400px;
 }
 
-#navigation li {
+ul.menu li {
 	display: inline;
 	padding-left: 0.5em;
 	margin-left: 0.5em;
@@ -300,14 +301,14 @@ legend {
 	border-left-style:solid;*/
 }
 
-#navigation li:first-child {
+ul.menu li:first-child {
 	display: inline;
 	padding-left: 0;
 	margin-left: 0;
 	/*border-left:none;*/
 }
 
-#navigation li a a {
+ul.menu li a {
 	text-decoration: none;
 }
 
@@ -453,6 +454,13 @@ a.button {
 	margin-top: -5px;
 }
 
+.button-bar {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
 td {
 	padding: 5px;
 	border-width: 0px;
@@ -524,10 +532,10 @@ td.amt {
 	
 }
 
-#fees{
-*margin-left: auto;
-*margin-right: auto;
-*width: 800px;
+#fees {
+	*margin-left: auto;
+	*margin-right: auto;
+	*width: 800px;
 }
 
 #monthly-fees {
@@ -538,18 +546,15 @@ td.amt {
 	width: 350px;
 	float: left;
 	padding: 15px;
-	
 }
 
 #budget {
 	float: left;
 	padding: 15px;
-	
-	
 }
 
 #expenses {
-	clear:both;
+	clear: both;
 }
 
 div.you {

@@ -51,9 +51,29 @@
 	});
 	
 
+	$(".menu_item_edit").live("click",function(){
+		myId = this.id.split("_")[1];
+		myUrl = base_url + "index.php/menu/edit_item/" + myId;
+		$.ajax({
+			type:"GET",
+			url: myUrl,
+			success:function(data){
+				showPopup("Edit Menu Item",data,"auto");
+			}
+		});
+	});
+	
 
-	
-	
+	$(".menu_item_add").live("click",function(){
+		myUrl = base_url + "index.php/menu/create_item/";
+		$.ajax({
+			type:"GET",
+			url: myUrl,
+			success:function(data){
+				showPopup("Create Menu Item",data,"auto");
+			}
+		});
+	});
 
 	
 	$("#browser_warning").live('click',

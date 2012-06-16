@@ -11,7 +11,7 @@ class Preference extends MY_Controller {
 
 	function view()
 	{
-		$user_id = $this->uri->segment(3);
+		$user_id = $this->session->userdata("userID");
 		$data["preferences"] = $this->preference_model->get_all($user_id);
 		$data["user_id"] = $user_id;
 		$data["title"] = "View and Change Preferences";
