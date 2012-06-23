@@ -10,6 +10,7 @@ if((int)$this->session->userdata("mo") && (int)$this->session->userdata("yr")){
 }
 
 $month_list = get_keyed_pairs($this->variable->get("month"),array("name","value"));
+$this->load->model("menu_model");
 $main_menu = $this->menu_model->get(2);
 
 ?>

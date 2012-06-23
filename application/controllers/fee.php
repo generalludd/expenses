@@ -116,7 +116,6 @@ class Fee extends MY_Controller
 		$current = $this->fee->get_current_month();
 
 		$this->fee->copy_month( $current->mo, $current->yr);
-		$current =  $this->fee->copy_month();
 		if($current->mo < 10){
 			$current->mo = "0$current->mo";
 		}
