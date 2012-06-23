@@ -3,5 +3,7 @@
 /application/config/database.php
 <<<<<<< HEAD
 /application/config/email.php
+.buildpath
+.DS_Store
 =======
 >>>>>>> 79edb28fbc6ceab216e982d820a6461f8be2e1cd
