@@ -50,7 +50,7 @@ class Expense extends My_Controller
 			$this->load->model("fee_model","fee");
 			$this->load->model("user_model","user");
 			$this->load->model("payment_model","payment");
-			$data["user_count"] = $this->user->count_active();
+			$data["user_count"] = $this->user->count_active($month,$year);
 			$data["fee_total"] = $this->fee->get_totals($month,$year);
 			$data["expenses"] = $this->expense->get_by_month($month,$year);
 			$data["payments"] = $this->payment->get_by_month($month, $year);

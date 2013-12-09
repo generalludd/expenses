@@ -74,7 +74,14 @@ class Expense_model extends CI_Model
 	{
 		//$this->db->where("expense.mo", $mo);
 		//$this->db->where("expense.yr", $yr);
-		$this->db->where("user.is_active", 1);
+		//$this->db->where("user.is_active", 1);
+		$prev_mo =  $mo - 1;
+		$prev_yr = $yr;
+		if($prev_mo > 12){
+			$prev_mo = 1;
+			$prev_yr = $yr - 1;
+		}
+		$this->db->where("(user.start_date <= '$yr-$mo-01' AND (user.end_date IS NULL OR user.end_date > '$prev_yr-$prev_mo-31'))");
 		if(isset($type)){
 			$this->db->where("expense.type", $type);
 		}
@@ -83,6 +90,7 @@ class Expense_model extends CI_Model
 		$this->db->from("expense");
 		$this->db->order_by("userID");
 		$this->db->order_by("dt");
+		
 
 		//SELECT * FROM (`expense`) RIGHT JOIN `user` ON `user`.`id` = `expense`.`user_id` AND `expense`.`mo` = '1' AND `expense`.`yr` = '2012' WHERE `user`.`is_active` = 1 ORDER BY `user_id`, `dt`		
 		//SELECT * FROM (`expense`) RIGHT JOIN `user` ON `user`.`id` = `expense`.`user_id` AND `expense`.`mo` = '1' AND `expense`.`yr` = '2012' WHERE `user`.`is_active` = 1 
