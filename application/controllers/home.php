@@ -30,7 +30,7 @@ class Home extends MY_Controller
 				foreach($preferences as $preference){
 					$text = "$preference->first_name,\r\n\r\nThis is just a reminder that payment for rent, utilities and food money is due by the 5th of the month.\r\n\r\nPlease visit " . site_url() . " for details.\r\n\r\nThanks, The management";
 					$subject = "Rent is Due";
-					$this->send($preference,$subject, $text );
+					//$this->send($preference,$subject, $text );
 
 				}
 			}
@@ -48,4 +48,5 @@ class Home extends MY_Controller
 
 	}
 	
+
 }

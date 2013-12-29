@@ -34,3 +34,4 @@ foreach($expenses as $expense){
 }//end foreach
 
 echo "</div>";
+?>

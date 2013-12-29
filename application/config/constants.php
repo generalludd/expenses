@@ -44,7 +44,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 | These modes are used when working with icons in scripts
 |
 */
-define('OK', "Saved"); 
+define('OK', "Saved");
 define('X',"<img src='images/delete.png' alt='' width='12' height='12' border='0'>");
 
 /* End of file constants.php */

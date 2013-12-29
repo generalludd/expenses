@@ -89,8 +89,16 @@ class User_model extends CI_Model
 	}
 
 
-	function count_active(){
-		$this->db->where("end_date",NULL);
+	function count_active($mo,$yr){
+	$prev_mo =  $mo - 1;
+		$prev_yr = $yr;
+		if($prev_mo > 12){
+			$prev_mo = 1;
+			$prev_yr = $yr - 1;
+		}
+		$this->db->where("(user.start_date <= '$yr-$mo-01' AND (user.end_date IS NULL OR user.end_date > '$prev_yr-$prev_mo-31'))");
+		
+		//$this->db->where("end_date",NULL);
 		$this->db->from("user");
 		$result = $this->db->get()->num_rows();
 		return $result;
