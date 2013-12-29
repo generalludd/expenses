@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	$("#search-month, #search-year").live("change",function(){
-		var form_data = {
+		/*var form_data = {
 				ajax: 1
 		};
 		var myMonth = $("#search-month").val();
@@ -15,11 +15,31 @@ $(document).ready(function(){
 			success: function(data){
 			$("#content").html(data);
 		}
+		});*/
+	});
+	
+
+	
+	
+	$(".select-month").live("click",function(){
+		form_data= {
+				ajax: "1"
+		};
+		$.ajax({
+			type:"get",
+			url: base_url + "index.php/expense/select_month",
+		data: form_data,
+		success: function(data){
+			showPopup("Select Month", data, "auto");
+		}
 		});
 	});
 	
-	
-	
+	$(".go-to-month").live("click",function(){
+		var my_month = $("#search-month").val();
+		var my_year = $("#search-year").val();
+		window.location.href = base_url + "index.php/expense/show_all/" + my_month + "/" + my_year;
+	});
 	
 	
 	$("#type").live("change",function(){
@@ -36,7 +56,7 @@ $(document).ready(function(){
 			$("#type_span").html("<input type='text' size='15' name='type' id='type' value=''/>");
 		}
 			
-	})
+	});
 	
 	
 	$(".expense-edit").live("click",function(){

@@ -7,7 +7,7 @@
 <meta http-equiv="expires" content="-1">
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport"
-    content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;" />
+    content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <title><?=$title;?></title>
 <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>css/main.css" />
 <link type="text/css" rel="stylesheet" media="all" href="<?=base_url()?>css/popup.css" />

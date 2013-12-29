@@ -4,7 +4,7 @@ $class = "";
 if($expense->userID == $this->session->userdata("userID")): $class="you"; endif;
 ?>
 <div class='column <?=$class;?>'>
-<? 
+<?
 if($expense->userID == $this->session->userdata("userID")):?>
 <h3>Your Expenses</h3>
 <? else: ?>
@@ -14,9 +14,9 @@ if($expense->userID == $this->session->userdata("userID")):?>
 
 
 if($this->session->userdata("role") == "admin"|| $this->session->userdata("userID") == $expense->userID ):?>
-<p><span class="button expense-create" id="ec_<?=$expense->userID;?>">New
+<p><span class="button new expense-create" id="ec_<?=$expense->userID;?>">New
 Expense</span></p>
-<? endif; 
+<? endif;
 ?>
 <table class="list">
 	<thead>
@@ -29,7 +29,7 @@ Expense</span></p>
 	<tbody>
 
 
-	<? 
+	<?
 	$expense_total;
 	foreach($expenses as $item):
 	if($item->user_id == $current_id): ?>
@@ -38,9 +38,9 @@ Expense</span></p>
 				id='expense-edit_<?=$item->id;?>' title='<?=$item->description;?>'><?=$item->type;?></span></td>
 			<td><?=format_date($item->dt,"no-year");?></td>
 			<td class='amt'><?=get_as_cash($item->amt);?></td>
-			
+
 			<?
-			$expense_total += $item->amt; 
+			$expense_total += $item->amt;
 			?>
 		</tr>
 
@@ -61,7 +61,7 @@ Expense</span></p>
 		}
 		?>
 <h5>Totals</h5>
-<? 
+<?
 $amt_paid = get_value($payment,"amt");
 $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 <table class="list totals">
@@ -77,13 +77,13 @@ $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 	$payment_data["payment"] = $payment;
 	$payment_data["payment_key"] = $grand_total . "_" . $month . "_" . $year . "_" . $current_id;
 	$payment_data["grand_total"] = $grand_total;
-	
+
 	$this->load->view("payment/view",$payment_data);
 	?>
 	<tr class="bottom-line">
 		<td>Amount Owed:</td>
 		<td class="amt"><?=get_as_cash($grand_total);?></td>
 	</tr>
-	
+
 </table>
 </div>

@@ -16,10 +16,8 @@ body {
 }
 
 #page {
-    *width: 95%;
     margin-left: auto;
     margin-right: auto;
-    *min-width: 1028px;
 }
 
 .highlight {
@@ -311,17 +309,17 @@ legend {
     text-decoration: none;
 }
 
-.nav_buttons {
+#nav_buttons {
     float: left;
     top: -2px;
 }
 
-.user_menu {
+#user_menu {
     float: right;
     top: 2px;
 }
 
-.user_menu p {
+#user_menu p {
     margin: 0em;
 }
 
@@ -393,7 +391,7 @@ h2 {
     border-style: solid;
     border-width: 1px;
     margin-top: 10px;
-    margin-bottom: 10px;;
+    margin-bottom: 10px;
     padding: 10px;
 }
 
@@ -445,7 +443,7 @@ a.button {
     text-decoration: none;
 }
 
-.button_box { *
+.button_box {
     height: 25px;
 }
 
@@ -525,9 +523,7 @@ td.amt {
 }
 
 #fees{
-*margin-left: auto;
-*margin-right: auto;
-*width: 800px;
+
 }
 
 #monthly-fees {

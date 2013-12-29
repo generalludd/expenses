@@ -107,6 +107,7 @@ function create_button($data)
 function create_button_bar($buttons, $options = NULL ){
 	$id = "";
 	$selection = "";
+	$class = "";
 	if($options){
 		if(array_key_exists("id",$options)){
 			$id = "id='". $options["id"] . "'";
@@ -115,10 +116,14 @@ function create_button_bar($buttons, $options = NULL ){
 		if(array_key_exists("selection", $options)){
 			$selection = $options["selection"];
 		}
+
+		if(array_key_exists("class", $options)){
+		    $class = $options["class"];
+		}
 	}
 	$button_list = array();
 	foreach($buttons as $button){
-		if($button["item"] == $selection){
+		if(array_key_exists("item",$button) && $button["item"] == $selection){
 			if(array_key_exists("class",$button)){
 				$button["class"] .= "active";
 			}else{
@@ -130,7 +135,7 @@ function create_button_bar($buttons, $options = NULL ){
 
 	$contents = implode("</li><li>", $button_list);
 	$template = "<ul class='button-list'><li>$contents</li></ul>";
-	$output = "<div class='button-box' $id>$template</div>";
+	$output = "<div class='button-box $class' $id>$template</div>";
 	return $output;
 }
 
@@ -175,7 +180,7 @@ function create_button_object($data,$user_role = NULL)
 				$id = "";
 				if(get_value($data,"id")){
 					$id_prefix = $data->id_prefix;
-						
+
 
 					$id = "id='$id_prefix" . "_" . "$data->id'";
 				}
