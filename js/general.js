@@ -23,9 +23,21 @@
 		}//end function(event);
 	);//end home.click
 	
+$(".show-navigation").live("click",function(){
+	$("#navigation").fadeIn();
+	$(this).removeClass("show-navigation");
+	$(this).addClass("hide-navigation");
+	$(this).html("Hide Navigation");
 
+});
 	
-	
+$(".hide-navigation").live("click",function(){
+	$("#navigation").fadeOut();
+	$(this).removeClass("hide-navigation");
+	$(this).addClass("show-navigation");
+	$(this).html("Show Navigation");
+
+});
 
 	$('.edit_preference').live("mouseup",  function(event){
 		var myUser=$('#user_id').val();

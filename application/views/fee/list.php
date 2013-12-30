@@ -5,7 +5,7 @@ $share_total = 0;
 <h3>Monthly Fees for <?="$month $year";?></h3>
 <p><span class="button fee-create">New Fee</span></p>
 <table class="list"><thead><tr>
-<th></th><th>Type</th><th>Amount</th><th>Amount Due</th></tr></thead><tbody>
+<th></th><th id="fee-type">Type</th><th id="fee-amount">Amount</th><th id="fee-amount-due">Amount Due</th></tr></thead><tbody>
 <?
 foreach($fees as $fee){
 	echo "<tr><td><span class='button fee-edit' id='fee-edit_$fee->id'>Edit</span></td>";
@@ -14,7 +14,7 @@ foreach($fees as $fee){
 	if($fee->type == "Shopping"){
 		$share_total = $fee->amt;
 	}
-	
+
 }
 ?>
 <tr class="bottom-line"><td></td><td>Total:</td><td class="amt"><?=get_as_cash($fee_total);?></td>
@@ -26,7 +26,7 @@ foreach($fees as $fee){
 <div id="budget">
 <h3>Budget Summary</h3>
 <table class="list">
-<? 
+<?
 $difference = $share_total - $expense_total;
 if($difference > 0){
     $difference_label = "Amount Under Budget";

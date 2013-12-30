@@ -266,10 +266,13 @@ legend {
     padding: 1.25em 0 1.25em 0;
     position: relative;
 }
-
+.mobile-only {
+	/*display: none;*/
+}
 #navigation {
     border-width: 1px;
     border-style: solid;
+    display: none;
 }
 
 #navigation {
