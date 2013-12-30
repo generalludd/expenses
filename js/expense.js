@@ -41,6 +41,11 @@ $(document).ready(function(){
 		window.location.href = base_url + "index.php/expense/show_all/" + my_month + "/" + my_year;
 	});
 	
+	$(".show-current-month").live("click",function(){
+		window.location.href = base_url + "index.php/expense/show_all";
+	});
+		
+	
 	
 	$("#type").live("change",function(){
 		if ($("#type").val() == "other") {

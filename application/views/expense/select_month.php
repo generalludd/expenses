@@ -6,8 +6,10 @@ $buttons[] = array("item" => "expense", "text" => "Current Month", "type" => "sp
 
 ?>
 <div id="month-selector">
+<p>
 <?=form_dropdown("search-month",$month_list,$default_month,"id='search-month'");?>
 &nbsp;<input type="text" size="5" maxlength="4" id="search-year"
 		name="search-year" value="<?=$default_year;?>" />
+		</p>
 		<?=create_button_bar($buttons);?>
 		</div>

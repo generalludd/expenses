@@ -5,36 +5,36 @@
 @import "ui.datepicker.css";
 
 .handle { /*cursor:move*/
-    
+	
 }
 
 body {
-    font-size: 12px;
-    font-family: tahoma, sans-serif;
-    margin: 10px;
-    padding: 10px;
+	font-size: 12px;
+	font-family: tahoma, sans-serif;
+	margin: 10px;
+	padding: 10px;
 }
 
 #page {
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .highlight {
-    right-margin: 300px;
-    width: 80%;
+	right-margin: 300px;
+	width: 80%;
 }
 
 .message {
-    font-size: 95%;
-    padding: 2px;
-    border: 1px solid black;
-    display: none;
-    margin: 3px;
+	font-size: 95%;
+	padding: 2px;
+	border: 1px solid black;
+	display: none;
+	margin: 3px;
 }
 
 #content {
-    
+	
 }
 
 /*
@@ -43,520 +43,538 @@ loggedin style changes the background to make sure users can tell they are logge
 loggedout indicates the opposite.
 */
 .loggedout {
-    font-size: x-large;
-    stext-align: center;
-    margin-top: -45px;
-    padding: 10px;
-    position: fixed;
-    left: 10%;
-    right: 10%;
-    width: auto;
-    border-style: solid;
-    border-width: 1px;
+	font-size: x-large;
+	stext-align: center;
+	margin-top: -45px;
+	padding: 10px;
+	position: fixed;
+	left: 10%;
+	right: 10%;
+	width: auto;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .not-logged-in #main {
-    width: 960px;
-    position: relative;
-    display: block;
+	width: 960px;
+	position: relative;
+	display: block;
 }
 
 .loggedin {
-    position: absolute;
-    right: 10%;
-    float: right;
-    margin-top: -45px;
-    padding: 10px;
-    border-style: solid;
-    border-width: 1px;
+	position: absolute;
+	right: 10%;
+	float: right;
+	margin-top: -45px;
+	padding: 10px;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .editForm {
-    width: 100%;
-    padding-top: 1%;
+	width: 100%;
+	padding-top: 1%;
 }
 
 /*Login Form elements*/
 div.login {
-    position: relative;
-    top: 1%;
-    padding: 2% 5%;
-    text-align: left;
-    width: 350px;
-    margin: auto;
-    display: block;
-    border-radius: 5px;
-    box-shadow: 4px 4px 11px #000;
+	position: relative;
+	top: 1%;
+	padding: 2% 5%;
+	text-align: left;
+	width: 350px;
+	margin: auto;
+	display: block;
+	border-radius: 5px;
+	box-shadow: 4px 4px 11px #000;
 }
 
 div.login-inputs {
-    margin: auto;
-    width: 250px;
+	margin: auto;
+	width: 250px;
 }
 
 div.error {
-    text-align: left;
-    margin: 10%;
-    padding: 2% 5%;
-    position: fixed;
-    top: 1%;
-    right: 25%;
-    left: 25%;
-    width: auto;
-    z-index: 1;
-    border-style: solid;
-    border-width: 1px;
+	text-align: left;
+	margin: 10%;
+	padding: 2% 5%;
+	position: fixed;
+	top: 1%;
+	right: 25%;
+	left: 25%;
+	width: auto;
+	z-index: 1;
+	border-style: solid;
+	border-width: 1px;
 }
 
 div.error a {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 div.error-text {
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 1px 1px 1px #f00;
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+	text-align: center;
+	box-shadow: 1px 1px 1px #f00;
 }
 
 div.login-title {
-    font-size: 150%;
-    text-align: center;
-    position: relative;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 1px 1px 1px #000;
+	font-size: 150%;
+	text-align: center;
+	position: relative;
+	border-radius: 5px;
+	padding: 5px;
+	box-shadow: 1px 1px 1px #000;
 }
 
-#login_form .login-text, .reset-fields input, .reset-fields label {
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 5px;
+#login_form .login-text,.reset-fields input,.reset-fields label {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
 }
 
 #password-resetter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 300px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 300px;
 }
-
 
 /* general notices */
 #notice {
-    position: absolute;
-    top: 25%;
-    left: 15%;
-    overflow: auto;
-    visibility: hidden;
-    float: none;
-    padding: 12px;
-    border-style: solid;
-    border-width: 1px;
+	position: absolute;
+	top: 25%;
+	left: 15%;
+	overflow: auto;
+	visibility: hidden;
+	float: none;
+	padding: 12px;
+	border-style: solid;
+	border-width: 1px;
 }
 
 .notice {
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 3px;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 3px;
 }
 
 #new_popup {
-    display: none;
-    visibility: block;
+	display: none;
+	visibility: block;
 }
 
 /*student search elements*/
 div.result {
-    font-size: 12px;
-    position: absolute;
-    left: 200px;
-    max-height: 600px;
-    margin: 2%;
-    padding-right: 2%;
-    padding-left: 2%;
+	font-size: 12px;
+	position: absolute;
+	left: 200px;
+	max-height: 600px;
+	margin: 2%;
+	padding-right: 2%;
+	padding-left: 2%;
 }
 
 /*form elements*/
 .label {
-    font-size: 12px;
-    font-weight: bold
+	font-size: 12px;
+	font-weight: bold
 }
 
 /* form dimensions mainly defined here */
 .form {
-    position: absolute;
-    width: 70%;
+	position: absolute;
+	width: 70%;
 }
 
 .phrases {
-    font-size: 80%;
-    position: absolute;
-    overflow: scroll;
-    visibility: hidden;
+	font-size: 80%;
+	position: absolute;
+	overflow: scroll;
+	visibility: hidden;
+}
+
+.button-box ul.button-list li {
+	padding-left: 0.5em;
+	margin-left: 0.5em;
+	margin-top: 0.5em;
+}
+
+.button-box ul.button-list li:first_child {
+	padding-left: 0;
+	margin-left: 0;
 }
 
 .button,#navigation,#advancedSearch,#browser_warning,.notice,.warning,#searchForm fieldset,h2,h3,h4,h5
-    {
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+	{
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 .button,.help {
-    text-align: center;
-    position: static;
-    padding: .35em;
-    border-style: solid;
-    border-width: 1px;
-    cursor: pointer;
-    font-size: 12px;
-    font-weight: normal;
+	text-align: center;
+	position: static;
+	padding: .35em;
+	border-style: solid;
+	border-width: 1px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: normal;
 }
 
 td .button {
-    padding: .15em;
+	padding: .15em;
 }
 
 .button:hover {
-    
+	
 }
 
 .image_button {
-    display: inline;
-    margin-bottom: -5px;
-    text-align: center;
-    cursor: pointer;
+	display: inline;
+	margin-bottom: -5px;
+	text-align: center;
+	cursor: pointer;
 }
 
 ul.button-list {
-    list-style: none;
-    padding-left: 0px;
+	list-style: none;
+	padding-left: 0px;
 }
 
 ul.button-list li {
-    display: inline;
+	display: inline;
 }
 
 .help {
-    
+	
 }
 
 textarea {
-    font-size: 1em;
+	font-size: 1em;
 }
 
 .delete {
-    float: right;
+	float: right;
 }
 
 label {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 legend {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 /* header page layout elements */
 #header {
-    padding: 1.25em 0 1.25em 0;
-    position: relative;
+	padding: 1.25em 0 1.25em 0;
+	position: relative;
 }
 
 .mobile-only {
-    display: none;
+	display: none;
 }
 
 #navigation {
-    border-width: 1px;
-    border-style: solid;
+	border-width: 1px;
+	border-style: solid;
 }
 
 #navigation {
-    position: relative;
-    float: left;
-    width: 95%;
-    padding: .75em 1em 0 1em;
-    height: 2.5em;
-    min-width: 400px;
-    margin-bottom: .5em;
-    display: block;
+	position: relative;
+	float: left;
+	width: 95%;
+	padding: .75em 1em 0 1em;
+	height: 2.5em;
+	min-width: 400px;
+	margin-bottom: .5em;
+	display: block;
 }
 
 #navigation ul {
-    padding: 0;
-    margin: 0;
-    position: relative;
-    /*min-width: 400px;*/
+	padding: 0;
+	margin: 0;
+	position: relative;
+	/*min-width: 400px;*/
 }
 
 #navigation li {
-    display: inline;
-    padding-left: 0.5em;
-    margin-left: 0.5em;
-    margin-top: 0.5em;
-
+	display: inline;
+	padding-left: 0.5em;
+	margin-left: 0.5em;
+	margin-top: 0.5em;
 }
 
 #navigation li:first-child {
-    display: inline;
-    padding-left: 0;
-    margin-left: 0;
+	display: inline;
+	padding-left: 0;
+	margin-left: 0;
 }
 
 #navigation li a a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 #nav_buttons {
-    float: left;
-    top: -2px;
+	float: left;
+	top: -2px;
 }
 
 #user_menu {
-    float: right;
-    top: 2px;
+	float: right;
+	top: 2px;
 }
 
 #user_menu p {
-    margin: 0em;
+	margin: 0em;
 }
 
 /* end header page layout elements */ /*main div layout elements */
 #main {
-    position: relative;
-    padding: 0 5em 2em 2em;
-    margin-top: 3.5em;
+	position: relative;
+	padding: 0 5em 2em 2em;
+	margin-top: 3.5em;
 }
 
 #content {
-    
+	
 }
 
 #sidebar {
-    position: absolute;
-    font-size: 11px;
-    top: 1%;
-    left: 65%;
-    right: 10%;
-    width: 15%;
-    height: 100%;
-    overflow: auto;
-    display: none;
-    padding: 5px;
-    margin-left: 15px;
-    border-style: solid;
-    border-width: 1px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    -moz-box-shadow: 3px 3px 4px #666;
-    -webkit-box-shadow: 3px 3px 4px #666;
-    box-shadow: 3px 3px 4px #666;
+	position: absolute;
+	font-size: 11px;
+	top: 1%;
+	left: 65%;
+	right: 10%;
+	width: 15%;
+	height: 100%;
+	overflow: auto;
+	display: none;
+	padding: 5px;
+	margin-left: 15px;
+	border-style: solid;
+	border-width: 1px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	-moz-box-shadow: 3px 3px 4px #666;
+	-webkit-box-shadow: 3px 3px 4px #666;
+	box-shadow: 3px 3px 4px #666;
 }
 
 #sidebar h3 {
-    
+	
 }
 
 #sidebar ul {
-    margin: 0 0 1em 0;
-    border-width: 2px;
-    border-style: solid;
+	margin: 0 0 1em 0;
+	border-width: 2px;
+	border-style: solid;
 }
 
 #sidebar ul {
-    margin: 1em 0;
-    padding: 0;
-    list-style-type: disc;
+	margin: 1em 0;
+	padding: 0;
+	list-style-type: disc;
 }
 
 #sidebar li {
-    list-style-type: disc;
-    margin: 0 0 0 15px;
+	list-style-type: disc;
+	margin: 0 0 0 15px;
 }
 
 h1 {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0;
 }
 
 h2 {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: left;
-    position: relative;
-    border-style: solid;
-    border-width: 1px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: left;
+	position: relative;
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
 }
 
 h3,.support_view legend {
-    font-size: 14px;
-    font-weight: bold;
-    margin: 1em 0;
-    border-style: solid;
-    border-width: 1px;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 1em 0;
+	border-style: solid;
+	border-width: 1px;
 }
 
 h4 {
-    font-weight: bold;
-    text-transform: uppercase;
-    text-align: left;
-    position: relative;
-    border-style: solid;
-    border-width: 1px;
-    margin: 0;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: left;
+	position: relative;
+	border-style: solid;
+	border-width: 1px;
+	margin: 0;
 }
 
 h5 {
-    font-size: 12px;
-    font-weight: bold;
-    text-align: left;
-    border-top-style: solid;
-    border-top-width: 1px;
-    margin: 0;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	border-top-style: solid;
+	border-top-width: 1px;
+	margin: 0;
 }
 
 h3,h4,h5,.support_view legend {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    padding: 5px;
-    padding-left: 10px;
+	margin-top: 4px;
+	margin-bottom: 4px;
+	padding: 5px;
+	padding-left: 10px;
 }
 
 .warning {
-    padding: 5px;
-    height: 150px;
-    width: 320px;
-    left: 20px;
-    top: 50px;
-    position: absolute;
-    visibility: hidden;
+	padding: 5px;
+	height: 150px;
+	width: 320px;
+	left: 20px;
+	top: 50px;
+	position: absolute;
+	visibility: hidden;
 }
 
 a.button {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 .button_box {
-    height: 25px;
+	height: 25px;
 }
 
 .button_box .delete {
-    margin-top: -5px;
+	margin-top: -5px;
 }
 
 td {
-    padding: 5px;
-    border-width: 0px;
+	padding: 5px;
+	border-width: 0px;
 }
 
 table {
-    border-spacing: 0px;
-    padding-bottom: 5px;
-    padding-top: 5px;
+	border-spacing: 0px;
+	padding-bottom: 5px;
+	padding-top: 5px;
 }
 
 table.list {
-    width: 350px;
+	width: 350px;
 }
 
 th {
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    border-bottom-color: #000;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #000;
 }
 
 table.list tbody tr {
-    
+	
 }
 
 table.list tr.bottom-line td {
-    border-top: 3px double #000;
-    font-weight: bold;
+	border-top: 3px double #000;
+	font-weight: bold;
 }
 
 table.list tr.total-line td {
-    border-top: 1px solid #000;
-    font-weight: bold;
+	border-top: 1px solid #000;
+	font-weight: bold;
 }
 
 table.list.totals td {
-    font-weight: bold;
+	font-weight: bold;
+}
+
+#fees table.list {
+	width: 100%;
 }
 
 a.link,input.link {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 a.link:hover,input.link:hover {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .icon {
-    vertical-align: middle;
-    padding-right: 5px;
-    padding-left: 5px;
+	vertical-align: middle;
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 td.amt {
-    text-align: right;
+	text-align: right;
 }
 
 #first-column,#second-column,.column {
-    float: left;
-    position: relative;
-    padding: 5px;
+	float: left;
+	position: relative;
+	padding: 5px;
 }
 
 .column table.list {
-    width: 200px;
+	width: 200px;
 }
 
 .column {
-    
+	
 }
 
-#fees{
-
+#fees {
+	
 }
 
 #monthly-fees {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    padding-bottom: 25px;
-    width: 350px;
-    float: left;
-    padding: 15px;
-    
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 25px;
+	float: left;
+	padding: 15px;
+}
+
+#monthly-fees,#budget {
+	width: 45%;
 }
 
 #budget {
-    float: left;
-    padding: 15px;
-    
-    
+	float: left;
+	padding: 15px;
 }
 
 #expenses {
-    clear:both;
+	clear: both;
 }
 
 .column {
 	border: 1px solid #ddd;
+	margin-right: 5px;
 }
 
-div.you, .column.you {
-    border: 1px solid #000;
-    box-shadow: 1px 1px 5px 1px black;
-    background-color: white;
+.column:last-child {
+	margin-right: 0;
+}
+
+div.you,.column.you {
+	border: 1px solid #000;
+	box-shadow: 1px 1px 5px 1px black;
+	background-color: white;
 }

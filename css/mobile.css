@@ -49,15 +49,16 @@
 	
 }
 
-#monthly-fees {
+#monthly-fees, #budget {
 	margin: 0;
 	padding: 0;
 	float: none;
 	width: auto;
 }
 
+
 #monthly-fees table.list,#budget table.list {
-	width: auto;
+	width: 100%;
 }
 
 #fee-type {
@@ -72,9 +73,6 @@
 	
 }
 
-#budget {
-	padding: 0;
-}
 
 #navigation li {
 	margin-left: 0;
@@ -88,4 +86,9 @@
 
 .column {
 	float: none;
+	margin-top: 5px;
+	margin-right: 0;
+}
+.column:first-child {
+	margin-top: 0;
 }

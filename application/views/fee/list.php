@@ -3,7 +3,7 @@ $share_total = 0;
 ?>
 <div id="monthly-fees">
 <h3>Monthly Fees for <?="$month $year";?></h3>
-<p><span class="button fee-create">New Fee</span></p>
+<p><span class="button new fee-create">New Fee</span></p>
 <table class="list"><thead><tr>
 <th></th><th id="fee-type">Type</th><th id="fee-amount">Amount</th><th id="fee-amount-due">Amount Due</th></tr></thead><tbody>
 <?
