@@ -1,26 +1,25 @@
-.user_menu, .nav_buttons {
-    float: none;
+.user_menu,.nav_buttons {
+	float: none;
 }
 
 #navigation {
-  float: none;
-  width: auto;
-  display: none;
+	float: none;
+	width: auto;
+	display: none;
 }
 
 #navigation li {
 	display: block;
-
-	}
+}
 
 #navigation ul.user_menu {
-  margin-top: 5px;
+	margin-top: 5px;
 }
 
 #navigation {
-  height: 14.5em;
-  min-width: 0;
-  background: none;
+	height: 14.5em;
+	min-width: 0;
+	background: none;
 }
 
 #navigation li:first-child {
@@ -28,32 +27,44 @@
 	padding-left: .5em;
 }
 
-#nav_buttons, #user_menu {
+#nav_buttons,#user_menu {
 	width: 20ex;
 }
 
 #user_menu {
-    float: left;
+	float: left;
 }
 
 #monthly-fees {
-  margin: 0;
-  padding: 0;
-  float: none;
-  width: auto;
-}
-
-#monthly-fees th {
-}
-
-#monthly-fees table.list, #budget table.list {
+	margin: 0;
+	padding: 0;
 	width: auto;
 }
 
-#fee-type{
+.mobile-only {
+	display: block;
 }
 
-#fee-amount{
+#monthly-fees th {
+	
+}
+
+#monthly-fees {
+	margin: 0;
+	padding: 0;
+	float: none;
+	width: auto;
+}
+
+#monthly-fees table.list,#budget table.list {
+	width: auto;
+}
+
+#fee-type {
+	
+}
+
+#fee-amount {
 	
 }
 
@@ -62,25 +73,19 @@
 }
 
 #budget {
-  padding: 0;
+	padding: 0;
 }
 
 #navigation li {
-  margin-left: 0;
-  margin-top: 15px;
+	margin-left: 0;
+	margin-top: 15px;
 }
 
 #main {
-margin-top: 0;
-padding: 0;
+	margin-top: 0;
+	padding: 0;
 }
 
-
-
-.column{
-float: none;
-}
-
-.mobile-only {
-	display: block;
+.column {
+	float: none;
 }

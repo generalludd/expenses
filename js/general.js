@@ -24,19 +24,20 @@
 	);//end home.click
 	
 $(".show-navigation").live("click",function(){
-	$("#navigation").fadeIn();
-	$(this).removeClass("show-navigation");
-	$(this).addClass("hide-navigation");
-	$(this).html("Hide Navigation");
+	toggle_navigation(this, "show");
 
+});
+
+$(window).resize(function(){
+	if($(window).width() > 855){
+toggle_navigation(this, "show");
+	}else if($(window).width() < 855){
+toggle_navigation(this, "hide");
+	}
 });
 	
 $(".hide-navigation").live("click",function(){
-	$("#navigation").fadeOut();
-	$(this).removeClass("hide-navigation");
-	$(this).addClass("show-navigation");
-	$(this).html("Show Navigation");
-
+toggle_navigation(this, "hide");
 });
 
 	$('.edit_preference').live("mouseup",  function(event){
@@ -129,4 +130,16 @@ function showHelp(myTopic,mySubtopic){
 	
 }
 
-
+function toggle_navigation(me, toggle){
+	if(toggle == "show"){
+		$("#navigation").fadeIn();
+		$(me).removeClass("show-navigation");
+		$(me).addClass("hide-navigation");
+		$(me).html("Hide Navigation");
+	}else if(toggle == "hide"){
+		$("#navigation").fadeOut();
+		$(me).removeClass("hide-navigation");
+		$(me).addClass("show-navigation");
+		$(me).html("Show Navigation");
+	}
+}
