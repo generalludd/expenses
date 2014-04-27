@@ -203,8 +203,7 @@ function grammatical_list ($glue, $list, $conjunction = "and")
 
 function get_as_cash ($value)
 {
-    setlocale(LC_MONETARY, 'en_US');
-    return money_format('%#0n', $value);
+    return sprintf("$%s", number_format($value,2));
 }
 
 function get_as_float ($value)
