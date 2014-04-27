@@ -40,13 +40,13 @@ if($difference > 0){
 
 ?>
 <tr class="<?=$difference_class;?>">
-<td>Total Expenses:</td><td class="amt"><?=get_as_cash($expense_total);?></td>
+<td>Total Expenses:</td><td class="amt">$<?=number_format($expense_total,2);?></td>
 </tr>
 
 
 <tr class="<?=$difference_class;?>">
 <td><?=$difference_label;?></td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash(abs($difference));?></td>
+<td class="amt <?=$difference_class;?>">$<?=number_format(abs($difference),2);?></td>
 </tr>
 <?
 $grand_total_difference = $global_fee_total - $global_expense_total;
@@ -61,18 +61,18 @@ if($grand_total_difference > 0){
 <tr>
 
 <td>Grand Total Fees</td>
-<td class="amt"><?=get_as_cash($global_fee_total);?></td>
+<td class="amt">$<?=number_format($global_fee_total,2);?></td>
 
 </tr>
 
 <tr>
 <td>Grand Total Expenses</td>
-<td class="amt"><?=get_as_cash($global_expense_total);?></td>
+<td class="amt">$<?=number_format($global_expense_total,2);?></td>
 </tr>
 <tr class="<?=$difference_class;?>">
 
 <td><?=$grand_label;?></td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash($grand_total_difference);?></td>
+<td class="amt <?=$difference_class;?>">$<?=number_format($grand_total_difference,2);?></td>
 </tr>
 <?
 
@@ -88,7 +88,7 @@ if($average > 0){
 <tr class="<?=$difference_class;?>">
 
 <td>Average over <?=$month_count;?> Months</td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash($average);?></td>
+<td class="amt <?=$difference_class;?>">$<?=number_format($average,2);?></td>
 </tr>
 </table>
 </div>
