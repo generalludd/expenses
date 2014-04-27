@@ -9,15 +9,15 @@ $share_total = 0;
 <?
 foreach($fees as $fee){
 	echo "<tr><td><span class='button fee-edit' id='fee-edit_$fee->id'>Edit</span></td>";
-	echo "<td>$fee->type</td><td class='amt'>". get_as_cash($fee->amt) ."</td>";
-	echo "<td class='amt'>" . get_as_cash($fee->amt/$user_count) . "</td><tr>";
+	echo "<td>$fee->type</td><td class='amt'>$". number_format($fee->amt,2) ."</td>";
+	echo "<td class='amt'>$" . number_format($fee->amt/$user_count,2) . "</td><tr>";
 	if($fee->type == "Shopping"){
 		$share_total = $fee->amt;
 	}
 
 }
 ?>
-<tr class="bottom-line"><td></td><td>Total:</td><td class="amt"><?=get_as_cash($fee_total);?></td>
+<tr class="bottom-line"><td></td><td>Total:</td><td class="amt">$<?=number_format($fee_total,2);?></td>
 <td class="amt"><?=get_as_cash($fee_total/$user_count);?></tr>
 
 </tbody>
