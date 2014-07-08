@@ -10,9 +10,7 @@ warning borders (dark) #FF8538
 notices: #e69528
 backgrounds: #C7D7E9
 */
-.narrText {
-    border-color: silver gray gray silver;
-}
+
 
 .highlight {
     background-color: yellow;
