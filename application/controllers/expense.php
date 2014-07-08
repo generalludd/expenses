@@ -95,7 +95,7 @@ class Expense extends My_Controller
             $data["types"] = get_keyed_pairs($types, array(
                     "type",
                     "type"
-            ), TRUE, TRUE);
+            ), TRUE);
             $data["target"] = "expense/edit";
             $this->load->view($data["target"], $data);
         } else {
@@ -129,7 +129,7 @@ class Expense extends My_Controller
         $data["types"] = get_keyed_pairs($types, array(
                 "type",
                 "type"
-        ), NULL, TRUE);
+        ), NULL);
         $data["target"] = "expense/edit";
         $this->load->view($data["target"], $data);
     }
