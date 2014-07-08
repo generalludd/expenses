@@ -142,9 +142,7 @@ div.list {
 }
 
 .delete {
-    opacity: .90;
-    filter: Alpha(Opacity =           90);
-    background: #E14F1C url(images/delete.png) 50% 50% repeat-x;
+    background: #E14F1C;
     color: white;
     border: 1px solid #CD0A0A;
 }
