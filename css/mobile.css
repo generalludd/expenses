@@ -1,3 +1,11 @@
+
+.not-logged-in #main{
+	width: auto;
+}
+
+.not-logged-in div.login {
+}
+
 .user_menu,.nav_buttons {
 	float: none;
 }

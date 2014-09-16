@@ -3,4 +3,5 @@
 /application/config/email.php
 .buildpath
 .DS_Store
-/application/logs/*
+/application/logs/
+.settings/*

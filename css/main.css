@@ -56,7 +56,7 @@ loggedout indicates the opposite.
 }
 
 .not-logged-in #main {
-	width: 960px;
+	width: auto;
 	position: relative;
 	display: block;
 }
@@ -82,7 +82,8 @@ div.login {
 	top: 1%;
 	padding: 2% 5%;
 	text-align: left;
-	width: 350px;
+	width: 80%;
+	max-width: 450px;
 	margin: auto;
 	display: block;
 	border-radius: 5px;
