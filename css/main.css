@@ -4,7 +4,7 @@
 
 @import "ui.datepicker.css";
 
-.handle { /*cursor:move*/
+.handle { 
 	
 }
 
@@ -42,33 +42,17 @@ loggedin style changes the background to make sure users can tell they are logge
 
 loggedout indicates the opposite.
 */
-.loggedout {
-	font-size: x-large;
-	stext-align: center;
-	margin-top: -45px;
+.not-logged-in {
+	text-align: center;
 	padding: 10px;
-	position: fixed;
 	left: 10%;
 	right: 10%;
-	width: auto;
-	border-style: solid;
-	border-width: 1px;
 }
 
 .not-logged-in #main {
 	width: auto;
 	position: relative;
 	display: block;
-}
-
-.loggedin {
-	position: absolute;
-	right: 10%;
-	float: right;
-	margin-top: -45px;
-	padding: 10px;
-	border-style: solid;
-	border-width: 1px;
 }
 
 .editForm {

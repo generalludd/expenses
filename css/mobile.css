@@ -1,9 +1,13 @@
+body.not-logged-in {
+}
+
 
 .not-logged-in #main{
-	width: auto;
+	width: 320px;
 }
 
 .not-logged-in div.login {
+	margin: 0;
 }
 
 .user_menu,.nav_buttons {
