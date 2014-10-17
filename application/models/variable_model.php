@@ -41,6 +41,7 @@ class Variable_model extends CI_Model
 		$this->db->where("name", $name);
 		$this->db->from("variable");
 		$result = $this->db->get()->row();
+		//$this->session->set_flashdata("notice",$this->db->last_query());
 		return $result->value;
 	}
 

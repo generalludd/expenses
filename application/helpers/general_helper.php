@@ -273,3 +273,7 @@ function get_previous_month($month, $year)
 
 }
 
+
+function get_month_name(&$number){
+	(int)$number;
+}

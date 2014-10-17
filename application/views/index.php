@@ -10,6 +10,9 @@
 </head>
 <body>
 <div id="page">
+<?php if($this->session->flashdata("notice")):?>
+<div class="message"><?php echo $this->session->flashdata("notice");?></div>
+<?php  endif; ?>
 <?php if(!$print): ?>
 <div id='header'>
 <div class="mobile-only show-navigation-box block">

@@ -54,7 +54,7 @@ class Expense extends My_Controller
             $data["global_expense_total"] = $this->expense->get_total();
             $data["month_count"] = $this->fee->count_months();
             $data["fees"] = $this->fee->get_by_month($month, $year);
-            $month_name = $this->variable->get_value("month", $month);
+            $month_name = $this->variable->get_value("month", intval($month));
             $data["month"] = $month_name;
             $data["year"] = $year;
             $data["title"] = "Expenses for $month_name $year";

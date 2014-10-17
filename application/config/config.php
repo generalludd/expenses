@@ -26,13 +26,8 @@ $config['base_url'] = '';
 |
 */
 
-$my_server = $_SERVER['SERVER_NAME'];
+$config['index_page'] = '';
 
-if($my_server == "localhost" || $my_server == "cerebratorium.local"){
-	$config['index_page'] = 'index.php';
-}else{
-	$config['index_page'] = 'index.php';
-}
 /*
 |--------------------------------------------------------------------------
 | URI PROTOCOL
