@@ -10,8 +10,10 @@
 </head>
 <body>
 <div id="page">
-<?php if($this->session->flashdata("notice")):?>
-<div class="message"><?php echo $this->session->flashdata("notice");?></div>
+<?php if($this->session->flashdata("notice")) :?>
+<div class="message">
+<?php echo $this->session->flashdata("notice");?>
+</div>
 <?php  endif; ?>
 <?php if(!$print): ?>
 <div id='header'>

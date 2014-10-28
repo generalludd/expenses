@@ -274,6 +274,22 @@ function get_previous_month($month, $year)
 }
 
 
-function get_month_name(&$number){
-	(int)$number;
+function print_array($array){
+	
+	$output[] = '<ul>';
+	if(is_array($array) || is_object($array)){
+		//for($i=0; $i<count($array);$i++){
+		foreach($array as $item){
+			if(is_array($item) || is_object($array)){
+				$output[] = print_array($item);
+			}else{
+				$output[] = "<li>" . $item . "</li>";
+			}
+		}
+	}else{
+		$output[] = $array; 
+	}
+	$output[] = "</ul>";
+	
+	return implode("\r", $output);
 }
