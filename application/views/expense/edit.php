@@ -20,22 +20,22 @@ if($this->session->userdata("yr")){
 <? endif; ?>
 <p>
 <label for="mo">Month</label> 
-<?=form_dropdown("mo",$months,get_value($expense,"mo",$default_month), "id='mo'");?>
+<?=form_dropdown("mo",$months,get_value($expense,"mo",$default_month), "id='mo' required");?>
 <label for="yr">Four-Digit Year</label> 
-<input type="text" name="yr" id="yr" value="<?=get_value($expense,"yr",$default_year);?>" size="5" maxlength="4"/>
+<input type="text" name="yr" id="yr" value="<?=get_value($expense,"yr",$default_year);?>" required size="5" maxlength="4"/>
 </p>
-<p><label for="dt">Date</label><input type="text" name="dt" id="dt" value="<?=format_date(get_value($expense,"dt",date("Y-m-d")));?>" class="datefield"/></p>
+<p><label for="dt">Date</label><input type="text" required name="dt" id="dt" value="<?=format_date(get_value($expense,"dt",date("Y-m-d")));?>" class="datefield"/></p>
 <p>
 <label for="type">Enter the Type of Fee:</label> 
-<span id="type_span"><?=form_dropdown("type",$types,get_value($expense,"type"),"id='type'");?></span>
+<span id="type_span"><?=form_dropdown("type",$types,get_value($expense,"type"),"id='type' required");?></span>
 </p>
 <p>
 <label for="description">Describe the Purchase</label> 
-<input type="text" name="description" id="description" value="<?=get_value($expense,"description");?>"/>
+<input type="text" name="description" id="description" required value="<?=get_value($expense,"description");?>"/>
 </p>
 <p>
 <label for="amt">Enter the Amount: $</label> 
-<input type="text" name="amt" id="amt" value="<?=get_value($expense,"amt");?>" size="6" maxlength="8"/>
+<input type="text" name="amt" id="amt" value="<?=get_value($expense,"amt");?>" required size="6" maxlength="8"/>
 </p>
 <div class="button-box">
 <input type="submit" value="<?=ucfirst($action);?>" class="button"/>
