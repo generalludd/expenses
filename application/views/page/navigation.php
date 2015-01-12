@@ -11,7 +11,7 @@ if((int)$this->session->userdata("mo") && (int)$this->session->userdata("yr")){
 
 $month_list = get_keyed_pairs($this->variable->get("month"),array("name","value"));
 
-$nav_buttons["home"] = array("item" => "expense","text"=>"home","href"=>base_url(), "class"=>"button home");
+$nav_buttons["home"] = array("item" => "expense","text"=>"Home","href"=>base_url(), "class"=>"button home");
 $nav_buttons["previous_month"] = array("item" =>"expense", "text"=>"Previous Month", "href"=>site_url("expense/previous_month/$default_month/$default_year"), "class" => "button show-previous-month" );
 $nav_buttons["next_month"] = array("item" =>"expense", "text"=>"Next Month", "href"=>site_url("expense/next_month/$default_month/$default_year"), "class" => "button show-next-month" );
 $nav_buttons["show_monht"] = array("item" => "expense", "text" => "Select Month", "type"=>"span","class" => "button select-month");
