@@ -2,7 +2,7 @@
 
 <div class="login">
 <div class="login-title">Password Reset</div>
-<form action="<?=site_url("user/send_reset"); ?>" method="post"
+<form action="<?php echo site_url("user/send_reset"); ?>" method="post"
 	name="login_form" id="login_form">
 
 <?

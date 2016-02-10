@@ -3,18 +3,18 @@ $person = $expense->first_name;
 $class = "";
 if($expense->userID == $this->session->userdata("userID")): $class="you"; endif;
 ?>
-<div class='column <?=$class;?>'>
+<div class='column <?php echo $class;?>'>
 <?
 if($expense->userID == $this->session->userdata("userID")):?>
 <h3>Your Expenses</h3>
 <? else: ?>
-<h3><?=$person;?></h3>
+<h3><?php echo $person;?></h3>
 <? endif;
 
 
 
 if($this->session->userdata("role") == "admin"|| $this->session->userdata("userID") == $expense->userID ):?>
-<p><span class="button new expense-create" id="ec_<?=$expense->userID;?>">New
+<p><span class="button new expense-create" id="ec_<?php echo $expense->userID;?>">New
 Expense</span></p>
 <? endif;
 ?>
@@ -35,9 +35,9 @@ Expense</span></p>
 	if($item->user_id == $current_id): ?>
 		<tr>
 			<td><span class='link expense-edit'
-				id='expense-edit_<?=$item->id;?>' title='<?=$item->description;?>'><?=$item->type;?></span></td>
-			<td><?=format_date($item->dt,"no-year");?></td>
-			<td class='amt'><?=get_as_cash($item->amt);?></td>
+				id='expense-edit_<?php echo $item->id;?>' title='<?php echo $item->description;?>'><?php echo $item->type;?></span></td>
+			<td><?php echo format_date($item->dt,"no-year");?></td>
+			<td class='amt'><?php echo get_as_cash($item->amt);?></td>
 
 			<?
 			$expense_total += $item->amt;
@@ -49,7 +49,7 @@ Expense</span></p>
 		      <tr class="bottom-line">
             <td></td>
             <td class="amt">Total:</td>
-            <td class="amt"><?=get_as_cash($expense_total);?></td>
+            <td class="amt"><?php echo get_as_cash($expense_total);?></td>
         </tr>
 	</tbody>
 </table>
@@ -67,11 +67,11 @@ $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 <table class="list totals">
 	<tr>
 		<td>Amount Due:</td>
-		<td class="amt"><?=get_as_cash($fee_total/$user_count);?></td>
+		<td class="amt"><?php echo get_as_cash($fee_total/$user_count);?></td>
 	</tr>
 	<tr>
 		<td>Adjustment:</td>
-		<td class="amt"><?=$display_expense;?></td>
+		<td class="amt"><?php echo $display_expense;?></td>
 	</tr>
 	<?
 	$payment_data["payment"] = $payment;
@@ -82,7 +82,7 @@ $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 	?>
 	<tr class="bottom-line">
 		<td>Amount Owed:</td>
-		<td class="amt"><?=get_as_cash($grand_total);?></td>
+		<td class="amt"><?php echo get_as_cash($grand_total);?></td>
 	</tr>
 
 </table>

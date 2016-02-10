@@ -20,14 +20,14 @@ $buttons[] = array(
 ?>
 <div id="month-selector">
 	<p>
-<?=form_dropdown("search-month",$month_list,$default_month,"id='search-month'");?>
+<?php echo form_dropdown("search-month",$month_list,$default_month,"id='search-month'");?>
 &nbsp;<input
 			type="text"
 			size="5"
 			maxlength="4"
 			id="search-year"
 			name="search-year"
-			value="<?=$default_year;?>" />
+			value="<?php echo $default_year;?>" />
 	</p>
-		<?=create_button_bar($buttons);?>
+		<?php echo create_button_bar($buttons);?>
 		</div>

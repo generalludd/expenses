@@ -2,7 +2,7 @@
 $share_total = 0;
 ?>
 <div id="monthly-fees">
-<h3>Monthly Fees for <?="$month $year";?></h3>
+<h3>Monthly Fees for <?php echo "$month $year";?></h3>
 <p><span class="button new fee-create">New Fee</span></p>
 <table class="list"><thead><tr>
 <th></th><th id="fee-type">Type</th><th id="fee-amount">Amount</th><th id="fee-amount-due">Amount Due</th></tr></thead><tbody>
@@ -17,8 +17,8 @@ foreach($fees as $fee){
 
 }
 ?>
-<tr class="bottom-line"><td></td><td>Total:</td><td class="amt"><?=get_as_cash($fee_total);?></td>
-<td class="amt"><?=get_as_cash($fee_total/$user_count);?></tr>
+<tr class="bottom-line"><td></td><td>Total:</td><td class="amt"><?php echo get_as_cash($fee_total);?></td>
+<td class="amt"><?php echo get_as_cash($fee_total/$user_count);?></tr>
 
 </tbody>
 </table>
@@ -39,14 +39,14 @@ if($difference > 0){
 
 
 ?>
-<tr class="<?=$difference_class;?>">
-<td>Total Expenses:</td><td class="amt"><?=get_as_cash($expense_total);?></td>
+<tr class="<?php echo $difference_class;?>">
+<td>Total Expenses:</td><td class="amt"><?php echo get_as_cash($expense_total);?></td>
 </tr>
 
 
-<tr class="<?=$difference_class;?>">
-<td><?=$difference_label;?></td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash(abs($difference));?></td>
+<tr class="<?php echo $difference_class;?>">
+<td><?php echo $difference_label;?></td>
+<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash(abs($difference));?></td>
 </tr>
 <?
 $grand_total_difference = $global_fee_total - $global_expense_total;
@@ -61,18 +61,18 @@ if($grand_total_difference > 0){
 <tr>
 
 <td>Grand Total Fees</td>
-<td class="amt"><?=get_as_cash($global_fee_total);?></td>
+<td class="amt"><?php echo get_as_cash($global_fee_total);?></td>
 
 </tr>
 
 <tr>
 <td>Grand Total Expenses</td>
-<td class="amt"><?=get_as_cash($global_expense_total);?></td>
+<td class="amt"><?php echo get_as_cash($global_expense_total);?></td>
 </tr>
-<tr class="<?=$difference_class;?>">
+<tr class="<?php echo $difference_class;?>">
 
-<td><?=$grand_label;?></td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash($grand_total_difference);?></td>
+<td><?php echo $grand_label;?></td>
+<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($grand_total_difference);?></td>
 </tr>
 <?
 
@@ -85,10 +85,10 @@ if($average > 0){
     $difference_class = "over-budget";
 }
 ?>
-<tr class="<?=$difference_class;?>">
+<tr class="<?php echo $difference_class;?>">
 
-<td>Average over <?=$month_count;?> Months</td>
-<td class="amt <?=$difference_class;?>"><?=get_as_cash($average);?></td>
+<td>Average over <?php echo $month_count;?> Months</td>
+<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($average);?></td>
 </tr>
 </table>
 </div>

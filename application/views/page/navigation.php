@@ -27,5 +27,5 @@ $user_buttons["user_list"] = array("item" => "user", "text" => "User List", "hre
 
  ?>
 
- <?=create_button_bar($nav_buttons, array("id"=>"nav_buttons","class"=>"nav-buttons"));?>
- <?=create_button_bar($user_buttons, array("id"=>"user_menu","class"=>"user-menu"));?>
+ <?php echo create_button_bar($nav_buttons, array("id"=>"nav_buttons","class"=>"nav-buttons"));?>
+ <?php echo create_button_bar($user_buttons, array("id"=>"user_menu","class"=>"user-menu"));?>

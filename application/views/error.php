@@ -2,5 +2,5 @@
 ?>
 
 <div class="notice">
-<?=$error;?>
+<?php echo $error;?>
 </div>

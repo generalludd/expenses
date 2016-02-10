@@ -9,7 +9,7 @@ $main_menu = $this->menu_model->get(1);
 	echo "<li>" . create_button_object($item) . "</li>";
 }
 if($this->uri->segment(2) == "search"): ?>
-<li><a class='button' href="<?=site_url("asset/export");?>">Export</a></li>
+<li><a class='button' href="<?php echo site_url("asset/export");?>">Export</a></li>
 <? endif; ?>
 
 </ul>

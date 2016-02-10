@@ -12,29 +12,29 @@ if($this->session->userdata("yr")){
 }
 ?>
 
-<form name="payment_editor" id="payment_editor" method="post" action="<?=site_url("payment/$action");?>">
-<input type="hidden" id="id" name="id" value="<?=get_value($payment, "id");?>"/>
+<form name="payment_editor" id="payment_editor" method="post" action="<?php echo site_url("payment/$action");?>">
+<input type="hidden" id="id" name="id" value="<?php echo get_value($payment, "id");?>"/>
 
 <?if($this->session->userdata("role") == "admin"): ?>
 <p>
 <label for="user_id">User</label>
-<?=form_dropdown("user_id",$users,get_value($payment,"user_id",$user_id),"id='user_id'");?>
+<?php echo form_dropdown("user_id",$users,get_value($payment,"user_id",$user_id),"id='user_id'");?>
 </p>
 <? else: ?>
-<input type="hidden" name="user_id" id="user_id" value="<?=get_value($payment,"user_id",$user_id);?>"/>
+<input type="hidden" name="user_id" id="user_id" value="<?php echo get_value($payment,"user_id",$user_id);?>"/>
 <? endif; ?>
 <p>
 <label for="mo">Month</label>
-<?=form_dropdown("mo",$months,get_value($payment,"mo",$default_month), "id='mo'");?>
+<?php echo form_dropdown("mo",$months,get_value($payment,"mo",$default_month), "id='mo'");?>
 <label for="yr">Year</label>
-<input type="text" id="yr" name="yr" value="<?=get_value($payment, "yr",$default_year);?>"/>
+<input type="text" id="yr" name="yr" value="<?php echo get_value($payment, "yr",$default_year);?>"/>
 <p>
 <label for="amt">Amount Paid</label>
-<input type="text" id="amt" name="amt" value="<?=round(get_value($payment, "amt", $total_due),2);?>"/>
+<input type="text" id="amt" name="amt" value="<?php echo round(get_value($payment, "amt", $total_due),2);?>"/>
 </p>
 <p>
 <label for="date_paid">Date Paid</label>
-<input type="text" id="date_paid" name="date_paid" value="<?=format_date(get_value($payment,"date_paid", date("Y-m-j")));?>" class="datefield"/>
+<input type="text" id="date_paid" name="date_paid" value="<?php echo format_date(get_value($payment,"date_paid", date("Y-m-j")));?>" class="datefield"/>
 </p>
 <p>
 <input type="submit" class="button" value="Save"/>
