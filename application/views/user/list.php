@@ -19,13 +19,13 @@ $role = NULL;
 	<tbody>
 	<? foreach($users as $user):?>
 		<tr>
-			<td><span class="button user-edit" id="ue_<?=$user->id;?>">Edit</span></td>
-			<td><?=$user->first_name;?></td>
-			<td><?=$user->last_name; ?></td>
-			<td><?=$user->username;?></td>
-			<td><?=$user->email;?></td>
-			<td><?=ucfirst($user->role);?></td>
-			<td><?=get_status($user->is_active);?></td>
+			<td><span class="button user-edit" id="ue_<?php echo $user->id;?>">Edit</span></td>
+			<td><?php echo $user->first_name;?></td>
+			<td><?php echo $user->last_name; ?></td>
+			<td><?php echo $user->username;?></td>
+			<td><?php echo $user->email;?></td>
+			<td><?php echo ucfirst($user->role);?></td>
+			<td><?php echo get_status($user->is_active);?></td>
 		</tr>
 		<? endforeach; ?>
 	</tbody>

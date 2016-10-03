@@ -1,7 +1,7 @@
 <?php ?>
 <h2>Set Preferences for your Account</h2>
 <input
-	type='hidden' id='user_id' name='user_id' value='<?=$user_id;?>' />
+	type='hidden' id='user_id' name='user_id' value='<?php echo $user_id;?>' />
 <p class='notice'>Note that this is a beta testing area. Changes you make will probably not do anything.</p>
 <?php
 foreach($preferences as $preference){

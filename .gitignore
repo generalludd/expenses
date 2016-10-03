@@ -1,6 +1,7 @@
 /user_guide
 /application/config/database.php
 /application/config/email.php
+/application/logs/*
 .buildpath
 .DS_Store
 /application/logs/
