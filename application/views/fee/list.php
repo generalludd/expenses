@@ -75,7 +75,6 @@ if($grand_total_difference > 0){
 <td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($grand_total_difference);?></td>
 </tr>
 <?
-$month_count = 12 - date(n);
 $average =$global_fee_total/$month_count - $global_expense_total/$month_count;
 if($average > 0){
     $average_label = "Amount Under Budget";
@@ -87,7 +86,23 @@ if($average > 0){
 ?>
 <tr class="<?php echo $difference_class;?>">
 
-<td>Average over <?php echo $month_count;?> Months (</td>
+<td>Average over <?php echo $month_count;?> Months</td>
+<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($average);?></td>
+</tr>
+</tr>
+<?
+$average =$grand_fee_total/$grand_month_count - $grand_expense_total/$grand_month_count;
+if($average > 0){
+    $average_label = "Amount Under Budget";
+    $difference_class = "";
+}else{
+    $average_label = "Amount Over Budget";
+    $difference_class = "over-budget";
+}
+?>
+<tr class="<?php echo $difference_class;?>">
+
+<td>Average over <?php echo $grand_month_count;?> Months</td>
 <td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($average);?></td>
 </tr>
 </table>

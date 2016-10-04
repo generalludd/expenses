@@ -50,9 +50,12 @@ class Expense extends My_Controller
             $data["expenses"] = $this->expense->get_by_month($month, $year);
             $data["payments"] = $this->payment->get_by_month($month, $year);
             $data["expense_total"] = $this->expense->get_total($month, $year);
-            $data["global_fee_total"] = $this->fee->get_totals(NULL, NULL, "Shopping");
-            $data["global_expense_total"] = $this->expense->get_total();
-            $data["month_count"] = $this->fee->count_months();
+            $data["grand_fee_total"] = $this->fee->get_totals(NULL,NULL, "Shopping");
+            $data["grand_expense_total"] = $this->expense->get_total();
+            $data["grand_month_count"] = $this->fee->count_months();
+            $data["global_fee_total"] = $this->fee->get_totals(NULL, $year, "Shopping");
+            $data["global_expense_total"] = $this->expense->get_total(NULL, $year);
+            $data["month_count"] = date('n');
             $data["fees"] = $this->fee->get_by_month($month, $year);
             $month_name = $this->variable->get_value("month", intval($month));
             $data["month"] = $month_name;
