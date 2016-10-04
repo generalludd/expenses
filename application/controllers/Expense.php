@@ -48,14 +48,18 @@ class Expense extends My_Controller
             $data["user_count"] = $this->user->count_active($month, $year);
             $data["fee_total"] = $this->fee->get_totals($month, $year);
             $data["expenses"] = $this->expense->get_by_month($month, $year);
+            $data['previous_expenses'] = $this->expense->get_by_month($month, $year-1);
             $data["payments"] = $this->payment->get_by_month($month, $year);
+            $data["previous_payments"] = $this->payment->get_by_month($month, $year-1);
+            
             $data["expense_total"] = $this->expense->get_total($month, $year);
             $data["grand_fee_total"] = $this->fee->get_totals(NULL,NULL, "Shopping");
             $data["grand_expense_total"] = $this->expense->get_total();
             $data["grand_month_count"] = $this->fee->count_months();
-            $data["global_fee_total"] = $this->fee->get_totals(NULL, $year, "Shopping");
-            $data["global_expense_total"] = $this->expense->get_total(NULL, $year);
-            $data["month_count"] = date('n');
+            $data["ytd_fee_total"] = $this->fee->get_totals(NULL, $year, "Shopping");
+            $data["ytd_expense_total"] = $this->expense->get_total(NULL, $year);
+            $data["month_count"] = date('n')+1;
+            $data['ytd_average'] = $data['ytd_expense_total']/$data["month_count"];
             $data["fees"] = $this->fee->get_by_month($month, $year);
             $month_name = $this->variable->get_value("month", intval($month));
             $data["month"] = $month_name;

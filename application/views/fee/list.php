@@ -49,33 +49,23 @@ if($difference > 0){
 <td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash(abs($difference));?></td>
 </tr>
 <?
-$grand_total_difference = $global_fee_total - $global_expense_total;
-if($grand_total_difference > 0){
-    $grand_label = "Amount Under Budget";
+$ytd_total_difference = $ytd_fee_total - $ytd_expense_total;
+if($ytd_total_difference > 0){
+    $ytd_label = "YTD Amount Under Budget";
     $difference_class = "";
 }else{
-    $grand_label = "Amount Over Budget";
+    $ytd_label = "YTD Amount Over Budget";
     $difference_class = "over-budget";
 }
 ?>
-<tr>
 
-<td>Grand Total Fees</td>
-<td class="amt"><?php echo get_as_cash($global_fee_total);?></td>
-
-</tr>
-
-<tr>
-<td>Grand Total Expenses</td>
-<td class="amt"><?php echo get_as_cash($global_expense_total);?></td>
-</tr>
 <tr class="<?php echo $difference_class;?>">
 
-<td><?php echo $grand_label;?></td>
-<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($grand_total_difference);?></td>
+<td><?php echo $ytd_label;?></td>
+<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($ytd_total_difference);?></td>
 </tr>
 <?
-$average =$global_fee_total/$month_count - $global_expense_total/$month_count;
+$average =$ytd_expense_total/$month_count;
 if($average > 0){
     $average_label = "Amount Under Budget";
     $difference_class = "";
@@ -84,27 +74,50 @@ if($average > 0){
     $difference_class = "over-budget";
 }
 ?>
-<tr class="<?php echo $difference_class;?>">
+ <tr class="<?php echo $difference_class;?>"> 
 
-<td>Average over <?php echo $month_count;?> Months</td>
+ <td>YTD Monthly Average</td> 
 <td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($average);?></td>
-</tr>
-</tr>
-<?
-$average =$grand_fee_total/$grand_month_count - $grand_expense_total/$grand_month_count;
-if($average > 0){
-    $average_label = "Amount Under Budget";
-    $difference_class = "";
-}else{
-    $average_label = "Amount Over Budget";
-    $difference_class = "over-budget";
-}
-?>
-<tr class="<?php echo $difference_class;?>">
+ </tr> 
+<!-- <tr> -->
 
-<td>Average over <?php echo $grand_month_count;?> Months</td>
-<td class="amt <?php echo $difference_class;?>"><?php echo get_as_cash($average);?></td>
+<!-- <td>Grand Total Fees</td> -->
+<td class="amt"><?php //echo get_as_cash($grand_fee_total);?></td>
+
+<!-- </tr> -->
+
+<!-- <tr> -->
+<!-- <td>Grand Total Expenses</td> -->
+<td class="amt"><?php //echo get_as_cash($grand_expense_total);?></td>
+<!-- </tr> -->
+<!-- <tr> -->
+<!-- <td>Cushion</td> -->
+<!-- <td class="amt"><?php //echo get_as_cash($grand_fee_total - $grand_expense_total);?></td> -->
+<!-- </tr> -->
+</table>
+<table>
+<thead>
+<tr>
+<th>Budget</th>
+<th>Actual</th>
+<th>Diff</th>
+<th>Percent</th>
+</tr>
+</thead>
+<tr>
+<td>$650.00</td>
+<td><?php echo get_as_cash($expense_total); ?></td>
+<td><?php echo get_as_cash($expense_total - 650);?></td>
+<td><?php echo ($expense_total-650)/650; ?></td>
+</tr>
+<tr>
+<?php $ytd_budget = 650* $month_count?>
+<td><?php echo get_as_cash($ytd_budget);?></td>
+<td><?php echo get_as_cash($ytd_expense_total);?></td>
+<td><?php echo get_as_cash($ytd_budget - $ytd_expense_total);?></td>
+<td><?php echo ($ytd_expense_total - $ytd_budget)/$ytd_budget;?></td>
 </tr>
 </table>
+
 </div>
 

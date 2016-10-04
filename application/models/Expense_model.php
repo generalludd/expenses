@@ -113,6 +113,18 @@ class Expense_model extends CI_Model
 		$result = $this->db->get()->row();
 		return $result->total;
 	}
+	
+	function get_average($yr = NULL){
+		$this->db->from("expense");
+		$this->db->select('SUM(`amt`) as `average`',FALSE);
+		$this->db->group_by('mo');
+		$this->db->where("type","shopping");
+		if($yr){
+		$this->db->where('yr',$yr);
+		}
+		$result = $this->db->get()->row()->average;
+		return $result;
+	}
 
 
 	function insert()
