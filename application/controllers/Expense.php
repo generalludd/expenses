@@ -51,7 +51,6 @@ class Expense extends My_Controller
             $data['previous_expenses'] = $this->expense->get_by_month($month, $year-1);
             $data["payments"] = $this->payment->get_by_month($month, $year);
             $data["previous_payments"] = $this->payment->get_by_month($month, $year-1);
-            
             $data["expense_total"] = $this->expense->get_total($month, $year);
             $data["grand_fee_total"] = $this->fee->get_totals(NULL,NULL, "Shopping");
             $data["grand_expense_total"] = $this->expense->get_total();
@@ -74,6 +73,32 @@ class Expense extends My_Controller
         } else {
             redirect();
         }
+    }
+    
+    function get_users_by_month(){
+    	#for each month starting from the current month of the previous year 
+    	#get the number of users for that month. 
+    	#total the number of users over the 12 month period
+    	#multiply that total by $130. 
+    	#so get the months
+    	$this->load->model("user_model","user");
+    	$year = date("Y")-1;
+    	$month = intval(date("m"));
+		$my_month = $month;
+		$output = 0;
+    	for ($i = 1; $i < 13; $i++ ){//iterate on 11 months
+    		#do magic
+    		$my_month++;
+    		if($my_month == 13){
+    			$my_month = 1;
+    			$year++;
+    		}
+    		$output += $this->user->get_count_by_month($my_month,$year);
+    		
+    		
+    	}
+    	print $output * 130;
+    	 
     }
 
     function create ()
