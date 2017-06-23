@@ -220,6 +220,14 @@ class User_model extends CI_Model
 		}
 		return $result;
 	}
+	
+	function get_count_by_month($month, $year){
+		$query = "select count(`id`) as `my_count` from `user` where ('$year-$month-01' between start_date and end_date) or (end_date is null and start_date <= '$year-$month-01')";
+		$result = $this->db->query($query)->row()->my_count;
+		
+		return $result;
+		
+	}
 
 
 	function encrypt($text)
