@@ -13,7 +13,7 @@ class User extends CI_Controller
 
 	function index($username = NULL, $errors = NULL)
 	{
-		if(!is_logged_in($this->session->all_userdata())){
+		if(!is_logged_in($this->session->userdata())){
 			$data["errors"] = $errors;
 			$data["username"] = $username;
 			$data["target"] = "auth/login";
