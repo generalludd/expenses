@@ -1,22 +1,26 @@
 <?php
 $person = $expense->first_name;
 $class = "";
-if($expense->userID == $this->session->userdata("userID")): $class="you"; endif;
+$is_me = $expense->userID == $this->session->userdata("userID")?TRUE:FALSE;
+if($is_me){
+    $class = "you";
+}
+
 ?>
 <div class='column <?php echo $class;?>'>
-<?
-if($expense->userID == $this->session->userdata("userID")):?>
+<?php
+if($is_me):?>
 <h3>Your Expenses</h3>
-<? else: ?>
+<?php else: ?>
 <h3><?php echo $person;?></h3>
-<? endif;
+<?php endif;
 
 
 
 if($this->session->userdata("role") == "admin"|| $this->session->userdata("userID") == $expense->userID ):?>
 <p><span class="button new expense-create" id="ec_<?php echo $expense->userID;?>">New
 Expense</span></p>
-<? endif;
+<?php endif;
 ?>
 <table class="list">
 	<thead>
@@ -29,7 +33,7 @@ Expense</span></p>
 	<tbody>
 
 
-	<?
+	<?php
 	$expense_total;
 	foreach($expenses as $item):
 	if($item->user_id == $current_id): ?>
@@ -39,12 +43,12 @@ Expense</span></p>
 			<td><?php echo format_date($item->dt,"no-year");?></td>
 			<td class='amt'><?php echo get_as_cash($item->amt);?></td>
 
-			<?
+			<?php
 			$expense_total += $item->amt;
 			?>
 		</tr>
 
-		<? endif;
+		<?php endif;
 		endforeach;?>
 		      <tr class="bottom-line">
             <td></td>
@@ -53,7 +57,7 @@ Expense</span></p>
         </tr>
 	</tbody>
 </table>
-		<?
+		<?php
 		$display_expense = get_as_cash($expense_total);
 		if(abs($expense_total) == $expense_total){
 			$display_expense = "-" . get_as_cash($expense_total);
@@ -61,7 +65,7 @@ Expense</span></p>
 		}
 		?>
 <h5>Totals</h5>
-<?
+<?php
 $amt_paid = get_value($payment,"amt");
 $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 <table class="list totals">
@@ -73,7 +77,7 @@ $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 		<td>Adjustment:</td>
 		<td class="amt"><?php echo $display_expense;?></td>
 	</tr>
-	<?
+	<?php
 	$payment_data["payment"] = $payment;
 	$payment_data["payment_key"] = $grand_total . "_" . $month . "_" . $year . "_" . $current_id;
 	$payment_data["grand_total"] = $grand_total;

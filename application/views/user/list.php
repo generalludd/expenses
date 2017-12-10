@@ -17,7 +17,7 @@ $role = NULL;
 		</tr>
 	</thead>
 	<tbody>
-	<? foreach($users as $user):?>
+	<?php foreach($users as $user):?>
 		<tr>
 			<td><span class="button user-edit" id="ue_<?php echo $user->id;?>">Edit</span></td>
 			<td><?php echo $user->first_name;?></td>
@@ -27,6 +27,6 @@ $role = NULL;
 			<td><?php echo ucfirst($user->role);?></td>
 			<td><?php echo get_status($user->is_active);?></td>
 		</tr>
-		<? endforeach; ?>
+		<?php endforeach; ?>
 	</tbody>
 </table>

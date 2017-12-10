@@ -20,9 +20,9 @@ if($this->session->userdata("yr")){
 <label for="user_id">User</label>
 <?php echo form_dropdown("user_id",$users,get_value($payment,"user_id",$user_id),"id='user_id'");?>
 </p>
-<? else: ?>
+<?php else: ?>
 <input type="hidden" name="user_id" id="user_id" value="<?php echo get_value($payment,"user_id",$user_id);?>"/>
-<? endif; ?>
+<?php endif; ?>
 <p>
 <label for="mo">Month</label>
 <?php echo form_dropdown("mo",$months,get_value($payment,"mo",$default_month), "id='mo'");?>

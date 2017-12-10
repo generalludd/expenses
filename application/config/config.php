@@ -17,22 +17,16 @@
 $allowed_domains = array($_SERVER['HTTP_HOST']);
 $default_domain  = 'expenses.redhousecommunity.org';
 
-if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE))
-{
-        $domain = $_SERVER['HTTP_HOST'];
-}
-else
-{
-        $domain = $default_domain;
+if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE)) {
+  $domain = $_SERVER['HTTP_HOST'];
+} else {
+  $domain = $default_domain;
 }
 
-if ( $_SERVER['SERVER_PORT'] == 443)
-{
-        $config['base_url'] = 'https://'.$domain;
-}
-else
-{
-        $config['base_url'] = 'http://'.$domain;
+if ( $_SERVER['SERVER_PORT'] == 443) {
+  $config['base_url'] = 'https://'.$domain;
+} else {
+  $config['base_url'] = 'http://'.$domain;
 }
 
 /*

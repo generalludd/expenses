@@ -6,3 +6,8 @@
 .DS_Store
 /application/logs/
 .settings/*
+.idea
+.editorconfig
+.settings
+.project
+.buildpath

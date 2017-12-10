@@ -6,7 +6,7 @@
 <meta name="viewport"
     content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <title>Red House Expense Tracking System</title>
-<link type="text/css" rel="stylesheet" media="all"  href="<?php echo base_url("/css/main.css");?>" />
+<link type="text/css" rel="stylesheet" media="all"  href="<?php echo base_url("css/main.css");?>" />
 <link type="text/css" rel="stylesheet"  media="only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px)" href="<?php echo base_url("css/mobile.css")?>" />

@@ -546,11 +546,17 @@ td.amt {
 
 #expenses {
 	clear: both;
+	display:flex;
+	flex-direction: row;
 }
 
 .column {
 	border: 1px solid #ddd;
 	margin-right: 5px;
+}
+
+.column.you {
+	order: -1;
 }
 
 .column:last-child {

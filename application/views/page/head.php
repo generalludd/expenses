@@ -28,9 +28,9 @@ var base_url = '<?php echo base_url();?>';
 <script type="text/javascript" src="<?php echo base_url("js/general.js");?>"></script>
 <script type="text/javascript" src="<?php echo base_url("js/fee.js");?>"></script>
 <script type="text/javascript" src="<?php echo base_url("js/expense.js");?>"></script>
-<?if($this->session->userdata("role") == "admin"): ?>
+<?php if($this->session->userdata("role") == "admin"): ?>
 <script type="text/javascript" src="<?php echo base_url("js/user.js");?>"></script>
-<? endif; ?>
+<?php endif; ?>
 <script type="text/javascript" src="<?php echo base_url("js/feedback.js");?>"></script>
 
 <script type="text/javascript" src="<?php echo base_url("js/password.js");?>"></script>

@@ -7,11 +7,11 @@ if($payment): ?>
 	<td class="amt"><a href='#' class='payment-edit' id='pmt_<?php echo $payment->id . "_" . $grand_total;?>'>-<?php echo get_as_cash($payment->amt);?></a> </td>
 	</tr>
 	
-<? else:?>
+<?php else:?>
 <tr>
 <td>Amount Due</td>
 <td><a href="#" class="payment-create" id="pmt_<?php echo $payment_key;?>" title="add a payment">Add Payment</a></td>
 </tr>
 
 
-<? endif; ?>
+<?php endif; ?>

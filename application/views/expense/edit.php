@@ -15,9 +15,9 @@ if($this->session->userdata("yr")){
 <?if($this->session->userdata("role") == "admin"): ?>
 <label for="user_id">User</label>
 <?php echo form_dropdown("user_id",$users,get_value($expense,"user_id",$user_id),"id='user_id'");?>
-<? else: ?>
+<?php else: ?>
 <input type="hidden" name="user_id" id="user_id" value="<?php echo get_value($expense,"user_id",$user_id);?>"/>
-<? endif; ?>
+<?php endif; ?>
 <p>
 <label for="mo">Month</label> 
 <?php echo form_dropdown("mo",$months,get_value($expense,"mo",$default_month), "id='mo' required");?>
@@ -39,9 +39,9 @@ if($this->session->userdata("yr")){
 </p>
 <div class="button-box">
 <input type="submit" value="<?php echo ucfirst($action);?>" class="button"/>
-<? if($action == "update"): ?>
+<?php if($action == "update"): ?>
 <span class="delete button expense-delete">Delete</span>
-<? endif; ?>
+<?php endif; ?>
 </div>
 
 </form>

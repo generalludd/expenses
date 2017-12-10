@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<? $this->load->view('page/head');?>
+<?php $this->load->view('page/head');?>
 </head>
 <body>
 <div id="page">
@@ -20,13 +20,13 @@
 <div class="mobile-only show-navigation-box block">
 <span class="button mobile-only show-navigation">Show Navigation</span>
 </div>
-<div id='navigation'><?  $this->load->view('/page/navigation'); ?>
+<div id='navigation'><?php  $this->load->view('/page/navigation'); ?>
 </div>
 </div>
 <?php endif; ?>
 <!-- main -->
 <div id="main"><!-- content -->
-<div id="content"><?
+<div id="content"><?php
 $this->load->view($target);
 ?></div>
 <!-- end content -->
@@ -34,7 +34,7 @@ $this->load->view($target);
 <!-- end sidebar --></div>
 <div id="searchList"></div>
 
-<div id="footer"><? $this->load->view('page/footer');?></div>
+<div id="footer"><?php $this->load->view('page/footer');?></div>
 </div>
 </body>
 </html>
