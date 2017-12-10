@@ -12,7 +12,7 @@ if($this->session->userdata("yr")){
 <form id="expense_editor" name="expense_editor" action="<?php echo site_url("expense/$action");?>" method="post">
 <input type="hidden" name="id" id="id" value="<?php echo get_value($expense,"id");?>"/>
 <input type="hidden" name="action" id="action" value="<?php echo $action;?>"/>
-<?if($this->session->userdata("role") == "admin"): ?>
+<?php if($this->session->userdata("role") == "admin"): ?>
 <label for="user_id">User</label>
 <?php echo form_dropdown("user_id",$users,get_value($expense,"user_id",$user_id),"id='user_id'");?>
 <?php else: ?>

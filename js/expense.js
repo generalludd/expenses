@@ -64,7 +64,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".expense-edit").live("click",function(){
+	$(".expense.edit").live("click",function(){
 		var myExpense = this.id.split("_")[1];
 		var myUrl = base_url + "index.php/expense/edit/" + myExpense;
 		$.ajax({
@@ -77,7 +77,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".expense-create").live("click",function(){
+	$(".expense.create").live("click",function(){
 		var myUrl = base_url + "index.php/expense/create/";
 		var form_data = {
 			user_id: this.id.split("_")[1]

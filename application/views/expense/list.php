@@ -2,6 +2,7 @@
 $person = $expense->first_name;
 $class = "";
 $is_me = $expense->userID == $this->session->userdata("userID")?TRUE:FALSE;
+$is_admin = $this->session->userdata("role") == "admin"?TRUE:FALSE;
 if($is_me){
     $class = "you";
 }
@@ -17,8 +18,8 @@ if($is_me):?>
 
 
 
-if($this->session->userdata("role") == "admin"|| $this->session->userdata("userID") == $expense->userID ):?>
-<p><span class="button new expense-create" id="ec_<?php echo $expense->userID;?>">New
+if($is_admin || $is_me ):?>
+<p><span class="button new expense create" id="ec_<?php echo $expense->userID;?>">New
 Expense</span></p>
 <?php endif;
 ?>
@@ -38,7 +39,7 @@ Expense</span></p>
 	foreach($expenses as $item):
 	if($item->user_id == $current_id): ?>
 		<tr>
-			<td><span class='link expense-edit'
+			<td><span class='link expense <?php echo $is_me || $is_admin?'edit':'';?>'
 				id='expense-edit_<?php echo $item->id;?>' title='<?php echo $item->description;?>'><?php echo $item->type;?></span></td>
 			<td><?php echo format_date($item->dt,"no-year");?></td>
 			<td class='amt'><?php echo get_as_cash($item->amt);?></td>

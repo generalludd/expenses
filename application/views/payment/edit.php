@@ -15,7 +15,7 @@ if($this->session->userdata("yr")){
 <form name="payment_editor" id="payment_editor" method="post" action="<?php echo site_url("payment/$action");?>">
 <input type="hidden" id="id" name="id" value="<?php echo get_value($payment, "id");?>"/>
 
-<?if($this->session->userdata("role") == "admin"): ?>
+<?php if($this->session->userdata("role") == "admin"): ?>
 <p>
 <label for="user_id">User</label>
 <?php echo form_dropdown("user_id",$users,get_value($payment,"user_id",$user_id),"id='user_id'");?>
