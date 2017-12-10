@@ -293,3 +293,8 @@ function print_array($array){
 	
 	return implode("\r", $output);
 }
+
+function cached_base_url($path){
+    $output = sprintf("%s?cache=%s", base_url($path), date('U'));
+    return $output;
+}
