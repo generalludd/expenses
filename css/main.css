@@ -568,3 +568,9 @@ div.you,.column.you {
 	box-shadow: 1px 1px 5px 1px black;
 	background-color: white;
 }
+
+@media (max-width:768px){
+	#expenses{
+		flex-direction: column;
+	}
+}
