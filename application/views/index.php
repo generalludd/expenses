@@ -17,9 +17,9 @@
     <?php  endif; ?>
     <?php if(!$print): ?>
         <div id='header'>
-            <div class="mobile-only show-navigation-box">
-                <span class="btn btn-primary mobile-only show-navigation">Show Navigation</span>
-            </div>
+<!--            <div class="mobile-only show-navigation-box">-->
+<!--                <span class="btn btn-primary mobile-only show-navigation">Show Navigation</span>-->
+<!--            </div>-->
             <div id='navigation'><?php  $this->load->view('/page/navigation'); ?>
             </div>
         </div>

@@ -15,38 +15,11 @@
     float: none;
   }
 
-  #navigation {
-    float: none;
-    width: auto;
-    display: none;
-  }
 
-  #navigation li {
-    display: block;
-  }
 
-  #navigation ul.user_menu {
-    margin-top: 5px;
-  }
-
-  #navigation {
-    height: 14.5em;
-    min-width: 0;
-    background: none;
-  }
-
-  #navigation li:first-child {
-    display: inline;
-    padding-left: .5em;
-  }
-
-  #nav_buttons,#user_menu {
-    width: 20ex;
-  }
-
-  #user_menu {
-    float: left;
-  }
+.btn-group{
+  flex-flow: row wrap;
+}
 
 
   .mobile-only {
