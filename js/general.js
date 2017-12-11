@@ -24,20 +24,20 @@
 	);//end home.click
 	
 $(".show-navigation").live("click",function(){
-	toggle_navigation(this, "show");
+	//toggle_navigation(this, "show");
 
 });
 
 $(window).resize(function(){
 	if($(window).width() > 855){
-toggle_navigation(this, "show");
+//toggle_navigation(this, "show");
 	}else if($(window).width() < 855){
-toggle_navigation(this, "hide");
+//toggle_navigation(this, "hide");
 	}
 });
 	
 $(".hide-navigation").live("click",function(){
-toggle_navigation(this, "hide");
+//toggle_navigation(this, "hide");
 });
 
 	$('.edit_preference').live("mouseup",  function(event){
