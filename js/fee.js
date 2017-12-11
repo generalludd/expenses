@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$("#type").live("change",function(){
+	$("#type").on("change",function(){
 		if ($("#type").val() == "other") {
 			$("#type_span").html("<input type='text' size='15' name='type' id='type' value=''/>");
 			$("#type").focus();
@@ -9,7 +9,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".fee-edit").live("click",function(){
+	$(".fee-edit").on("click",function(){
 		var myFee = this.id.split("_")[1];
 		var myUrl = base_url + "index.php/fee/edit/" + myFee;
 		$.ajax({
@@ -22,7 +22,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".fee-create").live("click",function(){
+	$(".fee-create").on("click",function(){
 		var myUrl = base_url + "index.php/fee/create/";
 		$.ajax({
 			type:"get",

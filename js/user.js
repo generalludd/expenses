@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-	$(".user-edit").live("click",function(){
+	$(".user-edit").on("click",function(){
 		var myUrl = base_url + "index.php/user/edit";
 		var form_data = {
 				ajax: 1,
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		}); //end ajax
 	});//end user-edit
 	
-	$(".user-create").live("click",function(){
+	$(".user-create").on("click",function(){
 		var myUrl = base_url + "index.php/user/create";
 		var form_data = {
 				ajax: 1,

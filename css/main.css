@@ -194,7 +194,9 @@ div.result {
 	margin-left: 0;
 }
 
-
+#expenses .block {
+	flex-basis: auto;
+}
 
 
 ul.button-list {

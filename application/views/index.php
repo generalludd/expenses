@@ -36,5 +36,6 @@
         <!-- end sidebar --></div>
     <div id="footer"><?php $this->load->view('page/footer');?></div>
 </div>
+<div id="popup"></div>
 </body>
 </html>

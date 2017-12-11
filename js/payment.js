@@ -3,7 +3,7 @@ $(document).ready(function(){
 
 	
 	
-	$(".payment-edit").live("click",function(){
+	$(".payment-edit").on("click",function(){
 		var myPayment = this.id.split("_")[1];
 		var form_data = {
 				id:myPayment
@@ -20,7 +20,7 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".payment-create").live("click",function(){
+	$(".payment-create").on("click",function(){
 		var myUrl = base_url + "index.php/payment/create/";
 		var myArray = this.id.split("_");
 		var myTotal = myArray[1];

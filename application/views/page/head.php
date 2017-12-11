@@ -9,8 +9,8 @@
 <meta name="viewport"
     content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <title><?php echo $title;?></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/main.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/color.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/popup.css");?>" />
@@ -20,11 +20,10 @@
 <script type="text/javascript">
 var base_url = '<?php echo base_url();?>';
 </script>
-<script type="text/javascript" src="<?php echo cached_base_url("js/jquery.min.js");?>"></script>
-<!-- <script type="text/javascript" src="<?php echo cached_base_url("js/jquery.validate.js");?>"></script>-->
-<script type="text/javascript" src="<?php echo cached_base_url("js/jquery-ui.min.js");?>"></script>
-<!-- <script type="text/javascript" src="<?php echo cached_base_url("js/forms.jquery.js");?>"></script>  
-<script type="text/javascript" src="<?php echo cached_base_url("js/cookie.jquery.js");?>"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 
 <!-- General Script  -->
 <script type="text/javascript" src="<?php echo cached_base_url("js/general.js");?>"></script>

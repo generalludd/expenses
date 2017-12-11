@@ -52,10 +52,15 @@ class Fee extends MY_Controller
 			$types = $this->fee->distinct("type");
 			$data["types"] = get_keyed_pairs($types,array("type","type"),NULL,TRUE);
 			$data["target"] = "fee/edit";
-			$this->load->view($data["target"], $data);
+			$data['title'] = "Create a Fee";
+            if($this->input->get("ajax")){
+                $this->load->view("page/modal", $data);
+            }else {
+                $this->load->view("index", $data);
+            }
 		}else{
 			$data["message"] = "You are not authorized to create fee entries";
-			$this->load->view("error",$data);
+            $this->load->view("error",$data);
 		}
 	}
 
@@ -72,7 +77,12 @@ class Fee extends MY_Controller
 			$types = $this->fee->distinct("type");
 			$data["types"] = get_keyed_pairs($types,array("type","type"),NULL,TRUE);
 			$data["target"] = "fee/edit";
-			$this->load->view($data["target"],$data);
+            $data['title'] = "Edit a Fee";
+            if($this->input->get("ajax")){
+                $this->load->view("page/modal", $data);
+            }else {
+                $this->load->view("index", $data);
+            }
 		}else{
 			$data["message"] = "You are not authorized to create fee entries";
 			$this->load->view("error",$data);

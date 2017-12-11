@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$(".send_feedback").live('click',function(){
+	$(".send_feedback").on('click',function(){
 		var mySubject = $('#subject').val();
 		var myRank = $('#rank').val();
 		var myFeedback = $('#feedback').val();
@@ -22,7 +22,7 @@ $(document).ready(function(){
 		
 	});
 	
-	$(".create_feedback").live('click',function(data){
+	$(".create_feedback").on('click',function(data){
 		var myUrl = base_url + "index.php/feedback/create";
 		var myLocation = document.location;
 		var myPath = myLocation.toString().split(base_url + "index.php/");

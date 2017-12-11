@@ -1,29 +1,17 @@
 ﻿$(document).ready(function(){
 //	$('#content').css({height:'500px'});
 	
-	$(".datefield").live("focus", function(){
+	$(".datefield").on("focus", function(){
 		$(".datefield").datepicker();
 	});
 	
 		
-	 $("#sortable").sortable({
-	      handle : '.handle',
-	      update : function () {
-		var order = $('#sortable').sortable('serialize');
-			  alert(order);
-	      }
-    });
+
 		$("table thead").addClass("theader");
 //	$("table tr:nth-child(even)").addClass("striped");
 
-	 
-	$('.home').live('click',
-		function(event){
-			document.location="index.php";
-		}//end function(event);
-	);//end home.click
 	
-$(".show-navigation").live("click",function(){
+$(".show-navigation").on("click",function(){
 	//toggle_navigation(this, "show");
 
 });
@@ -35,12 +23,19 @@ $(window).resize(function(){
 //toggle_navigation(this, "hide");
 	}
 });
+
+$(".edit.dialog").on("click",function(e){
+  e.preventDefault();
+  show_popup(this);
+});
+
+
 	
-$(".hide-navigation").live("click",function(){
+$(".hide-navigation").on("click",function(){
 //toggle_navigation(this, "hide");
 });
 
-	$('.edit_preference').live("mouseup",  function(event){
+	$('.edit_preference').on("mouseup",  function(event){
 		var myUser=$('#user_id').val();
 		var myType=this.id;
 		var myValue=$('#'+this.id).val();
@@ -64,7 +59,7 @@ $(".hide-navigation").live("click",function(){
 	});
 	
 
-	$(".menu_item_edit").live("click",function(){
+	$(".menu_item_edit").on("click",function(){
 		myId = this.id.split("_")[1];
 		myUrl = base_url + "index.php/menu/edit_item/" + myId;
 		$.ajax({
@@ -77,7 +72,7 @@ $(".hide-navigation").live("click",function(){
 	});
 	
 
-	$(".menu_item_add").live("click",function(){
+	$(".menu_item_add").on("click",function(){
 		myUrl = base_url + "index.php/menu/create_item/";
 		$.ajax({
 			type:"GET",
@@ -89,12 +84,16 @@ $(".hide-navigation").live("click",function(){
 	});
 
 	
-	$("#browser_warning").live('click',
+	$("#browser_warning").on('click',
 		function(){
 			$(".notice").fadeOut();
 		}
 	);
-	
+      $(".new,.edit").on("click",function(e){
+        e.preventDefault();
+        show_popup(this);
+
+      });
 	}//end document function
 );//end ready
 
@@ -142,4 +141,59 @@ function toggle_navigation(me, toggle){
 		$(me).addClass("show-navigation");
 		$(me).html("Show Navigation");
 	}
+}
+
+function show_popup(me){
+  target = $(me).attr("href");
+  form_data = {
+    ajax: 1
+  };
+
+  window_width = $(window).width();
+  $.ajax({
+    type: "get",
+    data: form_data,
+    url: target,
+    success: function(data){
+      $("#popup").html(data);
+      $("#my_dialog").modal("show");
+    }
+  });
+}
+
+
+
+function delete_entity(me){
+  target = $(me).attr("href");
+  my_id = me.id.split("_")[1];
+  my_parent = $(me).parents(".row").attr("id");
+
+  question = confirm("Are you sure you want to delete this? This cannot be undone!");
+  if(question){
+
+    form_data = {
+      ajax : 1,
+      id: my_id
+    }
+    $.ajax({
+      type: "post",
+      data: form_data,
+      url: target,
+      success: function(data){
+        console.log(data);
+
+        if($(me).hasClass("inline")){
+          $("#" + my_parent).remove();
+        }else if($(me).hasClass("redirect")){
+          window.location.href = data;
+        }else{
+          $("#popup").html(data);
+          $  ("#my_dialog").modal("show");
+        }
+      },
+      error: function(data){
+        console.log(data);
+      }
+    });
+  }
 }

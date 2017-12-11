@@ -101,39 +101,40 @@ class Expense extends My_Controller
     	 
     }
 
-    function create ()
+    function create ($user_id)
     {
-        if ($this->input->get_post("user_id")) {
-            // if user is admin, get a user list keyed pair for generating a
-            // menu for users.
-            if ($this->session->userdata("role") == "admin") {
+        // if user is admin, get a user list keyed pair for generating a
+        // menu for users.
+        if ($this->session->userdata("role") == "admin") {
 
-                $this->load->model("user_model", "user");
-                $users = $this->user->get_all();
-                $data["users"] = get_keyed_pairs($users, array(
-                        "id",
-                        "username"
-                ));
-            }
-            $data["user_id"] = $this->input->get_post("user_id");
-            $data["action"] = "insert";
-            $data["expense"] = FALSE;
-            $months = $this->variable->get("month");
-            $data["months"] = get_keyed_pairs($months, array(
-                    "name",
-                    "value"
+            $this->load->model("user_model", "user");
+            $users = $this->user->get_all();
+            $data["users"] = get_keyed_pairs($users, array(
+                "id",
+                "username"
             ));
-            $types = $this->expense->distinct("type");
-            $data["types"] = get_keyed_pairs($types, array(
-                    "type",
-                    "type"
-            ), TRUE);
-            $data["target"] = "expense/edit";
-            $this->load->view($data["target"], $data);
-        } else {
-            $data["error"] = "Something went wrong here and your user id did not get passed to the script. Does that make any sense?";
-            $this->load->view("error", $data);
         }
+        $data["user_id"] =  $user_id;
+        $data["action"] = "insert";
+        $data["expense"] = FALSE;
+        $months = $this->variable->get("month");
+        $data["months"] = get_keyed_pairs($months, array(
+            "name",
+            "value"
+        ));
+        $types = $this->expense->distinct("type");
+        $data["types"] = get_keyed_pairs($types, array(
+            "type",
+            "type"
+        ), TRUE);
+        $data['target'] = "expense/edit";
+        $data['title'] = "Creating an Expense";
+        if($this->input->get("ajax")){
+            $this->load->view("page/modal", $data);
+        }else {
+            $this->load->view("index", $data);
+        }
+
     }
 
     function edit ()
@@ -163,7 +164,13 @@ class Expense extends My_Controller
                 "type"
         ), NULL);
         $data["target"] = "expense/edit";
-        $this->load->view($data["target"], $data);
+        $data['title'] = "Editing an Expense";
+        if($this->input->get("ajax")){
+            $this->load->view("page/modal", $data);
+        }else {
+            $this->load->view("index", $data);
+        }
+
     }
 
     function insert ()
