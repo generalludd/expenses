@@ -16,6 +16,9 @@
   }
 
 
+  #user_menu {
+    margin-top:1em;
+  }
 
 .btn-group{
   flex-flow: row wrap;

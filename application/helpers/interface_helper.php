@@ -134,7 +134,7 @@ function create_button_bar($buttons, $options = NULL ){
 	}
 
 	$contents = implode("", $button_list);
-	$output = "<div class='btn-toolbar'><div class='btn-group'>$contents</div></div>";
+	$output = "<div class='btn-toolbar' $id><div class='btn-group'>$contents</div></div>";
 	return $output;
 }
 
