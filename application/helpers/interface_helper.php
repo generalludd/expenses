@@ -60,7 +60,7 @@ function create_button($data)
 		}
 		if($type != "pass-through"){
 
-			$class = "class='button'";
+			$class = "class='btn btn-primary'";
 			if(array_key_exists("class", $data)){
 				$class = "class='" . $data["class"] . "'";
 			}
@@ -133,9 +133,8 @@ function create_button_bar($buttons, $options = NULL ){
 		$button_list[] = create_button($button);
 	}
 
-	$contents = implode("</li><li>", $button_list);
-	$template = "<ul class='button-list'><li>$contents</li></ul>";
-	$output = "<div class='button-box $class' $id>$template</div>";
+	$contents = implode("", $button_list);
+	$output = "<div class='btn-toolbar'><div class='btn-group'>$contents</div></div>";
 	return $output;
 }
 

@@ -9,10 +9,12 @@
 <meta name="viewport"
     content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <title><?php echo $title;?></title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/main.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/color.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/popup.css");?>" />
-<link type="text/css" rel="stylesheet"  media="(max-width: 855px)" href="<?php echo cached_base_url("css/mobile.css");?>" />
+<link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/mobile.css");?>" />
 <link type="text/css" rel="stylesheet" media="print" href="<?php echo cached_base_url("css/print.css");?>" />
 <!-- jquery scripts -->
 <script type="text/javascript">

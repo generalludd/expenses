@@ -18,7 +18,6 @@ $this->load->view($target);
 <div id="searchList"></div>
 
 <div id="footer">
-<?// $this->load->view('/template/footer');?>
 </div>
 </body>
 </html>

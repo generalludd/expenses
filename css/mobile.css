@@ -1,106 +1,70 @@
-body.not-logged-in {
-}
+@media (max-width:768px){
+  body.not-logged-in {
+  }
 
 
-.not-logged-in #main{
-	width: 320px;
-}
+  .not-logged-in #main{
+    width: 320px;
+  }
 
-.not-logged-in div.login {
-	margin: 0;
-}
+  .not-logged-in div.login {
+    margin: 0;
+  }
 
-.user_menu,.nav_buttons {
-	float: none;
-}
+  .user_menu,.nav_buttons {
+    float: none;
+  }
 
-#navigation {
-	float: none;
-	width: auto;
-	display: none;
-}
+  #navigation {
+    float: none;
+    width: auto;
+    display: none;
+  }
 
-#navigation li {
-	display: block;
-}
+  #navigation li {
+    display: block;
+  }
 
-#navigation ul.user_menu {
-	margin-top: 5px;
-}
+  #navigation ul.user_menu {
+    margin-top: 5px;
+  }
 
-#navigation {
-	height: 14.5em;
-	min-width: 0;
-	background: none;
-}
+  #navigation {
+    height: 14.5em;
+    min-width: 0;
+    background: none;
+  }
 
-#navigation li:first-child {
-	display: inline;
-	padding-left: .5em;
-}
+  #navigation li:first-child {
+    display: inline;
+    padding-left: .5em;
+  }
 
-#nav_buttons,#user_menu {
-	width: 20ex;
-}
+  #nav_buttons,#user_menu {
+    width: 20ex;
+  }
 
-#user_menu {
-	float: left;
-}
-
-#monthly-fees {
-	margin: 0;
-	padding: 0;
-	width: auto;
-}
-
-.mobile-only {
-	display: block;
-}
-
-#monthly-fees th {
-	
-}
-
-#monthly-fees, #budget {
-	margin: 0;
-	padding: 0;
-	float: none;
-	width: auto;
-}
+  #user_menu {
+    float: left;
+  }
 
 
-#monthly-fees table.list,#budget table.list {
-	width: 100%;
-}
-
-#fee-type {
-	
-}
-
-#fee-amount {
-	
-}
-
-#fee-amout-due {
-	
-}
+  .mobile-only {
+    display: block;
+  }
 
 
-#navigation li {
-	margin-left: 0;
-	margin-top: 15px;
-}
+  #navigation li {
+    margin-left: 0;
+    margin-top: 15px;
+  }
 
-#main {
-	margin-top: 0;
-	padding: 0;
-}
+  #main {
+    margin-top: 0;
+    padding: 0;
+  }
 
-.column {
-	float: none;
-	margin-top: 5px;
-	margin-right: 0;
-}
-.column:first-child {
-	margin-top: 0;
+  .row .block {
+    flex-basis: 100%;
+  }
 }

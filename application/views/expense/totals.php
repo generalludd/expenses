@@ -1,12 +1,14 @@
+<?php ?>
+<div id='fees' class='row'>
+<?php $this->load->view("fee/list"); ?>
+</div>
 <?php
-echo "<div id='fees'>";
-$this->load->view("fee/list");
-echo "</div>";
 $expense_total = 0;
 $current_id = 0;
-echo "<div id='expenses'>";
-foreach($expenses as $expense){
-	if($current_id != $expense->userID){
+?>
+<div id='expenses' class='row'>
+<?php foreach($expenses as $expense): ?>
+	<?php if($current_id != $expense->userID):
 
 		$expense_total = 0;
 		$current_id = $expense->userID;
@@ -28,10 +30,8 @@ foreach($expenses as $expense){
 		$data["expense"] = $expense;
 		$data["expenses"] = $expenses;
 		$this->load->view("expense/list", $data);
-	}
+	endif; ?>
 
+<?php endforeach; ?>
 
-}//end foreach
-
-echo "</div>";
-?>
+</div>

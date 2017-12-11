@@ -9,7 +9,7 @@
 }
 
 body {
-	font-size: 12px;
+	font-size: 14px;
 	font-family: tahoma, sans-serif;
 	margin: 10px;
 	padding: 10px;
@@ -193,38 +193,8 @@ div.result {
 	margin-left: 0;
 }
 
-.button,#navigation,#advancedSearch,#browser_warning,.notice,.warning,#searchForm fieldset,h2,h3,h4,h5
-	{
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-}
 
-.button,.help {
-	text-align: center;
-	position: static;
-	padding: .35em;
-	border-style: solid;
-	border-width: 1px;
-	cursor: pointer;
-	font-size: 12px;
-	font-weight: normal;
-}
 
-td .button {
-	padding: .15em;
-}
-
-.button:hover {
-	
-}
-
-.image_button {
-	display: inline;
-	margin-bottom: -5px;
-	text-align: center;
-	cursor: pointer;
-}
 
 ul.button-list {
 	list-style: none;
@@ -266,48 +236,9 @@ legend {
 }
 
 #navigation {
-	border-width: 1px;
-	border-style: solid;
-}
-
-#navigation {
-	position: relative;
-	float: left;
-	width: 95%;
-	padding: .75em 1em 0 1em;
-	height: 2.5em;
-	min-width: 400px;
-	margin-bottom: .5em;
-	display: block;
-}
-
-#navigation ul {
-	padding: 0;
-	margin: 0;
-	position: relative;
-	/*min-width: 400px;*/
-}
-
-#navigation li {
-	display: inline;
-	padding-left: 0.5em;
-	margin-left: 0.5em;
-	margin-top: 0.5em;
-}
-
-#navigation li:first-child {
-	display: inline;
-	padding-left: 0;
-	margin-left: 0;
-}
-
-#navigation li a a {
-	text-decoration: none;
-}
-
-#nav_buttons {
-	float: left;
-	top: -2px;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content:space-between;
 }
 
 #user_menu {
@@ -324,105 +255,6 @@ legend {
 	position: relative;
 	padding: 0 5em 2em 2em;
 	margin-top: 3.5em;
-}
-
-#content {
-	
-}
-
-#sidebar {
-	position: absolute;
-	font-size: 11px;
-	top: 1%;
-	left: 65%;
-	right: 10%;
-	width: 15%;
-	height: 100%;
-	overflow: auto;
-	display: none;
-	padding: 5px;
-	margin-left: 15px;
-	border-style: solid;
-	border-width: 1px;
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
-	border-radius: 3px;
-	-moz-box-shadow: 3px 3px 4px #666;
-	-webkit-box-shadow: 3px 3px 4px #666;
-	box-shadow: 3px 3px 4px #666;
-}
-
-#sidebar h3 {
-	
-}
-
-#sidebar ul {
-	margin: 0 0 1em 0;
-	border-width: 2px;
-	border-style: solid;
-}
-
-#sidebar ul {
-	margin: 1em 0;
-	padding: 0;
-	list-style-type: disc;
-}
-
-#sidebar li {
-	list-style-type: disc;
-	margin: 0 0 0 15px;
-}
-
-h1 {
-	font-size: 18px;
-	font-weight: bold;
-	margin: 0;
-}
-
-h2 {
-	font-weight: bold;
-	text-transform: uppercase;
-	text-align: left;
-	position: relative;
-	border-style: solid;
-	border-width: 1px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	padding: 10px;
-}
-
-h3,.support_view legend {
-	font-size: 14px;
-	font-weight: bold;
-	margin: 1em 0;
-	border-style: solid;
-	border-width: 1px;
-}
-
-h4 {
-	font-weight: bold;
-	text-transform: uppercase;
-	text-align: left;
-	position: relative;
-	border-style: solid;
-	border-width: 1px;
-	margin: 0;
-}
-
-h5 {
-	font-size: 12px;
-	font-weight: bold;
-	text-align: left;
-	border-top-style: solid;
-	border-top-width: 1px;
-	margin: 0;
-}
-
-h3,h4,h5,.support_view legend {
-	margin-top: 4px;
-	margin-bottom: 4px;
-	padding: 5px;
-	padding-left: 10px;
 }
 
 .warning {
@@ -459,7 +291,7 @@ table {
 }
 
 table.list {
-	width: 350px;
+	width: 100%;
 }
 
 th {
@@ -486,10 +318,6 @@ table.list.totals td {
 	font-weight: bold;
 }
 
-#fees table.list {
-	width: 100%;
-}
-
 a.link,input.link {
 	text-decoration: underline;
 }
@@ -508,69 +336,24 @@ td.amt {
 	text-align: right;
 }
 
-#first-column,#second-column,.column {
-	float: left;
-	position: relative;
-	padding: 5px;
-}
 
-.column table.list {
-	width: 200px;
-}
 
-.column {
-	
-}
-
-#fees {
-	
-}
-
-#monthly-fees {
-	position: relative;
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom: 25px;
-	float: left;
-	padding: 15px;
-}
-
-#monthly-fees,#budget {
-	width: 45%;
-}
-
-#budget {
-	float: left;
-	padding: 15px;
-}
-
-#expenses {
-	clear: both;
+.row {
 	display:flex;
-	flex-direction: row;
+  flex-flow: row wrap;
+  justify-content:space-around;
 }
-
-.column {
-	border: 1px solid #ddd;
+.block {
+  flex-basis: 40vw;
+  padding: 5px;
 	margin-right: 5px;
+  margin-bottom: 1em;
 }
 
-.column.you {
+.block.you {
 	order: -1;
-}
-
-.column:last-child {
-	margin-right: 0;
-}
-
-div.you,.column.you {
 	border: 1px solid #000;
 	box-shadow: 1px 1px 5px 1px black;
 	background-color: white;
 }
 
-@media (max-width:768px){
-	#expenses{
-		flex-direction: column;
-	}
-}

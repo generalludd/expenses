@@ -6,9 +6,8 @@ $is_admin = $this->session->userdata("role") == "admin"?TRUE:FALSE;
 if($is_me){
     $class = "you";
 }
-
 ?>
-<div class='column <?php echo $class;?>'>
+<div class='column block border <?php echo $class;?>'>
 <?php
 if($is_me):?>
 <h3>Your Expenses</h3>
@@ -16,14 +15,12 @@ if($is_me):?>
 <h3><?php echo $person;?></h3>
 <?php endif;
 
-
-
 if($is_admin || $is_me ):?>
-<p><span class="button new expense create" id="ec_<?php echo $expense->userID;?>">New
+<p><span class="btn btn-warning btn-sm new expense create" id="ec_<?php echo $expense->userID;?>">New
 Expense</span></p>
 <?php endif;
 ?>
-<table class="list">
+<table class="list table">
 	<thead>
 		<tr>
 			<th>Type</th>
@@ -62,14 +59,13 @@ Expense</span></p>
 		$display_expense = get_as_cash($expense_total);
 		if(abs($expense_total) == $expense_total){
 			$display_expense = "-" . get_as_cash($expense_total);
-
 		}
 		?>
 <h5>Totals</h5>
 <?php
 $amt_paid = get_value($payment,"amt");
 $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
-<table class="list totals">
+<table class="list totals table">
 	<tr>
 		<td>Amount Due:</td>
 		<td class="amt"><?php echo get_as_cash($fee_total/$user_count);?></td>
@@ -92,3 +88,4 @@ $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
 
 </table>
 </div>
+<!-- all done here /-->
