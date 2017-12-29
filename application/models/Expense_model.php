@@ -92,19 +92,19 @@ class Expense_model extends CI_Model
 		$this->db->order_by("dt");
 		
 
-		//SELECT * FROM (`expense`) RIGHT JOIN `user` ON `user`.`id` = `expense`.`user_id` AND `expense`.`mo` = '1' AND `expense`.`yr` = '2012' WHERE `user`.`is_active` = 1 ORDER BY `user_id`, `dt`		
-		//SELECT * FROM (`expense`) RIGHT JOIN `user` ON `user`.`id` = `expense`.`user_id` AND `expense`.`mo` = '1' AND `expense`.`yr` = '2012' WHERE `user`.`is_active` = 1 
 		$result = $this->db->get()->result();
 		return $result;
 	}
 	
 	
-	function get_total($mo = NULL,$yr = NULL)
+	function get_total($mo = NULL,$yr = NULL, $ytd = FALSE)
 	{
 		$this->db->select("sum(amt) as total");
-		if($mo){
-			$this->db->where("mo",$mo);
-		}
+		if($mo && $ytd){
+			$this->db->where("mo<=",$mo);
+		}elseif($mo && !$ytd){
+		    $this->db->where("mo",$mo);
+        }
 		if($yr){
 			$this->db->where("yr",$yr);
 		}
@@ -125,7 +125,6 @@ class Expense_model extends CI_Model
 		$result = $this->db->get()->row()->average;
 		return $result;
 	}
-
 
 	function insert()
 	{

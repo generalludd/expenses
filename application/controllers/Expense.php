@@ -36,6 +36,7 @@ class Expense extends My_Controller
             $month = $date["month"];
             $year = $date["year"];
         }
+
         $this->session->set_userdata("mo", $month);
 
         $this->session->set_userdata("yr", $year);
@@ -56,8 +57,8 @@ class Expense extends My_Controller
             $data["grand_expense_total"] = $this->expense->get_total();
             $data["grand_month_count"] = $this->fee->count_months();
             $data["ytd_fee_total"] = $this->fee->get_totals(NULL, $year, "Shopping");
-            $data["ytd_expense_total"] = $this->expense->get_total(NULL, $year);
-            $data["month_count"] = date('n')+1;
+            $data["ytd_expense_total"] = $this->expense->get_total($month, $year,TRUE);
+            $data["month_count"] = $month;
             $data['ytd_average'] = $data['ytd_expense_total']/$data["month_count"];
             $data["fees"] = $this->fee->get_by_month($month, $year);
             $month_name = $this->variable->get_value("month", intval($month));
