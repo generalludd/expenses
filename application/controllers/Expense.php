@@ -65,7 +65,7 @@ class Expense extends My_Controller
             $data["year"] = $year;
             $data["title"] = "Expenses for $month_name $year";
             $data["target"] = "expense/totals";
-            if ($this->input->get_post("ajax")) {
+            if ($this->input->get("ajax")) {
                 $this->load->view($data["target"], $data);
             } else {
                 $this->load->view("index", $data);

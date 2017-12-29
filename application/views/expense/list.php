@@ -77,6 +77,7 @@ if($is_me){
         $payment_data["payment"] = $payment;
         $payment_data["payment_key"] = $grand_total . "_" . $month . "_" . $year . "_" . $current_id;
         $payment_data["grand_total"] = $grand_total;
+        $payment_data['current_id'] = $current_id;
 
         $this->load->view("payment/view",$payment_data);
         ?>

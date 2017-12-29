@@ -25,7 +25,7 @@ $(window).resize(function(){
 });
 
 $(".edit.dialog").on("click",function(e){
-  e.preventDefault();
+  //e.preventDefault();
   show_popup(this);
 });
 
@@ -89,7 +89,8 @@ $(".hide-navigation").on("click",function(){
 			$(".notice").fadeOut();
 		}
 	);
-      $(".new,.edit").on("click",function(e){
+
+	$(".new.dialog,.edit.dialog").on("click",function(e){
         e.preventDefault();
         show_popup(this);
 
@@ -155,6 +156,7 @@ function show_popup(me){
     data: form_data,
     url: target,
     success: function(data){
+      console.log(data);
       $("#popup").html(data);
       $("#my_dialog").modal("show");
     }

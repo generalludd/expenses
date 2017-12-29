@@ -10,7 +10,7 @@
 <link type="text/css" rel="stylesheet"  media="only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 568px)" href="<?php echo base_url("css/mobile.css")?>" />
-<script type="text/javascript" src="<?php echo base_url("js/jquery.min.js");?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url("js/password.js");?>"></script>
 </head>
 <body class="not-logged-in">
