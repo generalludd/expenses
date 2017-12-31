@@ -26,7 +26,7 @@ $(window).resize(function(){
 
 $(".edit.dialog").on("click",function(e){
   //e.preventDefault();
-  show_popup(this);
+  //show_popup(this);
 });
 
 
@@ -91,8 +91,8 @@ $(".hide-navigation").on("click",function(){
 	);
 
 	$(".new.dialog,.edit.dialog").on("click",function(e){
-        e.preventDefault();
-        show_popup(this);
+        //e.preventDefault();
+        //show_popup(this);
 
       });
 	}//end document function
