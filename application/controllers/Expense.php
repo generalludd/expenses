@@ -163,7 +163,7 @@ class Expense extends My_Controller
         $data["types"] = get_keyed_pairs($types, array(
                 "type",
                 "type"
-        ), NULL);
+        ), NULL, TRUE);
         $data["target"] = "expense/edit";
         $data['title'] = "Editing an Expense";
         if($this->input->get("ajax")){
