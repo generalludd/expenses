@@ -1,11 +1,16 @@
-<?php #authentication index ?>
+<?php #authentication index
+#
+if (!isset($target)) {
+    $target = 'errors/html/error_404.php';
+}
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="content-type" content="text/html;charset=utf-8" />
 <meta name="viewport"
     content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<title>Red House Expense Tracking System</title>
+<title>Cerebratorium Expense Tracking System</title>
 <link type="text/css" rel="stylesheet" media="all"  href="<?php echo base_url("css/main.css");?>" />
 <link type="text/css" rel="stylesheet"  media="only screen 
 and (min-device-width : 320px) 

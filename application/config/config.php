@@ -15,7 +15,7 @@
 |
 */
 $allowed_domains = array($_SERVER['HTTP_HOST']);
-$default_domain  = 'expenses.redhousecommunity.org';
+$default_domain  = 'exp.cerebratorium.com';
 
 if (in_array($_SERVER['HTTP_HOST'], $allowed_domains, TRUE)) {
   $domain = $_SERVER['HTTP_HOST'];
