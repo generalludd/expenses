@@ -207,7 +207,8 @@ class Expense extends My_Controller
         }
         $month_list = get_keyed_pairs($this->variable->get("month"),array("name","value"));
         $data = array("month_list"=>$month_list, "default_month"=>$default_month, "default_year"=>$default_year);
-        $this->load->view("expense/select_month",$data);
+        $data['target'] = "expense/select_month";
+        $this->load->view("index",$data);
     }
 
     function next_month ()
