@@ -133,4 +133,14 @@ class Fee extends MY_Controller
 
 	}
 
+	function delete(){
+	    //if($id = $this->input->post("id")){
+            $id = $this->input->post("id");
+	       $fee =  $this->fee->get($id);
+            $this->fee->delete($id);
+            echo json_encode($fee);
+
+        //}
+    }
+
 }

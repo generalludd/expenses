@@ -1,6 +1,28 @@
 ﻿$(document).ready(function(){
-//	$('#content').css({height:'500px'});
-	
+
+	$(".delete.ajax").on("click",function(e){
+		e.preventDefault();
+		let my_url = $(this).attr("href");
+		let my_id = $(this).data("id");
+		let my_target = $(this).data('parent');
+		let form_data = {
+			id: my_id,
+			ajax: 1,
+		};
+		let question = confirm("Are you sure you want to delete this? This cannot be undone!");
+		if(question){
+			$.ajax({
+				url: my_url,
+				type: "post",
+				data: form_data,
+				success: function(){
+					$(my_target + '[data-id="' + my_id + '"]').remove();
+				}
+
+			})
+		}
+	});
+
 	$(".datefield").on("focus", function(){
 		$(".datefield").datepicker();
 	});

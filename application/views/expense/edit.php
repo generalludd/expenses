@@ -40,7 +40,7 @@ if($this->session->userdata("yr")){
 <div class="button-box">
 <input type="submit" value="<?php echo ucfirst($action);?>" class="button"/>
 <?php if($action == "update"): ?>
-<span class="delete button expense-delete">Delete</span>
+<span class="delete button expense-delete btn btn-sm">Delete</span>
 <?php endif; ?>
 </div>
 

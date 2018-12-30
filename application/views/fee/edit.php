@@ -20,5 +20,4 @@
 </p>
 <p>
 <input type="submit" value="<?php echo ucfirst($action);?>" class="button"/></p>
-
 </form>

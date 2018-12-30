@@ -18,9 +18,11 @@ $share_total = $user_count * 130;
         </thead>
         <tbody>
         <?php  foreach ($fees  as $fee): ?>
-        <tr>
+        <tr data-id="<?php echo $fee->id;?>">
             <td><a class='btn btn-secondary btn-sm edit dialog'
                    href='<?php echo site_url("fee/edit/$fee->id"); ?>'>Edit</a>
+                <a href="<?php echo base_url("fee/delete");?>" data-id="<?php echo $fee->id;?>" data-parent="tr" class="button btn-sm btn delete ajax">Delete</a>
+
             </td>
             <td><?php echo $fee->type; ?></td>
             <td class='amt'><?php echo get_as_cash($fee->amt); ?> </td>
