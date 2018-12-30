@@ -12,8 +12,8 @@ if((int)$this->session->userdata("mo") && (int)$this->session->userdata("yr")){
 $month_list = get_keyed_pairs($this->variable->get("month"),array("name","value"));
 
 $nav_buttons["home"] = array("item" => "expense","text"=>"Home","href"=>base_url(), "class"=>"btn btn-sm btn-primary home");
-$nav_buttons["previous_month"] = array("item" =>"expense", "text"=>"Previous Month", "href"=>site_url("expense/previous_month/$default_month/$default_year"), "class" => "btn btn-sm btn-primary show-previous-month" );
-$nav_buttons["next_month"] = array("item" =>"expense", "text"=>"Next Month", "href"=>site_url("expense/next_month/$default_month/$default_year"), "class" => "btn btn-sm btn-primary show-next-month" );
+$nav_buttons["previous_month"] = array("item" =>"expense", "text"=>"<i class=\"fas fa-arrow-left\"></i> Previous", "href"=>site_url("expense/previous_month/$default_month/$default_year"), "class" => "btn btn-sm btn-primary show-previous-month" );
+$nav_buttons["next_month"] = array("item" =>"expense", "text"=>"Next <i class=\"fas fa-arrow-right\"></i>", "href"=>site_url("expense/next_month/$default_month/$default_year"), "class" => "btn btn-sm btn-primary show-next-month" );
 $nav_buttons["show_month"] = array("item" => "expense", "text" => "Select Month", "href"=>site_url("expense/select_month"),"class" => "btn btn-sm btn-primary");
  if($this->session->userdata("role") == "admin" ){
 $nav_buttons["copy_month"] = array("item" => "fee", "text" => "New Month", "href" => site_url("fee/copy_month"), "class"=>"btn btn-sm btn-warning new new-month" );

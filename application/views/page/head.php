@@ -14,6 +14,9 @@
 
 <!-- Bootstrap theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" media="screen"><link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/main.css");?>" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/color.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/popup.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/mobile.css");?>" />
