@@ -196,6 +196,7 @@ div.result {
 
 #expenses .block {
 	flex-basis: auto;
+	flex: 1;
 }
 
 
