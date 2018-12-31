@@ -341,9 +341,3 @@ td.amt {
 	box-shadow: 1px 1px 5px 1px black;
 	background-color: white;
 }
-
-@media screen and (max-width: 410px){
-	#expenses .block {
-		width: 100%;
-	}
-}

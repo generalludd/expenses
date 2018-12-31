@@ -64,7 +64,7 @@ if($is_me){
     <?php
     $amt_paid = get_value($payment,"amt");
     $grand_total = $fee_total/$user_count - $expense_total - $amt_paid;?>
-    <table class="list totals table">
+    <table class="list totals table table-sm">
         <tr>
             <td>Amount Due:</td>
             <td class="amt"><?php echo get_as_cash($fee_total/$user_count);?></td>

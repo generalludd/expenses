@@ -44,3 +44,9 @@
     flex-basis: 100%;
   }
 }
+
+@media and (max-width: 410px){
+	#expenses .block {
+		width: 100%;
+	}
+}
