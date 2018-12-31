@@ -15,7 +15,7 @@ if($is_me){
         <h3><?php echo $person;?></h3>
     <?php endif;
     if($is_admin || $is_me ):
-        $nav_buttons["create_expense"] = array("item" => "expense", "text" => "New Expense", "href"=>site_url("expense/create/" . $expense->userID), "class" => "btn btn-sm btn-warning edit dialog");
+        $nav_buttons["create_expense"] = array("item" => "expense", "text" => "<i class=\"fas fa-plus-circle\"></i>","title"=>"Add a new expense", "href"=>site_url("expense/create/" . $expense->userID), "class" => "btn btn-sm btn-warning edit dialog");
         print create_button_bar($nav_buttons);
     endif;
     ?>
