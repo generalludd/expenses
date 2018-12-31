@@ -35,8 +35,7 @@ class Payment_model extends MY_Model
 		$this->db->where("id", $id);
 		$this->prepare_variables();
 		$this->db->update("payment", $this);
-		$this->_log();
-
+		return $this->get($id);
 	}
 
 	function insert()

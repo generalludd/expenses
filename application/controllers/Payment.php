@@ -8,7 +8,7 @@ class Payment extends MY_Controller
     {
         parent::__construct();
         $this->load->model("payment_model","payment");
-    }
+	}
 
 
     function insert()
@@ -26,9 +26,9 @@ class Payment extends MY_Controller
             }
         }
 
-		$this->session->set_flashdata ( "alert", "Item updated" );
+		$this->session->set_flashdata ( "notice", "Item updated" );
 
-        redirect();
+        redirect("expense/show_all/$mo/$yr");
     }
 
 
@@ -37,11 +37,13 @@ class Payment extends MY_Controller
         if(!isset($id)){
             $id = $this->input->post("id");
         }
-        $this->payment->update($id);
-		$this->session->set_flashdata ( "alert", "Item updated" );
+		$my_payment = $this->payment->update($id);
+		$mo = $my_payment->mo;
+		$yr = $my_payment->yr;
+        $this->session->set_flashdata ( "notice", "Item updated" );
+		redirect("expense/show_all/$mo/$yr");
 
-		redirect();
-    }
+	}
 
 
     function edit()
@@ -63,7 +65,7 @@ class Payment extends MY_Controller
             $data["total_due"] = $payment->amt;
             $data['target'] = "payment/edit";
             $data['title'] = "Edit a Payment";
-            if($this->input->get("ajax")){
+			if($this->input->get("ajax")){
                 $this->load->view("page/modal",$data);
             }else{
                 $this->load->view("index",$data);

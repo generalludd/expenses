@@ -25,13 +25,6 @@ body {
 	width: 80%;
 }
 
-.message {
-	font-size: 95%;
-	padding: 2px;
-	border: 1px solid black;
-	margin: 3px;
-}
-
 #content {
 	
 }
@@ -217,9 +210,6 @@ textarea {
 	font-size: 1em;
 }
 
-.delete {
-	float: right;
-}
 
 label {
 	font-weight: bold;
@@ -261,15 +251,6 @@ legend {
 	margin-top: 3.5em;
 }
 
-.warning {
-	padding: 5px;
-	height: 150px;
-	width: 320px;
-	left: 20px;
-	top: 50px;
-	position: absolute;
-	visibility: hidden;
-}
 
 a.button {
 	text-decoration: none;
@@ -361,3 +342,8 @@ td.amt {
 	background-color: white;
 }
 
+@media screen and (max-width: 410px){
+	#expenses .block {
+		width: 100%;
+	}
+}

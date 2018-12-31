@@ -10,22 +10,22 @@
 </head>
 <body>
 <div id="page">
-	<?php if($this->session->flashdata("notice")) :?>
-	<div class="message">
-		<?php echo $this->session->flashdata("notice");?>
-	</div>
-	<?php  endif; ?>
-	<?php if($this->session->flashdata("alert")) :?>
-	<div class="alert message">
-		<?php echo $this->session->flashdata("alert");?>
-	</div>
-	<?php  endif; ?>
     <?php if(!$print): ?>
         <div id='header'>
             <div id='navigation'><?php  $this->load->view('/page/navigation'); ?>
             </div>
         </div>
     <?php endif; ?>
+	<?php if($this->session->flashdata("notice")) :?>
+		<div class="alert alert-primary">
+			<?php echo $this->session->flashdata("notice");?>
+		</div>
+	<?php  endif; ?>
+	<?php if($this->session->flashdata("alert")) :?>
+		<div class="alert alert-danger">
+			<?php echo $this->session->flashdata("alert");?>
+		</div>
+	<?php  endif; ?>
     <!-- main -->
     <div id="main"><!-- content -->
         <div id="content"><?php
