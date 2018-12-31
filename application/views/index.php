@@ -10,16 +10,18 @@
 </head>
 <body>
 <div id="page">
-    <?php if($this->session->flashdata("notice")) :?>
-        <div class="message">
-            <?php echo $this->session->flashdata("notice");?>
-        </div>
-    <?php  endif; ?>
+	<?php if($this->session->flashdata("notice")) :?>
+	<div class="message">
+		<?php echo $this->session->flashdata("notice");?>
+	</div>
+	<?php  endif; ?>
+	<?php if($this->session->flashdata("alert")) :?>
+	<div class="alert message">
+		<?php echo $this->session->flashdata("alert");?>
+	</div>
+	<?php  endif; ?>
     <?php if(!$print): ?>
         <div id='header'>
-<!--            <div class="mobile-only show-navigation-box">-->
-<!--                <span class="btn btn-primary mobile-only show-navigation">Show Navigation</span>-->
-<!--            </div>-->
             <div id='navigation'><?php  $this->load->view('/page/navigation'); ?>
             </div>
         </div>

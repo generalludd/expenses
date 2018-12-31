@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 // payment_model.php Chris Dart Mar 11, 2012 4:23:41 PM chrisdart@cerebratorium.com
 
-class Payment_model extends CI_Model
+class Payment_model extends MY_Model
 {
 
 	var $user_id;
@@ -35,6 +35,7 @@ class Payment_model extends CI_Model
 		$this->db->where("id", $id);
 		$this->prepare_variables();
 		$this->db->update("payment", $this);
+		$this->_log();
 
 	}
 
@@ -87,7 +88,7 @@ class Payment_model extends CI_Model
 		$this->db->order_by("mo","DESC");
 		$this->db->order_by("yr","DESC");
 		$this->db->from("payment");
-		$result = $this->db->get()->result();
+		$result = $this->db->get()->row();
 		return $result;
 	}
 }

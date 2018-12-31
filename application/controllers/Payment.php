@@ -22,10 +22,11 @@ class Payment extends MY_Controller
             if(!$payment){
                 $id = $this->payment->insert();
             }else{
-                $this->update($payment->id);
+                $id = $this->update($payment->id);
             }
         }
-        //echo $id;
+
+		$this->session->set_flashdata ( "alert", "Item updated" );
 
         redirect();
     }
@@ -37,7 +38,9 @@ class Payment extends MY_Controller
             $id = $this->input->post("id");
         }
         $this->payment->update($id);
-        redirect();
+		$this->session->set_flashdata ( "alert", "Item updated" );
+
+		redirect();
     }
 
 
@@ -86,7 +89,7 @@ class Payment extends MY_Controller
         if($this->input->get("ajax")){
             $this->load->view("page/modal",$data);
         }else{
-        $this->load->view("index",$data);
+        	$this->load->view("index",$data);
         }
     }
 

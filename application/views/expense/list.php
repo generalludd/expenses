@@ -31,7 +31,7 @@ if($is_me){
 
 
         <?php
-        $expense_total;
+        $expense_total = 0;
         foreach($expenses as $item):
             if($item->user_id == $current_id): ?>
                 <tr>
@@ -85,7 +85,6 @@ if($is_me){
             <td>Amount Owed:</td>
             <td class="amt"><?php echo get_as_cash($grand_total);?></td>
         </tr>
-
     </table>
 </div>
 <!-- all done here /-->
