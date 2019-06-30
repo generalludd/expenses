@@ -27,8 +27,6 @@ if ($is_me) {
 		</tr>
 		</thead>
 		<tbody>
-
-
 		<?php
 		$expense_total = 0;
 		foreach ($user->expenses as $expense): ?>

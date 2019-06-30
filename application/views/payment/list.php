@@ -4,16 +4,18 @@ $grand_total = $expense_total;?>
 <?php foreach ($payments as $payment):
 	$amt_paid = get_value($payment, "amt");
 	$grand_total = $fee_total / $user_count - $expense_total - $amt_paid; ?>
-
-	<tr data-id="<?php echo $payment->id;?>">
-		<td><?php echo format_date($payment->date_paid); ?></td>
+	<tr data-id="<?php echo $payment->fee_id;?>">
+		<?php if ($is_admin || $is_me):
+$pay_button = sprintf('<a href="%s">Pay Now</a>', base_url("pmt/pay/$payment->fee_id/$userID"));
+		endif; ?>
+		<td><?php echo get_value($payment, 'date_paid')? format_date($payment->date_paid):$pay_button; ?></td>
 		<td class="amt">
-			<a href='<?php echo base_url("/payment/edit/?id=$payment->id"); ?>' class='edit dialog payment-edit'
-											 id='pmt_<?php echo $payment->id . "_" . $grand_total; ?>'
-											 title="Edit this payment">-<?php echo get_as_cash($payment->amt); ?></a>
-			<a href="<?php echo base_url("payment/delete"); ?>" data-id="<?php echo $payment->id; ?>" data-parent="payment-totals-<?php echo $payment->user_id;?>"
+			-<?php echo get_as_cash($payment->amt); ?>
+			<?php if(get_value($payment, 'date_paid')):?>
+			<a href="<?php echo base_url("pmt/delete"); ?>" data-id="<?php echo $payment->pmt_id; ?>" data-parent="payment-totals-<?php echo $userID;?>"
 				 class="button btn-sm btn btn-danger delete ajax inline" title="Delete this Payment"><i
 					class="far fa-trash-alt"></i></a>
+					<?php endif;?>
 		</td>
 	</tr>
 <?php $adjustments += $amt_paid;?>

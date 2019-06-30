@@ -17,6 +17,7 @@
 				data: form_data,
 				success: function(data){
 					$('#' + my_target).html(data);
+					console.log(data);
 				},
 				failure: function(data){
 					console.log(data);

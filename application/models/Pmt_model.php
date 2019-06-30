@@ -32,10 +32,14 @@ class Pmt_model extends MY_Model
 		return $this->get($id);
 	}
 
-	function insert()
+	function insert($fee_id, $user_id)
 	{
-		$this->prepare_variables();
-		$this->db->insert('pmt', $this);
+		$values = [
+			'fee_id'=>$fee_id,
+			'user_id'=>$user_id,
+			'date_paid' => mysql_timestamp(),
+		];
+		$this->db->insert('pmt', $values);
 		$id = $this->db->insert_id();
 		return $id;
 	}
@@ -47,7 +51,7 @@ class Pmt_model extends MY_Model
 
 	function get($id)
 	{
-		$this->db->where('id',$id);
+		$this->db->where('pmt.id',$id);
 		$this->db->from('pmt');
 		$this->db->join('fee','pmt.fee_id = fee.id');
 		$result = $this->db->get()->row();
@@ -57,17 +61,22 @@ class Pmt_model extends MY_Model
 
 	function get_for_user($user_id, $param = array())
 	{
+		$user_count = 2;
 		if(array_key_exists( 'mo', $param)){
-			$this->db->where('fee.mo',$param['mo']);
+			$month = $param['mo'];
+			$this->db->where('fee.mo',$month);
 		}
 		if(array_key_exists( 'yr',$param)){
-			$this->db->where('fee.yr', $param['yr']);
+			$year = $param['yr'];
+			$this->db->where('fee.yr', $year);
 		}
-		$this->db->where('user_id', $user_id);
-		$this->db->join('fee','fee.id = pmt.fee_id');
+
+		$this->db->join('pmt','fee.id = pmt.fee_id AND pmt.user_id = ' . $user_id,'LEFT OUTER');
 		$this->db->order_by('mo','DESC');
 		$this->db->order_by('yr','DESC');
-		$this->db->from('pmt');
+		$this->db->select('pmt.date_paid, fee.mo, fee.yr, fee.id as fee_id, pmt.id as pmt_id');
+		$this->db->select('`fee`.`amt`/' . $user_count . ' as amt',FALSE);
+		$this->db->from('fee');
 		$result = $this->db->get()->result();
 		return $result;
 	}
