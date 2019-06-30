@@ -88,8 +88,10 @@ class Payment extends MY_Controller
 	function delete(){
 		$id = $this->input->post("id");
 		$payment = $this->payment->get($id);
+
 		$this->payment->delete($id);
 		if($this->get('ajax')) {
+
 			echo json_encode($payment);
 		}
 		else{

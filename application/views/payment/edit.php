@@ -48,9 +48,12 @@ if ($this->session->userdata("yr")) {
 	</p>
 </form>
 <script type="text/javascript">
-	$('.button.delete').on('click',function(e){
+	$('.button.delete').on('click', function (e) {
 		e.preventDefault();
 		my_action = $(this).attr('href');
-		$('#payment_editor').prop('action', my_action).submit();
+		let question = confirm("Are you sure you want to delete this? This cannot be undone!");
+		if (question) {
+			$('#payment_editor').prop('action', my_action).submit();
+		}
 	});
 </script>

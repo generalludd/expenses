@@ -27,7 +27,7 @@ $fee_total = 0;
 				<td class='amt'><?php echo get_as_cash($fee->amt); ?> </td>
 				<td class='amt'><?php echo get_as_cash($fee->amt / $user_count); ?> </td>
 				<td>
-					<a href="<?php echo base_url("fee/delete"); ?>" data-id="<?php echo $fee->id; ?>" data-parent="tr"
+					<a href="<?php echo base_url("fee/delete"); ?>" data-id="<?php echo $fee->id; ?>" data-target="fees"
 						 class="button btn-sm btn btn-danger delete ajax inline" title="Delete this fee"><i
 							class="far fa-trash-alt"></i></a>
 				</td>
