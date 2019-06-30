@@ -19,12 +19,12 @@ class Payment_model extends MY_Model
 
 	function prepare_variables()
 	{
-		$variables = array("user_id","mo","yr","amt","date_paid");
+		$variables = array('user_id','mo','yr','amt','date_paid');
 		prepare_variables($this, $variables);
 		$this->rec_modified = mysql_timestamp();
 		$this->rec_modifier = $this->session->userdata('userID');
 		if($this->date_paid){
-			$this->date_paid = format_date($this->date_paid, "mysql");
+			$this->date_paid = format_date($this->date_paid, 'mysql');
 		}
 	}
 
@@ -32,28 +32,31 @@ class Payment_model extends MY_Model
 	function update($id)
 	{
 
-		$this->db->where("id", $id);
+		$this->db->where('id', $id);
 		$this->prepare_variables();
-		$this->db->update("payment", $this);
+		$this->db->update('payment', $this);
 		return $this->get($id);
 	}
 
 	function insert()
 	{
 		$this->prepare_variables();
-		$this->db->insert("payment", $this);
+		$this->db->insert('payment', $this);
 		$id = $this->db->insert_id();
 		return $id;
 	}
 
-
-
+	function delete($id){
+		$this->db->where('id',$id);
+		$this->db->delete('payment');
+	}
 
 	function get($id)
 	{
-		$this->db->where("id",$id);
-		$this->db->from("payment");
+		$this->db->where('id',$id);
+		$this->db->from('payment');
 		$result = $this->db->get()->row();
+		$this->_log();
 		return $result;
 	}
 
@@ -62,12 +65,12 @@ class Payment_model extends MY_Model
 	function get_by_month($mo,$yr)
 	{
 
-		$this->db->where("user.is_active", 1);
-		$this->db->select("payment.*,user.id as userID, user.first_name");
-		$this->db->join("user","user.id = payment.user_id  AND `payment`.`mo` = '$mo' AND `payment`.`yr` = '$yr'", "right");
-		$this->db->from("payment");
-		$this->db->order_by("userID");
-		$this->db->order_by("date_paid");
+		$this->db->where('user.is_active', 1);
+		$this->db->select('payment.*,user.id as userID, user.first_name');
+		$this->db->join('user','user.id = payment.user_id  AND `payment`.`mo` = $mo AND `payment`.`yr` = $yr', 'right');
+		$this->db->from('payment');
+		$this->db->order_by('userID');
+		$this->db->order_by('date_paid');
 		$query = $this->db->get();
 		$result = $query->result();
 		return $result;
@@ -76,18 +79,18 @@ class Payment_model extends MY_Model
 
 	function get_for_user($user_id, $param = array())
 	{
-		if(array_key_exists( "mo", $param)){
-			$this->db->where("mo",$param["mo"]);
+		if(array_key_exists( 'mo', $param)){
+			$this->db->where('mo',$param['mo']);
 		}
 
-		if(array_key_exists( "yr",$param)){
-			$this->db->where("yr", $param["yr"]);
+		if(array_key_exists( 'yr',$param)){
+			$this->db->where('yr', $param['yr']);
 		}
-		$this->db->where("user_id", $user_id);
-		$this->db->order_by("mo","DESC");
-		$this->db->order_by("yr","DESC");
-		$this->db->from("payment");
-		$result = $this->db->get()->row();
+		$this->db->where('user_id', $user_id);
+		$this->db->order_by('mo','DESC');
+		$this->db->order_by('yr','DESC');
+		$this->db->from('payment');
+		$result = $this->db->get()->result();
 		return $result;
 	}
 }

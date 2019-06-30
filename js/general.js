@@ -1,6 +1,6 @@
 ﻿$(document).ready(function(){
 
-	$(".delete.ajax").on("click",function(e){
+	$(".delete.ajax.inline").on("click",function(e){
 		e.preventDefault();
 		let my_url = $(this).attr("href");
 		let my_id = $(this).data("id");
