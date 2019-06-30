@@ -32,7 +32,7 @@ class Expense extends My_Controller
 		if ((int)$month && (int)$year) {
 			$this->load->model("fee_model", "fee");
 			$this->load->model("user_model", "user");
-			$this->load->model("pmt_model", "payment");
+			$this->load->model("payment_model", "payment");
 			$this->session->set_userdata("mo", $month);
 			$this->session->set_userdata("yr", $year);
 			$users = $this->user->get_all();
