@@ -45,31 +45,12 @@ if ($is_me) {
 			</tr>
 
 		<?php endforeach; ?>
-		<tr class="bottom-line">
-			<td></td>
-			<td class="amt">Total:</td>
+		<tr class="total-line">
+			<td colspan="2">Total:</td>
 			<td class="amt"><?php echo get_as_cash($expense_total); ?></td>
 		</tr>
 		</tbody>
 	</table>
-	<?php
-	$display_expense = get_as_cash($expense_total);
-	if (abs($expense_total) == $expense_total) {
-		$display_expense = "-" . get_as_cash($expense_total);
-	}
-	?>
-	<h5>Totals</h5>
-	<table class="list totals table table-sm">
-		<tr>
-			<td>Amount Due:</td>
-			<td class="amt"><?php echo get_as_cash($fee_total / $user_count); ?></td>
-		</tr>
-		<tr>
-			<td>Adjustment:</td>
-			<td class="amt"><?php echo $display_expense; ?></td>
-		</tr>
-<?php $this->load->view('payment/list',['payments' => $user->payments,'expense_total'=>$expense_total,'userID' => $user->id]); ?>
-
-	</table>
+	<?php $this->load->view('payment/totals',['expense_total'=>$expense_total, 'user' =>$user, 'user_count'=>$user_count,'payments'=>$user->payments, 'is_me' => $is_me, 'is_admin'=> $is_admin]);?>
 </div>
 <!-- all done here /-->

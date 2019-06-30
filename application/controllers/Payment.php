@@ -85,18 +85,21 @@ class Payment extends MY_Controller
 		}
 	}
 
-	function delete(){
+	function delete() {
 		$id = $this->input->post("id");
 		$payment = $this->payment->get($id);
-
 		$this->payment->delete($id);
-		if($this->get('ajax')) {
-
-			echo json_encode($payment);
-		}
-		else{
-			redirect('show_all/' . $payment->mo . '/' . $payment->yr);
-		}
+		$payments = $this->payment->get_for_user($payment->user_id, $payment->mo, $payment->yr);
+		$this->load->model('user_model', 'user');
+		$this->load->model('expense_model','expense');
+		$data = array(
+			'payments' => $payments,
+			'expenses' => $expenses,
+			'month' => $payment->mo,
+			'year' => $payment->yr,
+			'userID' => $payment->user_id,
+		);
+		echo $this->load->view('payment/list', $data, TRUE);
 	}
 
 }

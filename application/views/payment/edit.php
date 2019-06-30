@@ -33,6 +33,10 @@ if ($this->session->userdata("yr")) {
 		<input type="text" id="amt" name="amt" value="<?php echo round(get_value($payment, "amt", $total_due), 2); ?>"/>
 	</p>
 	<p>
+		<label for="memo">Memo</label>
+		<input type="text" name="memo" id="memo" value="<?php echo get_value($payment,"memo");?>"/>
+	</p>
+	<p>
 		<label for="date_paid">Date Paid</label>
 		<input type="text" id="date_paid" name="date_paid"
 					 value="<?php echo format_date(get_value($payment, "date_paid", date("Y-m-j"))); ?>" class="datefield"/>
