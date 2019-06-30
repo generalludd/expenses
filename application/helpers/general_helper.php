@@ -173,13 +173,13 @@ function get_keyed_pairs ($list, $pairs, $initialBlank = NULL, $other = NULL)
 }
 
 /**
- *
- * @param string $glue
- * @param array $list
- * @param string $conjunction
- *            creates a list in proper English list format (lists less than 3
+ * creates a list in proper English list format (lists less than 3
  *            have no comma, list with 3 or more have commas and final
  *            conjunction)
+ * @param $glue
+ * @param $list
+ * @param string $conjunction
+ * @return string
  */
 function grammatical_list ($glue, $list, $conjunction = "and")
 {
@@ -297,4 +297,12 @@ function print_array($array){
 function cached_base_url($path){
     $output = sprintf("%s?cache=%s", base_url($path), date('U'));
     return $output;
+}
+
+function format_month($month, $year){
+	if($month < 10){
+		$month = '0' . $month;
+	}
+$date = strtotime($year . '-' . $month . '-01 00:00:00');
+return date('F, Y', $date);
 }

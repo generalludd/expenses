@@ -1,10 +1,10 @@
 ﻿$(document).ready(function(){
 
-	$(".delete.ajax").on("click",function(e){
+	$(".delete.ajax.inline").on("click",function(e){
 		e.preventDefault();
 		let my_url = $(this).attr("href");
 		let my_id = $(this).data("id");
-		let my_target = $(this).data('parent');
+		let my_target = $(this).data('target');
 		let form_data = {
 			id: my_id,
 			ajax: 1,
@@ -15,8 +15,12 @@
 				url: my_url,
 				type: "post",
 				data: form_data,
-				success: function(){
-					$(my_target + '[data-id="' + my_id + '"]').remove();
+				success: function(data){
+					$('#' + my_target).html(data);
+					console.log(data);
+				},
+				failure: function(data){
+					console.log(data);
 				}
 
 			})
