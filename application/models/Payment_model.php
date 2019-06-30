@@ -77,7 +77,6 @@ class Payment_model extends MY_Model
 		$this->db->select('`fee`.`amt`/' . $user_count . ' as amt',FALSE);
 		$this->db->from('fee');
 		$result = $this->db->get()->result();
-		$this->_log();
 		return $result;
 	}
 }
