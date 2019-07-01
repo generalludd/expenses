@@ -41,6 +41,7 @@ class Payment_model extends MY_Model
 		$this->date_paid = mysql_timestamp();
 		$this->db->insert('payment', $this);
 		$id = $this->db->insert_id();
+
 		return $id;
 	}
 
@@ -73,7 +74,7 @@ class Payment_model extends MY_Model
 		$this->db->join('payment','fee.id = payment.fee_id AND payment.user_id = ' . $user_id,'LEFT OUTER');
 		$this->db->order_by('mo','DESC');
 		$this->db->order_by('yr','DESC');
-		$this->db->select('payment.date_paid, fee.mo, fee.yr, fee.id as fee_id, payment.id as payment_id');
+		$this->db->select('payment.date_paid, fee.mo, fee.yr, fee.id as fee_id, payment.id as payment_id, fee.type');
 		$this->db->select('`fee`.`amt`/' . $user_count . ' as amt',FALSE);
 		$this->db->from('fee');
 		$result = $this->db->get()->result();

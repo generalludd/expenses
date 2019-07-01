@@ -37,6 +37,16 @@ class Expense_model extends CI_Model
 		return $result;
 	}
 
+	function get_user_total($user_id, $month, $year){
+		$this->db->from('expense');
+		$this->db->where('user_id', $user_id);
+		$this->db->where('mo',$month);
+		$this->db->where('yr',$year);
+		$this->db->select('SUM(`amt`) as expense_total',FALSE);
+		$result = $this->db->get()->row();
+		return $result->expense_total;
+	}
+
 
 
 	function distinct($field){

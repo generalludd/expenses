@@ -40,6 +40,7 @@ class Expense extends My_Controller
 				$user->expenses = $this->expense->get_all($user->id, $month, $year);
 				$user->payments = $this->payment->get_for_user($user->id, ['mo' => $month, 'yr' => $year]);
 				$user->fee_total = $this->fee->get_totals($month, $year);
+				$user->expense_total = $this->expense->get_user_total($user->id,$month,$year);
 			}
 			$fees = $this->fee->get_by_month($month, $year);
 			$data['user_count'] = count($users);
@@ -47,7 +48,7 @@ class Expense extends My_Controller
 			$data['year'] = $year;
 			$data['users'] = $users;
 			$data['fees'] = $fees;
-			$data["fee_total"] = $this->fee->get_totals($month, $year);
+			$data["fee_total"] = $this->fee->get_totals($month, $year)/2;
 			$data['target'] = 'expense/totals';
 			$data['title'] = 'Expenses for ' . format_month($month, $year);
 			$this->load->view('index', $data);

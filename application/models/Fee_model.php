@@ -71,7 +71,6 @@ class Fee_model extends CI_Model
 		$this->db->select("sum(amt) as total");
 		$this->db->from("fee");
 		$result = $this->db->get()->row();
-
 		return $result->total;
 	}
 
