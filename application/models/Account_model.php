@@ -28,7 +28,6 @@ function update($id, $name){
 
 	function insert($id, $name){
 		$this->db->insert('account',['id'=>$id, 'name'=>$name]);
-		return $this->db->last_insert_id();
 	}
 
 }
