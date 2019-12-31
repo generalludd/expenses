@@ -1,11 +1,10 @@
 <?php
 ?>
 <?php echo $error;?>
-
-<?php echo form_open_multipart('transaction/upload');?>
-
-<input type="file" name="transactions" size="20" />
-
-<input type="submit" value="upload" />
-
+<h2>Select the csv you downloaded from your bank or credit card service.</h2>
+<form action="<?php echo base_url('transaction/import');?>" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+	<label for="bank_id">Enter the name of the bank acount</label>
+	<?php echo form_dropdown('bank_id', $bank_ids);?>
+	<input type="file" name="transactions" size="20">
+	<input type="submit" value="upload">
 </form>

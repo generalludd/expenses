@@ -87,6 +87,22 @@
 	width:460px;
 	display:none;
 }
+.inline-fields {
+	display: flex;
+	flex-flow: column wrap;
+}
+.field-set {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
 
+.modal-title{
+	display: block;
+}
+
+.field-set input, .field-set label{
+	display: block;
+}
 	
 /* END POPUP HELP WINDOW AJAX CODE */

@@ -27,6 +27,58 @@
 		}
 	});
 
+	$(".edit.ajax.inline").on('click',function(e){
+		e.preventDefault();
+		let my_value = $(this).data("value");
+		let my_id = $(this).parents('tr.transaction').data("transaction-id");
+		let my_name = $(this).data("name");
+		let me = $(this);
+		let form_data = {
+			id: my_id,
+			ajax: 1,
+			field_name: my_name,
+			value: my_value,
+		};
+		$.ajax({
+			url: '/transaction/edit_value',
+			type: "post",
+			data: form_data,
+			dataType: "json",
+			success: function(data){
+				me.removeClass("edit").addClass("update");
+				me.html(data.input_field);
+			},
+			failure: function(data){
+				console.log(data);
+			}
+		});
+
+	});
+$(".update.ajax.inline input").on("blur",function(e){
+	let me = $(this);
+	let my_value = me.value();
+	let my_id = me.parents('tr.transaction').data("transaction-id");
+	let my_name = me.parents("td").data("name");
+	let form_data = {
+		id: my_id,
+		ajax: 1,
+		field_name: my_name,
+		value: my_value
+	};
+	$.ajax({
+		url: '/transaction/update_value',
+		type: "post",
+		data: form_data,
+		dataType: "json",
+		success: function(data){
+			me.parents("td").html(data.value);
+			me.parents("td").removeClass("update").addClass("edit");
+		}
+	})
+
+});
+
+
 	$(".datefield").on("focus", function(){
 		$(".datefield").datepicker();
 	});
@@ -51,8 +103,7 @@ $(window).resize(function(){
 });
 
 $(".edit.dialog").on("click",function(e){
-  //e.preventDefault();
-  //show_popup(this);
+
 });
 
 
@@ -117,8 +168,8 @@ $(".hide-navigation").on("click",function(){
 	);
 
 	$(".new.dialog,.edit.dialog").on("click",function(e){
-        //e.preventDefault();
-        //show_popup(this);
+        e.preventDefault();
+        show_popup(this);
 
       });
 	}//end document function

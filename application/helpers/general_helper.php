@@ -146,10 +146,14 @@ function prepare_variables ($object, $variables)
     }
 }
 
-/*
- * @params $table varchar table name @params $data array consisting of "where"
- * string or array, and "select" comma-delimited string @returns an array of
- * key-value pairs reflecting a Database primary key and human-meaningful string
+
+/**
+ * @param $list
+ * @param $pairs
+ * @param null $initialBlank
+ * @param null $other
+ *
+ * @return array|bool
  */
 function get_keyed_pairs ($list, $pairs, $initialBlank = NULL, $other = NULL)
 {
