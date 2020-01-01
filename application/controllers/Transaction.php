@@ -9,19 +9,47 @@ class Transaction extends MY_Controller {
 		$this->load->model('transaction_model', 'transaction');
 		$this->load->helper('form', 'url');
 		$this->load->model('bank_model', 'bank');
-		$this->bank_ids = get_keyed_pairs($this->bank->get_banks(),['id','bank'],TRUE);
+		$this->bank_ids = get_keyed_pairs($this->bank->get_banks(), [
+			'id',
+			'bank',
+		], TRUE);
 		$this->load->library('OfxParse');
 	}
 
 	public function index() {
+		$this->view();
+	}
 
+	public function search() {
+
+		$this->load->model('account_model', 'account');
+		$data = [
+			'target' => 'transaction/search',
+			'title' => 'Search Transactions',
+			'banks' => $this->bank_ids,
+			'accounts' => get_account_pairs($this->account->get_accounts(), TRUE),
+		];
+		if ($this->input->get('ajax')) {
+			$this->load->view('page/modal', $data);
+		}
+		else {
+			$this->load->view('index', $data);
+		}
+	}
+
+	public function upload() {
 		$data = [
 			'bank_ids' => $this->bank_ids,
 			'target' => 'transaction/upload',
 			'title' => 'Upload transactions',
 			'error' => ' ',
 		];
-		$this->load->view('index', $data);
+		if ($this->input->get('ajax')==1) {
+			 $this->load->view('page/modal', $data);
+		}
+		else {
+			$this->load->view('index', $data);
+		}
 	}
 
 	public function import() {
@@ -75,18 +103,27 @@ class Transaction extends MY_Controller {
 	}
 
 	public function view() {
-		$options['date_start'] = $this->input->get('date_start');
-		$options['date_end'] = $this->input->get('date_end');
-		$options['bank_id'] = $this->input->get('bank_id');
-		$options['transactions'] = $this->transaction->get_all($options);
-		$this->load->library('table');
 
-		$options['target'] = 'transaction/list';
-		$options['title'] = sprintf('Viewing Transactions from %s to %s', date('m-d-Y', strtotime($options['date_start'])),
-			date('m-d-Y', strtotime($options['date_end'])));
+		$options = [
+			'date_start' => date('Y-m-d', strtotime($this->input->get('date_start'))),
+			'date_end' => date('Y-m-d', strtotime($this->input->get('date_end'))),
+			'bank_ids' => $this->input->get('bank_ids'),
+			'account_ids' => $this->input->get('account_ids'),
+			'bank_id' => $this->input->get('bank_id'),
+		];
+		$options['transactions'] = $this->transaction->get_all($options);
 		$this->load->model('account_model', 'account');
-		$options['accounts'] =get_keyed_pairs($this->account->get_accounts(), ['id', 'name'], TRUE, FALSE) ;
-		$this->load->view('index', $options);
+		$this->load->model('account_model', 'account');
+		$data = [
+			'target' => 'transaction/list',
+			'banks' => $this->bank_ids,
+			'title' => 'Viewing Transactions',
+			'accounts' => get_account_pairs($this->account->get_accounts(), TRUE),
+		];
+		$data = array_merge($options, $data);
+
+
+		$this->load->view('index', $data);
 
 	}
 
@@ -97,7 +134,7 @@ class Transaction extends MY_Controller {
 		$result = $this->transaction->get($id);
 		if ($field_name == 'account_id') {
 			$this->load->model('account_model', 'account');
-			$result->input_field = form_dropdown($field_name, $this->account->get_accounts(TRUE));
+			$result->input_field = form_dropdown($field_name, get_account_pairs($this->account->get_accounts(), TRUE));
 		}
 		else {
 			$result->input_field = sprintf('<input type="text" name="%s" value="%s"/>', $field_name, $result->{$field_name});

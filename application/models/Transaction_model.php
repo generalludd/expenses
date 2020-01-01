@@ -52,13 +52,24 @@ class Transaction_model extends My_Model {
 			$this->db->where('date <=', $options['date_end']);
 		}
 		if(array_key_exists('bank_id', $options)){
-			$this->db->where('bank_id', $options['bank_id']);
+			$bank_ids = [$options['bank_id']];
+		}
+		if(array_key_exists('bank_ids', $options)){
+			$bank_ids =  $options['bank_ids'];
+		}
+		if(!empty($bank_ids)){
+			$this->db->where_in('bank_id',$bank_ids);
+		}
+		if(array_key_exists('account_ids', $options)){
+			$this->db->where_in('account_id', $options['account_ids']);
 		}
 		$this->db->join('bank','transaction.bank_id = bank.id');
 		$this->db->order_by('bank.bank','ASC');
 		$this->db->order_by('date','ASC');
 		$this->db->select('transaction.*, bank.bank, bank.website');
-		return $this->db->get()->result();
+		$result =  $this->db->get()->result();
+		$this->_log();
+		return $result;
 	}
 
 	function update_value($id, $field, $value){

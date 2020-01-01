@@ -1,0 +1,27 @@
+<?php
+
+/* search transactions  by bank, date range, accounts, @//todo account-range */
+
+?>
+<div class="search-block">
+	<form name="search-accounts" id="search-accounts"
+				action="<?php echo base_url('transaction/view'); ?>" method="get">
+		<div class="stacked-fields">
+			<label for="bank_ids">Bank</label>
+			<?php echo form_multiselect('bank_ids[]', $banks, $this->input->get('bank_ids')); ?>
+		</div>
+		<div class="inline-fields">
+			<label for="date_start">Date Range</label>
+			<input type="date" name="date_start" class="datefield" required value="<?php echo $this->input->get('date_start');?>"/> to
+			<input type="date" name="date_end" required value="<?php echo $this->input->get('date_end');?>"/>
+		</div>
+		<div class="stacked-fields">
+			<label for="account_ids">
+				Account(s)
+			</label>
+			<?php echo form_multiselect('account_ids[]', $accounts, $this->input->get('account_ids')); ?>
+		</div>
+
+		<input type="submit" class="btn btn-small btn-secondary" value="Search" title="Search transactions"/>
+	</form>
+</div>

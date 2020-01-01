@@ -34,11 +34,11 @@ class Payment_model extends MY_Model
 
 	function insert($fee_id, $user_id)
 	{
-		$this->rec_modified = mysql_timestamp();
+		$this->rec_modified = date('Y-m-d H:i:s');
 		$this->rec_modifier = $this->session->userdata('userID');
 		$this->fee_id = $fee_id;
 		$this->user_id = $user_id;
-		$this->date_paid = mysql_timestamp();
+		$this->date_paid = date('Y-m-d H:i:s');
 		$this->db->insert('payment', $this);
 		$id = $this->db->insert_id();
 

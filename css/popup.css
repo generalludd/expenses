@@ -87,14 +87,16 @@
 	width:460px;
 	display:none;
 }
+
 .inline-fields {
+	padding: 1rem 0;
+}
+
+.stacked-fields{
 	display: flex;
 	flex-flow: column wrap;
-}
-.field-set {
-	display: flex;
-	flex-flow: row wrap;
 	justify-content: space-between;
+	padding-bottom: 1rem;
 }
 
 .modal-title{

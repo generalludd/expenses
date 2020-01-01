@@ -1,6 +1,16 @@
-<?php
-?>
 <h2><?php print $title; ?></h2>
+
+<?php
+$this->load->view('transaction/search');
+$buttons[] = [
+	'text' => 'Upload',
+	'href' => base_url('transaction/upload'),
+	'title' => 'Upload new transactions',
+	'class' => 'btn btn-small btn-warning edit dialog',
+];
+echo create_button_bar($buttons);
+
+?>
 <table class="table">
 	<thead>
 	<tr>
@@ -20,7 +30,7 @@
 					data-id="<?php echo $transaction->id; ?>"
 					data-value="<?php echo $transaction->account_id; ?>"
 					data-name="account_id">
-				<?php echo form_dropdown('account_id', $accounts, $transaction->account_id, sprintf ('data-id="%s" data-value="%s" data-name="%s"', $transaction->id, $transaction->account_id, 'account_id')); ?>
+				<?php echo form_dropdown('account_id', $accounts, $transaction->account_id, sprintf('data-id="%s" data-value="%s" data-name="%s"', $transaction->id, $transaction->account_id, 'account_id')); ?>
 			</td>
 			<td
 				class="transaction-date"><?php echo date('m-d-Y', strtotime($transaction->date)); ?></td>

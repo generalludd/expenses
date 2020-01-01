@@ -320,12 +320,6 @@ a.link:hover,input.link:hover {
 td.amt {
 	text-align: right;
 }
-.account #content {
-	width: 60%;
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-}
 
 .chart-of-accounts .account.child td:first-child{
 	text-indent: 20px;
@@ -352,4 +346,10 @@ td.amt {
 
 .ajax.edit.inline:hover{
 	cursor: pointer;
+}
+
+.search-block {
+	border: 1px solid #2f2f2f;
+	width: 50%;
+	padding: 1rem;
 }

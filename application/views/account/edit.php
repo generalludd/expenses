@@ -8,8 +8,14 @@
 	<input type="number" name="id" id="id" value="<?php echo get_value($account, 'id');?>"/>
 		</div>
 		<div class="field-set">
-	<label for="name">Name/Description</label>
+	<label for="name">Name</label>
 	<input type="text" name="name" id="name" value="<?php echo get_value($account, 'name');?>">
+		</div>
+		<div>
+			<label for="description">Description</label>
+			<textarea name="description" id="description" style="width:100%">
+			<?php echo get_value($account, 'description');?>
+			</textarea>
 		</div>
 	<input type="submit"  class="btn btn-warning" value="<?php echo ucfirst($action);?>">
 	</div>

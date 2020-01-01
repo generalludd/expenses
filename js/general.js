@@ -106,11 +106,6 @@
 		});
 
 
-		$(".datefield").on("focus", function () {
-			$(".datefield").datepicker();
-		});
-
-
 		$("table thead").addClass("theader");
 //	$("table tr:nth-child(even)").addClass("striped");
 
@@ -126,10 +121,6 @@
 			} else if ($(window).width() < 855) {
 //toggle_navigation(this, "hide");
 			}
-		});
-
-		$(".edit.dialog").on("click", function (e) {
-
 		});
 
 
@@ -269,6 +260,7 @@ function show_popup(me) {
 		url: target,
 		success: function (data) {
 			console.log(data);
+			console.log(target);
 			$("#popup").html(data);
 			$("#my_dialog").modal("show");
 		}
@@ -293,8 +285,6 @@ function delete_entity(me) {
 			data: form_data,
 			url: target,
 			success: function (data) {
-				console.log(data);
-
 				if ($(me).hasClass("inline")) {
 					$("#" + my_parent).remove();
 				} else if ($(me).hasClass("redirect")) {

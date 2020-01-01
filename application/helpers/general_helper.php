@@ -1,10 +1,5 @@
 <?php
 
-function mysql_timestamp ()
-{
-    return date('Y-m-d H:i:s');
-}
-
 /*
  * @function format_date @params $date date string @params $format string
  * description: this shouldn't be in this file, but I didn't want to create a
@@ -12,33 +7,17 @@ function mysql_timestamp ()
  */
 function format_date ($date, $format = "standard")
 {
-    // $format=mysql//yyyy-mm-dd
-    // $format=standard//mm/dd/yyyy
-    $date = str_replace("/", "-", $date);
     switch ($format) {
         case "mysql":
-            $parts = explode("-", $date);
-            $month = $parts[0];
-            $day = $parts[1];
-            $year = $parts[2];
-            $date = "$year-$month-$day";
+					$date = date('Y-m-d',strtotime($date));
             break;
         case "standard":
-            $parts = explode("-", $date);
-            $year = $parts[0];
-            $month = $parts[1];
-            $day = $parts[2];
-            $date = "$month/$day/$year";
+        		$date = date('m/d/Y',strtotime($date));
             break;
         case "no-year":
-            $parts = explode("-", $date);
-            $year = $parts[0];
-            $month = $parts[1];
-            $day = $parts[2];
-            $date = "$month/$day";
+					$date = date('m/d',strtotime($date));
             break;
         default:
-            $date = $date;
     }
     return $date;
 }
@@ -64,59 +43,6 @@ function last_day ($month, $year)
     return $day;
 }
 
-function format_time ($time, $showSeconds = false)
-{
-    $pm = substr_count($time, "PM");
-    $am = substr_count($time, "AM");
-    if ($pm || $am) {
-        $outputFormat = 24;
-    } else {
-        $outputFormat = 12;
-    }
-    $time = str_ireplace("PM", "", $time);
-    $time = str_ireplace("AM", "", $time);
-    $parts = explode(":", trim($time));
-    $hour = $parts[0];
-    $minute = $parts[1];
-    $seconds = $parts[2];
-
-    if ($outputFormat == 12) {
-        if ($hour > 12) {
-            $hour = $hour - 12;
-            $meridian = "PM";
-        } else {
-            $meridian = "AM";
-        }
-        $output = "$hour:$minute";
-        if ($showSeconds) {
-            $output .= ":$seconds";
-        }
-        $output .= " $meridian";
-    } elseif ($outputFormat == 24) {
-        if ($pm) {
-            $hour += 12;
-        }
-        $output = "$hour:$minute";
-        if ($showSeconds) {
-            $output .= ":$seconds";
-        }
-    }
-
-    return $output;
-}
-
-function format_timestamp ($timeStamp)
-{
-    $items = explode(" ", $timeStamp);
-    $date = format_date($items[0], 'standard');
-    $time = $items[1];
-    if (count($items) > 2) {
-        $time .= " " . $items[2];
-    }
-    $time = format_time($time);
-    $output = "$date, $time";
-    return $output;
-}
 
 function get_value ($object, $item, $default = null)
 {
@@ -150,16 +76,15 @@ function prepare_variables ($object, $variables)
 /**
  * @param $list
  * @param $pairs
- * @param null $initialBlank
- * @param null $other
+ * @param $initial_blank
+ * @param $other
  *
  * @return array|bool
  */
-function get_keyed_pairs ($list, $pairs, $initialBlank = NULL, $other = NULL)
-{
-    $output = false;
+function get_keyed_pairs ($list, $pairs,  $initial_blank = FALSE,  $other = NULL) {
+	$output = false;
 
-    if ($initialBlank) {
+    if ($initial_blank) {
         $output[] = "";
     }
 
@@ -175,6 +100,23 @@ function get_keyed_pairs ($list, $pairs, $initialBlank = NULL, $other = NULL)
 
     return $output;
 }
+
+function get_account_pairs ($list, $initial_blank = NULL)
+{
+	$output = false;
+
+	if ($initial_blank) {
+		$output[] = "";
+	}
+
+	foreach ($list as $item) {
+		$display_id = $item->id != $item->parent_id?' --' . $item->id:'' . $item->id;
+		$output[$item->id] = $display_id . ' - ' . $item->name ;
+	}
+
+	return $output;
+}
+
 
 /**
  * creates a list in proper English list format (lists less than 3
