@@ -44,8 +44,8 @@ class Transaction extends MY_Controller {
 			'title' => 'Upload transactions',
 			'error' => ' ',
 		];
-		if ($this->input->get('ajax')==1) {
-			 $this->load->view('page/modal', $data);
+		if ($this->input->get('ajax') == 1) {
+			$this->load->view('page/modal', $data);
 		}
 		else {
 			$this->load->view('index', $data);
@@ -110,15 +110,21 @@ class Transaction extends MY_Controller {
 			'bank_ids' => $this->input->get('bank_ids'),
 			'account_ids' => $this->input->get('account_ids'),
 			'bank_id' => $this->input->get('bank_id'),
+
 		];
-		$options['transactions'] = $this->transaction->get_all($options);
-		$this->load->model('account_model', 'account');
+		if ($this->input->get('subtotal') == 1) {
+			$options['order_by'] = (object) [
+				'field' => 'account_id',
+				'direction' => 'ASC',
+			];
+		}
 		$this->load->model('account_model', 'account');
 		$data = [
 			'target' => 'transaction/list',
 			'banks' => $this->bank_ids,
 			'title' => 'Viewing Transactions',
 			'accounts' => get_account_pairs($this->account->get_accounts(), TRUE),
+			'transactions' => $this->transaction->get_all($options),
 		];
 		$data = array_merge($options, $data);
 

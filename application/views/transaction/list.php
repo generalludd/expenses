@@ -9,7 +9,6 @@ $buttons[] = [
 	'class' => 'btn btn-small btn-warning edit dialog',
 ];
 echo create_button_bar($buttons);
-
 ?>
 <table class="table">
 	<thead>
@@ -23,7 +22,8 @@ echo create_button_bar($buttons);
 	</tr>
 	</thead>
 	<tbody>
-	<?php foreach ($transactions as $transaction): ?>
+	<?php 	$grand_total = 0;?>
+	<?php foreach ($transactions as $transaction):?>
 		<tr class="transaction"
 				data-id="<?php echo $transaction->id; ?>">
 			<td class="transaction-account ajax inline"
@@ -76,6 +76,14 @@ echo create_button_bar($buttons);
 				<?php endif; ?>
 			</td>
 		</tr>
+		<?php $grand_total += $transaction->amount; ?>
 	<?php endforeach; ?>
 	</tbody>
+	<tfoot>
+	<tr>
+		<td colspan="3"></td>
+		<td colspan="3"><?php echo get_as_cash($grand_total);?>
+		</td>
+	</tr>
+	</tfoot>
 </table>

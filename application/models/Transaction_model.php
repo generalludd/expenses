@@ -64,10 +64,14 @@ class Transaction_model extends My_Model {
 			$this->db->where_in('account_id', $options['account_ids']);
 		}
 		$this->db->join('bank','transaction.bank_id = bank.id');
+		if(array_key_exists('order_by',$options)){
+			$this->db->order_by($options['order_by']->field,$options['order_by']->direction);
+		}
 		$this->db->order_by('bank.bank','ASC');
 		$this->db->order_by('date','ASC');
 		$this->db->select('transaction.*, bank.bank, bank.website');
 		$result =  $this->db->get()->result();
+		$this->_log();
 		return $result;
 	}
 
