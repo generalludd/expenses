@@ -14,18 +14,11 @@ class Bank_model extends MY_Model{
 		return $data;
 	}
 
-	function get_banks($get_list = FALSE){
+	function get_banks(){
 		$this->db->from('bank');
 		$this->db->order_by('bank');
 		$this->db->select('*');
-		$result = $this->db->get()->result();
-		if($get_list) {
-			$list = get_keyed_pairs($result, ['id', 'bank'], TRUE, TRUE);
-		}
-		else {
-			$list = $result;
-		}
-		return $result;
+		return  $this->db->get()->result();
 	}
 
 	function get($id){

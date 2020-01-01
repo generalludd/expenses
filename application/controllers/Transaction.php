@@ -9,7 +9,7 @@ class Transaction extends MY_Controller {
 		$this->load->model('transaction_model', 'transaction');
 		$this->load->helper('form', 'url');
 		$this->load->model('bank_model', 'bank');
-		$this->bank_ids = $this->bank->get_banks(TRUE);
+		$this->bank_ids = get_keyed_pairs($this->bank->get_banks(),['id','bank'],TRUE);
 		$this->load->library('OfxParse');
 	}
 
@@ -80,9 +80,12 @@ class Transaction extends MY_Controller {
 		$options['bank_id'] = $this->input->get('bank_id');
 		$options['transactions'] = $this->transaction->get_all($options);
 		$this->load->library('table');
-		$options['target'] = 'transaction/view';
+
+		$options['target'] = 'transaction/list';
 		$options['title'] = sprintf('Viewing Transactions from %s to %s', date('m-d-Y', strtotime($options['date_start'])),
 			date('m-d-Y', strtotime($options['date_end'])));
+		$this->load->model('account_model', 'account');
+		$options['accounts'] =get_keyed_pairs($this->account->get_accounts(), ['id', 'name'], TRUE, FALSE) ;
 		$this->load->view('index', $options);
 
 	}
@@ -92,8 +95,8 @@ class Transaction extends MY_Controller {
 		$field_name = $this->input->post('field_name');
 
 		$result = $this->transaction->get($id);
-		if($field_name == 'account_id'){
-			$this->load->model('account_model','account');
+		if ($field_name == 'account_id') {
+			$this->load->model('account_model', 'account');
 			$result->input_field = form_dropdown($field_name, $this->account->get_accounts(TRUE));
 		}
 		else {
@@ -113,7 +116,7 @@ class Transaction extends MY_Controller {
 		$value = $this->input->post('value');
 		$this->transaction->update_value($id, $field_name, $value);
 		$result = $this->transaction->get($id);
-		return json_encode($result);
+		echo json_encode($result);
 	}
 
 }

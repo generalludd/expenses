@@ -62,5 +62,4 @@ class Account extends MY_Controller {
 		redirect('account/index');
 	}
 
-
 }

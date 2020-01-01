@@ -57,12 +57,12 @@ class Transaction_model extends My_Model {
 		$this->db->join('bank','transaction.bank_id = bank.id');
 		$this->db->order_by('bank.bank','ASC');
 		$this->db->order_by('date','ASC');
-		$this->db->select('*');
+		$this->db->select('transaction.*, bank.bank, bank.website');
 		return $this->db->get()->result();
 	}
 
-
 	function update_value($id, $field, $value){
-		$this->db->update($id, [$field=>$value]);
+		$this->db->where('id', $id);
+		$this->db->update('transaction', [$field=>$value]);
 	}
 }

@@ -320,8 +320,16 @@ a.link:hover,input.link:hover {
 td.amt {
 	text-align: right;
 }
+.account #content {
+	width: 60%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
 
-
+.chart-of-accounts .account.child td:first-child{
+	text-indent: 20px;
+}
 
 .row {
 	display:flex;

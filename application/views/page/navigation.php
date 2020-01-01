@@ -19,13 +19,13 @@ $nav_buttons["home"] = [
 ];
 $nav_buttons["previous_month"] = [
 	"item" => "expense",
-	"text" => "<i class=\"fas fa-arrow-left\"></i> Previous",
+	"text" => '<i class="fas fa-arrow-left"></i> Previous',
 	"href" => site_url("expense/previous_month/$default_month/$default_year"),
 	"class" => "btn btn-sm btn-secondary show-previous-month",
 ];
 $nav_buttons["next_month"] = [
 	"item" => "expense",
-	"text" => "Next <i class=\"fas fa-arrow-right\"></i>",
+	"text" => 'Next <i class="fas fa-arrow-right"></i>',
 	"href" => site_url("expense/next_month/$default_month/$default_year"),
 	"class" => "btn btn-sm btn-secondary show-next-month",
 ];
@@ -41,6 +41,11 @@ if ($this->session->userdata("role") == "admin") {
 		"text" => "New Month",
 		"href" => site_url("fee/copy_month"),
 		"class" => "btn btn-sm btn-warning new new-month",
+	];
+	$nav_buttons['transactions'] = [
+		"text" => "Transactions",
+		"href" => site_url('transaction'),
+		'class' => 'btn btn-sm btn-secondary'
 	];
 	$user_buttons['chart_of_accounts'] = [
 		"item" => "account",

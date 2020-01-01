@@ -4,12 +4,15 @@ if(isset($print)){
 }else{
     $print = FALSE;
 }?>
+<?php
+$class = $this->uri->segment(1);
+?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <?php $this->load->view('page/head');?>
 </head>
-<body>
+<body class="<?php echo $class;?>">
 <div id="page">
     <?php if(!$print): ?>
         <div id='header'>

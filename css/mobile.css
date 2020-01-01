@@ -1,52 +1,92 @@
-@media (max-width:768px){
-  body.not-logged-in {
-  }
+@media (max-width: 768px) {
+	body.not-logged-in {
+	}
 
 
-  .not-logged-in #main{
-    width: 320px;
-  }
+	.not-logged-in #main {
+		width: 320px;
+	}
 
-  .not-logged-in div.login {
-    margin: 0;
-  }
+	.not-logged-in div.login {
+		margin: 0;
+	}
 
-  .user_menu,.nav_buttons {
-    float: none;
-  }
+	.user_menu, .nav_buttons {
+		float: none;
+	}
 
 
-  #user_menu {
-    margin-top:1em;
-  }
+	#user_menu {
+		margin-top: 1em;
+	}
 
-.btn-group{
-  flex-flow: row wrap;
+	.btn-group {
+		flex-flow: row wrap;
+	}
+
+
+	.mobile-only {
+		display: block;
+	}
+
+
+	#navigation li {
+		margin-left: 0;
+		margin-top: 15px;
+	}
+
+	#main {
+		margin-top: 0;
+		padding: 0;
+	}
+
+	.row .block {
+		flex-basis: 100%;
+	}
 }
 
-
-  .mobile-only {
-    display: block;
-  }
-
-
-  #navigation li {
-    margin-left: 0;
-    margin-top: 15px;
-  }
-
-  #main {
-    margin-top: 0;
-    padding: 0;
-  }
-
-  .row .block {
-    flex-basis: 100%;
-  }
-}
-
-@media and (max-width: 410px){
+@media screen and (max-width: 410px) {
 	#expenses .block {
 		width: 100%;
 	}
+
+	table.table, table.table, table.table thead, table.table tbody, table.table th, table.table td, table.table tr {
+		display: block;
+	}
+
+	table.table thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+
+	table.table tr {
+		border: 1px solid #ccc;
+	}
+
+	table.table tbody tr {
+		display: flex;
+		flex-flow: row wrap;
+
+	}
+
+	table.table td input {
+		display: block;
+		width: 100%;
+	}
+
+	table.table td label {
+		display: block;
+	}
+	.account #content {
+		width: 100%;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.chart-of-accounts .account.child td:first-child{
+		text-indent: 5px;
+	}
+
 }

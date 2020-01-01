@@ -84,6 +84,17 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+/*
+ * This value is the default modulus for determing parent accounts.
+ * The chart of accounts is assumed to use three digit parent categories starting with 100
+ * At some point the interface could include an option to add an override or the modulo
+ * could be extraopolated from the extant chart of accounts
+*/
+define('ACCOUNT_MODULO', 100);
+
+/*
+ * Other CONSTANTS used throughout.
+ */
 define('OK', "Saved");
 define('X',"<img src='images/delete.png' alt='' width='12' height='12' border='0'>");
 define('APP_VERSION','3.5');
