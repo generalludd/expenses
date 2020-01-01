@@ -9,7 +9,7 @@ class Transaction extends MY_Controller {
 		$this->load->model('transaction_model', 'transaction');
 		$this->load->helper('form', 'url');
 		$this->load->model('bank_model', 'bank');
-		$this->bank_ids = $this->bank->get_banks();
+		$this->bank_ids = $this->bank->get_banks(TRUE);
 		$this->load->library('OfxParse');
 	}
 

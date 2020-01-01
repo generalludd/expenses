@@ -342,3 +342,6 @@ td.amt {
 	background-color: white;
 }
 
+.ajax.edit.inline:hover{
+	cursor: pointer;
+}

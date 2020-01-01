@@ -6,10 +6,10 @@ class Account_model extends MY_Model {
 	function get_accounts($get_as_list = FALSE){
 		$this->db->from('account');
 		$this->db->order_by('id');
-		$this->db->select('id,name');
+		$this->db->select('id, concat(`id`,"-", `name`) as name');
 		$list = $this->db->get()->result();
 		if($get_as_list) {
-			$result = get_keyed_pairs($list, ['id', 'name'], TRUE, TRUE);
+			$result = get_keyed_pairs($list, ['id', 'id-name'], TRUE, TRUE);
 		}
 		else{
 			$result = $list;
