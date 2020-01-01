@@ -8,6 +8,9 @@
 				action="<?php echo base_url('transaction/view'); ?>" method="get">
 		<div class="stacked-fields">
 			<label for="bank_ids">Bank</label>
+			<?php if(empty($banks)):?>
+			<span>It looks like you haven't set up your bank list yet. Do that first by <a href="<?php echo base_url('bank');?>">clicking here</a></span>
+			<?php endif;?>
 			<?php echo form_multiselect('bank_ids[]', $banks, $this->input->get('bank_ids')); ?>
 		</div>
 		<div class="inline-fields">
@@ -19,6 +22,8 @@
 			<label for="account_ids">
 				Account(s)
 			</label>
+			<span>It looks like you haven't set up your chart of accounts list. Do that first by <a href="<?php echo base_url('account');?>">clicking here</a></span>
+
 			<?php echo form_multiselect('account_ids[]', $accounts, $this->input->get('account_ids')); ?>
 		</div>
 

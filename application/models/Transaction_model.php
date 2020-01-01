@@ -68,7 +68,6 @@ class Transaction_model extends My_Model {
 		$this->db->order_by('date','ASC');
 		$this->db->select('transaction.*, bank.bank, bank.website');
 		$result =  $this->db->get()->result();
-		$this->_log();
 		return $result;
 	}
 

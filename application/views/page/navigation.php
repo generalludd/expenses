@@ -54,6 +54,12 @@ if ($this->session->userdata("role") == "admin") {
 		"href" => site_url('account'),
 		'class' => "btn btn-sm btn-secondary",
 	];
+	$user_buttons['banks'] = [
+		'text' => 'Banks',
+		'title' => 'View, add, edit your list of banks',
+		'href' => site_url('bank'),
+		'class' => 'btn btn-sm btn-secondary',
+	];
 	$user_buttons["user_list"] = [
 		"item" => "user",
 		"text" => "User List",
