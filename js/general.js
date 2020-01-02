@@ -4,7 +4,7 @@
 			e.preventDefault();
 			let my_url = $(this).attr("href");
 			let my_id = $(this).data("id");
-			let my_target = $(this).data('target');
+			let my_target = $(this).data('parent');
 			let form_data = {
 				id: my_id,
 				ajax: 1,
@@ -28,24 +28,27 @@
 		});
 
 		$(".edit.ajax.inline").on('click', function (e) {
-			//e.preventDefault();
+			e.preventDefault();
 			let me = $(this);
+			let my_callback = me.attr('href');
 			let my_value = me.data("value");
 			let my_id = me.data("id");
-			let my_name = me.data("name");
+			let my_name = me.data("field_name");
+			let my_user = me.data("user_id");
+			let my_target =  me.data("parent");
 			let form_data = {
 				id: my_id,
+				user_id: my_user,
 				ajax: 1,
 				field_name: my_name,
 				value: my_value,
 			};
 			$.ajax({
-				url: '/transaction/edit_value',
+				url: my_callback,
 				type: "post",
 				data: form_data,
-				dataType: "json",
 				success: function (data) {
-					//me.html(data.input_field);
+					$(my_target).html(data);
 					me.removeClass("edit").addClass("update");
 				},
 				failure: function (data) {

@@ -2,19 +2,25 @@
 $adjustments = 0;
 $grand_total = $fee_total - $expense_total; ?>
 
-<?php foreach ($payments as $payment):?>
+<?php foreach ($payments as $payment): ?>
 	<tr data-id="<?php echo $payment->fee_id; ?>">
 		<?php if ($is_admin || $is_me):
 			$nav_button = [
 				"item" => "payment",
 				"text" => "<i class=\"fas fa-file-invoice-dollar\"></i>",
 				"title" => "Pay this amount",
-				"href" => site_url("payment/pay/$payment->fee_id/$userID"),
-				"class" => "btn btn-sm btn-warning edit dialog",
+				"href" => site_url("payment/pay/"),
+				"class" => "btn btn-sm btn-warning inline ajax edit",
+				'data_attributes' => [
+					'parent' => 'payment-totals-' . $userID,
+					'field_name' => 'fee_id',
+					'value' => $payment->fee_id,
+					'user_id' => $userID,
+				],
 			];
 		endif; ?>
 		<td><?php echo $payment->type; ?></td>
-		<td><?php echo get_value($payment, 'date_paid') ? format_date($payment->date_paid):''; ?></td>
+		<td><?php echo get_value($payment, 'date_paid') ? format_date($payment->date_paid) : ''; ?></td>
 		<td class="amt">
 			-<?php echo get_as_cash($payment->amt); ?>
 			<?php if (get_value($payment, 'date_paid')): ?>
@@ -38,5 +44,6 @@ $grand_total = $fee_total - $expense_total; ?>
 </tr>
 <tr class="bottom-line">
 	<td>Amount Owed:</td>
-	<td class="amt" colspan="3"><?php echo get_as_cash($grand_total-$adjustments); ?></td>
+	<td class="amt"
+			colspan="3"><?php echo get_as_cash($grand_total - $adjustments); ?></td>
 </tr>
