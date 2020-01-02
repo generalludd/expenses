@@ -63,6 +63,9 @@ class Transaction_model extends My_Model {
 		if(array_key_exists('account_ids', $options)){
 			$this->db->where_in('account_id', $options['account_ids']);
 		}
+		if(array_key_exists('vendor',$options)){
+			$this->db->like('vendor',$options['vendor']);
+		}
 		$this->db->join('bank','transaction.bank_id = bank.id');
 		if(array_key_exists('order_by',$options)){
 			$this->db->order_by($options['order_by']->field,$options['order_by']->direction);
@@ -78,5 +81,11 @@ class Transaction_model extends My_Model {
 	function update_value($id, $field, $value){
 		$this->db->where('id', $id);
 		$this->db->update('transaction', [$field=>$value]);
+	}
+
+	function batch_update_account_ids($ids, $account_id){
+		$this->db->where_in('id',$ids);
+		$this->db->update('transaction', ['account_id'=>$account_id]);
+		$this->_log();
 	}
 }

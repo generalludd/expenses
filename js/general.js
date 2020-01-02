@@ -104,29 +104,37 @@
 			})
 
 		});
+		$('.batch-update').on('click', function(e){
+			e.preventDefault();
+			let uri_callback = $(this).data('uri');
+			console.log(uri_callback);
 
+			let data = [];
+			 $('.transaction').each(function(e){
+				data.push($(this).data('id'));
+			});
+			console.log(data);
 
-		$("table thead").addClass("theader");
-//	$("table tr:nth-child(even)").addClass("striped");
+			form_data = {
+				ajax: 1,
+				transaction_ids: data,
+				return_path: uri_callback
+			};
 
-
-		$(".show-navigation").on("click", function () {
-			//toggle_navigation(this, "show");
-
+			window_width = $(window).width();
+			$.ajax({
+				type: "post",
+				data: form_data,
+				url: $(this).attr('href'),
+				success: function (data) {
+					$("#popup").html(data);
+					$("#my_dialog").modal("show");
+				}
+			});
 		});
 
-		$(window).resize(function () {
-			if ($(window).width() > 855) {
-//toggle_navigation(this, "show");
-			} else if ($(window).width() < 855) {
-//toggle_navigation(this, "hide");
-			}
-		});
 
 
-		$(".hide-navigation").on("click", function () {
-//toggle_navigation(this, "hide");
-		});
 
 		$('.edit_preference').on("mouseup", function (event) {
 			var myUser = $('#user_id').val();

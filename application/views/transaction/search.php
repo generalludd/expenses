@@ -18,6 +18,10 @@
 			<input type="date" name="date_start" class="datefield" required value="<?php echo $this->input->get('date_start');?>"/> to
 			<input type="date" name="date_end" required value="<?php echo $this->input->get('date_end');?>"/>
 		</div>
+		<div class="inline-fields">
+			<label for="vendor">Search the vendor field</label>
+			<input type="text" name="vendor" value="<?php echo $this->input->get("vendor");?>"/>
+		</div>
 		<div class="stacked-fields">
 			<label for="account_ids">
 				Account(s)
@@ -28,8 +32,8 @@
 			<?php echo form_multiselect('account_ids[]', $accounts, $this->input->get('account_ids')); ?>
 		</div>
 		<div class="inline-fields">
-			<label for="subtotal">Subtotal by account and bank:
-				<input type="checkbox" name="subtotal" value="1" <?php echo $this->input->get('subtotal') == 1?'checked':'';?>/>
+			<label for="no_account_sort">Do NOT sort by account:
+				<input type="checkbox" name="no_account_sort" value="1" <?php echo $this->input->get('no_account_sort') == 1?'checked':'';?>/>
 			</label>
 		</div>
 

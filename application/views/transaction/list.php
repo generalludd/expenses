@@ -8,6 +8,13 @@ $buttons[] = [
 	'title' => 'Upload new transactions',
 	'class' => 'btn btn-small btn-warning edit dialog',
 ];
+$buttons[] = [
+	'text' => 'Batch Update',
+	'href' => base_url('transaction/batch_start'),
+	'title' => 'Warning: batch alter the found transactions',
+	'class' =>'btn btn-small btn-danger batch-update',
+	'data_attributes' => ['uri'=>$_SERVER['REQUEST_URI']],
+];
 echo create_button_bar($buttons);
 ?>
 <table class="table">
@@ -22,7 +29,12 @@ echo create_button_bar($buttons);
 	</tr>
 	</thead>
 	<tbody>
-	<?php 	$grand_total = 0;?>
+	<tr class="totals">
+		<td colspan="2"></td>
+		<td>Grand Total</td>
+		<td colspan="3"><?php echo get_as_cash($grand_total);?>
+		</td>
+	</tr>
 	<?php foreach ($transactions as $transaction):?>
 		<tr class="transaction"
 				data-id="<?php echo $transaction->id; ?>">
@@ -76,14 +88,7 @@ echo create_button_bar($buttons);
 				<?php endif; ?>
 			</td>
 		</tr>
-		<?php $grand_total += $transaction->amount; ?>
 	<?php endforeach; ?>
 	</tbody>
-	<tfoot>
-	<tr>
-		<td colspan="3"></td>
-		<td colspan="3"><?php echo get_as_cash($grand_total);?>
-		</td>
-	</tr>
-	</tfoot>
+
 </table>

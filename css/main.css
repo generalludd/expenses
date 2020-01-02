@@ -299,8 +299,9 @@ table.list tr.total-line td {
 	font-weight: bold;
 }
 
-table.list.totals td {
+table.list.totals td, table.table tr.totals td {
 	font-weight: bold;
+	border-bottom: 3px double #1f1d1d;
 }
 
 a.link,input.link {

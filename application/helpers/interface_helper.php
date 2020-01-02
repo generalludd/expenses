@@ -38,6 +38,7 @@ function create_button($data)
 		$href = "";
 		$title = "";
 		$target = "";
+		$data_attributes = '';
 		$text = $data["text"];
 		if(array_key_exists("type", $data)){
 			if(isset($data["type"])){
@@ -69,8 +70,15 @@ function create_button($data)
 			if(array_key_exists("id", $data)){
 				$id = "id='" . $data["id"] . "'";
 			}
+			if(array_key_exists('data_attributes', $data) && is_array($data['data_attributes'])){
+				$attributes = [];
+				foreach($data['data_attributes'] as $key => $value){
+					$attributes[] = sprintf('data-%s="%s"',$key, $value);
+				}
+				$data_attributes = implode(' ', $attributes);
+			}
 
-			$button =  "<$type $href $id $class $target $title>$text</$type>";
+			$button =  "<$type $href $id $class $target $title $data_attributes>$text</$type>";
 
 			if(array_key_exists("enclosure", $data)){
 				if(array_key_exists("type", $data["enclosure"])){

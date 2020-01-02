@@ -110,21 +110,29 @@ class Transaction extends MY_Controller {
 			'bank_ids' => $this->input->get('bank_ids'),
 			'account_ids' => $this->input->get('account_ids'),
 			'bank_id' => $this->input->get('bank_id'),
+			'vendor' => $this->input->get('vendor'),
 
 		];
-		if ($this->input->get('subtotal') == 1) {
+		if ($this->input->get('no_account_sort') != 1) {
 			$options['order_by'] = (object) [
 				'field' => 'account_id',
 				'direction' => 'ASC',
 			];
 		}
 		$this->load->model('account_model', 'account');
+		$transactions = $this->transaction->get_all($options);
+		$grand_total = 0;
+		foreach ($transactions as $transaction) {
+			$grand_total += $transaction->amount;
+		}
 		$data = [
 			'target' => 'transaction/list',
 			'banks' => $this->bank_ids,
 			'title' => 'Viewing Transactions',
 			'accounts' => get_account_pairs($this->account->get_accounts(), TRUE),
-			'transactions' => $this->transaction->get_all($options),
+			'transactions' => $transactions,
+			'grand_total' => $grand_total,
+			'account_subs' => 0,
 		];
 		$data = array_merge($options, $data);
 
@@ -160,6 +168,35 @@ class Transaction extends MY_Controller {
 		$this->transaction->update_value($id, $field_name, $value);
 		$result = $this->transaction->get($id);
 		echo json_encode($result);
+	}
+
+	public function batch_start() {
+		$this->load->model('account_model', 'account');
+
+		$data = [
+			'transaction_ids' => $this->input->post('transaction_ids'),
+			'accounts' => get_account_pairs($this->account->get_accounts(), TRUE),
+			'target' => 'transaction/batch',
+			'title' => 'Batch update transactions',
+			'return_path' => $this->input->post('return_path'),
+		];
+		if ($this->input->post('ajax')) {
+			$this->load->view('page/modal', $data);
+		}
+		else {
+			$this->load->view('index', $data);
+		}
+	}
+
+	public function batch_complete() {
+		$transaction_ids = explode(',',$this->input->post('transaction_ids'));
+		if (count($transaction_ids) > 0) {
+			$account_id = $this->input->post('account_id');
+			$this->transaction->batch_update_account_ids($transaction_ids, $account_id);
+		}
+		$return_path = $this->input->post('return_path');
+
+		redirect($return_path);
 	}
 
 }
