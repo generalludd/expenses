@@ -261,19 +261,17 @@ function toggle_navigation(me, toggle) {
 }
 
 function show_popup(me) {
-	target = $(me).attr("href");
-	form_data = {
+	let target = $(me).attr("href");
+	let form_data = {
 		ajax: 1
 	};
 
-	window_width = $(window).width();
+	let window_width = $(window).width();
 	$.ajax({
 		type: "get",
 		data: form_data,
 		url: target,
 		success: function (data) {
-			console.log(data);
-			console.log(target);
 			$("#popup").html(data);
 			$("#my_dialog").modal("show");
 		}

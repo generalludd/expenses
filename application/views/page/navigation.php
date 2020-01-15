@@ -1,13 +1,6 @@
 <?php
 
-$default_date = get_current_month();
-$default_year = $default_date["year"];
-$default_month = $default_date["month"];
-
-if ((int) $this->session->userdata("mo") && (int) $this->session->userdata("yr")) {
-	$default_year = $this->session->userdata("yr");
-	$default_month = $this->session->userdata("mo");
-}
+list($default_month, $default_year) = get_defaults($this);
 
 $month_list = get_keyed_pairs($this->variable->get("month"), ["name", "value"]);
 
@@ -32,8 +25,8 @@ $nav_buttons["next_month"] = [
 $nav_buttons["show_month"] = [
 	"item" => "expense",
 	"text" => "Select Month",
-	"href" => site_url("expense/select_month"),
-	"class" => "btn btn-sm btn-secondary",
+	"href" => site_url("expense/select"),
+	"class" => "btn btn-sm btn-secondary dialog edit",
 ];
 if ($this->session->userdata("role") == "admin") {
 	$nav_buttons["copy_month"] = [
@@ -75,13 +68,7 @@ $user_buttons["preferences"] = [
 	"href" => site_url("preference/view/" . $this->session->userdata("userID")),
 	"class" => "btn btn-sm btn-secondary",
 ];
-$user_buttons["feedback"] = [
-	"item" => "preference",
-	"text" => "Feedback",
-	"class" => "btn btn-sm btn-secondary",
-	"href" => site_url("feedback/create"),
-	"title" => "Send Feedback for Improvements or Problems",
-];
+
 $user_buttons["log_out"] = [
 	"item" => "user",
 	"text" => "Log Out",

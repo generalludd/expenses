@@ -52,9 +52,7 @@ if ($is_me) {
 					'field' => 'id',
 					'id' => $expense->id,
 					'target' => '#expense-list-' . $user->id,
-
 				],
-
 			];
 			?>
 			<tr>

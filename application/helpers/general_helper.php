@@ -252,3 +252,16 @@ function format_month($month, $year){
 $date = strtotime($year . '-' . $month . '-01 00:00:00');
 return date('F, Y', $date);
 }
+
+
+function get_defaults($source){
+	$default_date = get_current_month();
+	$default_year = $default_date["year"];
+	$default_month = $default_date["month"];
+
+	if ((int) $source->session->userdata("mo") && (int) $source->session->userdata("yr")) {
+		$default_year = $source->session->userdata("yr");
+		$default_month = $source->session->userdata("mo");
+	}
+	return [ $default_month, $default_year];
+}
