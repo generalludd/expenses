@@ -1,29 +1,27 @@
 <?php
 
-class Fee_model extends CI_Model
-{
+class Fee_model extends CI_Model {
 
 	var $type = "";
+
 	var $amt = "";
+
 	var $mo = "";
+
 	var $yr = "";
 
-	function __construct()
-	{
+	function __construct() {
 		parent::__construct();
 	}
 
 
-	function prepare_variables()
-	{
-		$variables = array("type","amt","mo","yr");
+	function prepare_variables() {
+		$variables = ["type", "amt", "mo", "yr"];
 		prepare_variables($this, $variables);
 	}
 
 
-
-	function get($id)
-	{
+	function get($id) {
 		$this->db->where("id", $id);
 		$this->db->from("fee");
 		$result = $this->db->get()->row();
@@ -31,8 +29,7 @@ class Fee_model extends CI_Model
 	}
 
 
-
-	function distinct($field){
+	function distinct($field) {
 		$this->db->select($field);
 		$this->db->distinct();
 		$this->db->from("fee");
@@ -41,12 +38,11 @@ class Fee_model extends CI_Model
 	}
 
 
-	function get_by_month($mo,$yr, $type = NULL)
-	{
+	function get_by_month($mo, $yr, $type = NULL) {
 
 		$this->db->where("mo", $mo);
 		$this->db->where("yr", $yr);
-		if(isset($type)){
+		if (isset($type)) {
 			$this->db->where("type", $type);
 		}
 		$this->db->select("fee.amt, fee.mo,fee.yr, fee.type, fee.id");
@@ -57,16 +53,15 @@ class Fee_model extends CI_Model
 		return $result;
 	}
 
-	function get_totals($mo= NULL,$yr = NULL, $type = NULL)
-	{
-		if($mo){
-			$this->db->where("mo",$mo);
+	function get_totals($mo = NULL, $yr = NULL, $type = NULL) {
+		if ($mo) {
+			$this->db->where("mo", $mo);
 		}
-		if($yr){
-			$this->db->where("yr",$yr);
+		if ($yr) {
+			$this->db->where("yr", $yr);
 		}
-		if($type){
-			$this->db->where("type",$type);
+		if ($type) {
+			$this->db->where("type", $type);
 		}
 		$this->db->select("sum(amt) as total");
 		$this->db->from("fee");
@@ -75,12 +70,12 @@ class Fee_model extends CI_Model
 	}
 
 
-	function count_months($yr = NULL)
-	{
-		if($yr){
-			$this->db->select("count(distinct(`mo`)) as count", false);
-		}else{
-			$this->db->select("count(distinct(concat(`mo`,`yr`))) as count",false);
+	function count_months($yr = NULL) {
+		if ($yr) {
+			$this->db->select("count(distinct(`mo`)) as count", FALSE);
+		}
+		else {
+			$this->db->select("count(distinct(concat(`mo`,`yr`))) as count", FALSE);
 		}
 		$this->db->from("fee");
 		$result = $this->db->get()->row();
@@ -88,8 +83,7 @@ class Fee_model extends CI_Model
 	}
 
 
-	function insert()
-	{
+	function insert() {
 		$this->prepare_variables();
 		$this->db->insert("fee", $this);
 		$id = $this->db->insert_id();
@@ -100,8 +94,7 @@ class Fee_model extends CI_Model
 	}
 
 
-	function update($id)
-	{
+	function update($id) {
 
 		$this->db->where("id", $id);
 		$this->prepare_variables();
@@ -109,10 +102,9 @@ class Fee_model extends CI_Model
 
 	}
 
-	function get_current_month()
-	{
-		$this->db->order_by("yr","DESC");
-		$this->db->order_by("mo","DESC");
+	function get_current_month() {
+		$this->db->order_by("yr", "DESC");
+		$this->db->order_by("mo", "DESC");
 		$this->db->limit(1);
 		$this->db->from("fee");
 		$this->db->select("mo,yr");
@@ -120,38 +112,39 @@ class Fee_model extends CI_Model
 		return $result;
 	}
 
-	function copy_month($mo,$yr,$target_mo = NULL, $target_yr = NULL)
-	{
-		if(($target_mo == $mo || $target_mo == NULL ) AND ($target_yr == NULL)){
-			switch($mo){
+	function copy_month($mo, $yr, $target_mo = NULL, $target_yr = NULL) {
+		if (($target_mo == $mo || $target_mo == NULL) AND ($target_yr == NULL)) {
+			switch ($mo) {
 				case 12:
 					$month = 1;
-					$year = $yr +1;
+					$year = $yr + 1;
 					break;
 				default:
 					$month = $mo + 1;
 					$year = $yr;
 			}
-		}else{
+		}
+		else {
 			$year = $target_yr;
 			$month = $target_mo;
 		}
 		$values = $this->get_by_month($mo, $yr);
-		foreach($values as $value){
+		foreach ($values as $value) {
 			$query = "INSERT INTO `fee` (`type`,`amt`,`mo`,`yr`) VALUES(" .
-			$this->db->escape($value->type) . "," .
-			$this->db->escape($value->amt) . "," .
-			$this->db->escape($month) . "," .
-			$this->db->escape($year) . ")";
+				$this->db->escape($value->type) . "," .
+				$this->db->escape($value->amt) . "," .
+				$this->db->escape($month) . "," .
+				$this->db->escape($year) . ")";
 			$this->db->query($query);
 		}
 
 
 	}
 
-	function delete($id){
-	    $this->db->where("id",$id);
-	    $this->db->delete("fee");
-    }
+	function delete() {
+		$id = $this->input->post('id');
+		$this->db->where("id", $id);
+		$this->db->delete("fee");
+	}
 
 }

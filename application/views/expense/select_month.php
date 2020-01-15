@@ -8,13 +8,13 @@ $buttons[] = array(
         "item" => "expense",
         "text" => "Go",
         "type" => "span",
-        "class" => "button btn btn-sm btn-primary go-to-month"
+        "class" => "btn btn-sm btn-primary go-to-month"
 );
 $buttons[] = array(
         "item" => "expense",
         "text" => "Current Month",
         "type" => "span",
-        "class" => "button btn btn-sm btn-primary show-current-month"
+        "class" => "btn btn-sm btn-primary show-current-month"
 );
 
 ?>

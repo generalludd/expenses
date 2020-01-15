@@ -19,5 +19,5 @@
 <input type="text" name="amt" id="amt" value="<?php echo get_value($fee,"amt","0.00");?>" required size="6" maxlength="8"/>
 </p>
 <p>
-<input type="submit" value="<?php echo ucfirst($action);?>" class="button"/></p>
+<input type="submit" value="<?php echo ucfirst($action);?>" class="btn btn-sm btn-warning"/></p>
 </form>

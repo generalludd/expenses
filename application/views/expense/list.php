@@ -24,25 +24,48 @@ if ($is_me) {
 		print create_button_bar($nav_buttons);
 	endif;
 	?>
-	<table class="list table">
+	<table id="expense-list-<?php echo $user->id; ?>" class="list table">
 		<thead>
 		<tr>
 			<th>Type</th>
 			<th>Date</th>
-			<th>Amount</th>
+			<th class="amt">Amount</th>
 		</tr>
 		</thead>
 		<tbody>
 		<?php
 		foreach ($user->expenses as $expense): ?>
+			<?php $edit_button = [
+				'item' => 'expense',
+				'text'=>'<i class="fas fa-edit"></i>',
+				'href' => base_url('expense/edit/' . $expense->id),
+				'class' => 'edit dialog btn btn-sm btn-secondary',
+				'title' => 'Edit ' . $expense->description,
+			];
+			$delete_button = [
+				'item' => 'payment',
+				'href' => base_url("expense/delete"),
+				'text' => '<i class="far fa-trash-alt"></i>',
+				'title' => 'Delete this fee',
+				'class' => 'btn-sm btn btn-danger delete inline',
+				'data_attributes' => [
+					'field' => 'id',
+					'id' => $expense->id,
+					'target' => '#expense-list-' . $user->id,
+
+				],
+
+			];
+			?>
 			<tr>
-				<td><a
-						class=' expense dialog <?php echo $is_me || $is_admin ? 'edit' : ''; ?>'
-						href="<?php echo site_url("expense/edit/$expense->id"); ?>"
-						title='<?php echo $expense->description; ?>'><?php echo $expense->type; ?></a>
+				<td>
+					<?php print ($is_me || $is_admin)?create_button($edit_button):NULL; ?>
+				<?php echo $expense->type . ': ' . $expense->description; ?>
 				</td>
 				<td><?php echo format_date($expense->dt, "no-year"); ?></td>
-				<td class='amt'><?php echo get_as_cash($expense->amt); ?></td>
+				<td class='amt'><?php echo get_as_cash($expense->amt); ?>
+					<?php print create_button($delete_button);
+					?></td>
 			</tr>
 
 		<?php endforeach; ?>

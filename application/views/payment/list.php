@@ -3,7 +3,7 @@ $adjustments = 0;
 $grand_total = $fee_total - $expense_total; ?>
 
 <?php foreach ($payments as $payment): ?>
-	<tr data-id="<?php echo $payment->fee_id; ?>">
+	<tr>
 		<?php if ($is_admin || $is_me):
 			$nav_button = [
 				"item" => "payment",
@@ -12,11 +12,23 @@ $grand_total = $fee_total - $expense_total; ?>
 				"href" => site_url("payment/pay/"),
 				"class" => "btn btn-sm btn-warning inline ajax edit",
 				'data_attributes' => [
-					'parent' => 'payment-totals-' . $userID,
+					'target' => '#payment-totals-' . $userID,
 					'field_name' => 'fee_id',
 					'value' => $payment->fee_id,
 					'user_id' => $userID,
 				],
+			];
+			$delete_button = [
+				'item' => 'payment',
+				'href' => base_url('payment/delete'),
+				'text' => '<i class="far fa-trash-alt"></i>',
+				'title' => 'Delete this payment',
+				'class'=>'btn btn-sm btn-danger delete ajax inline',
+				'data_attributes' => [
+					'target' => '#payment-totals-' . $userID,
+					'id' => $payment->payment_id,
+				],
+
 			];
 		endif; ?>
 		<td><?php echo $payment->type; ?></td>
@@ -25,12 +37,7 @@ $grand_total = $fee_total - $expense_total; ?>
 			-<?php echo get_as_cash($payment->amt); ?>
 			<?php if (get_value($payment, 'date_paid')): ?>
 				<?php $adjustments += $payment->amt; ?>
-				<a href="<?php echo base_url("payment/delete"); ?>"
-					 data-id="<?php echo $payment->payment_id; ?>"
-					 data-parent="payment-totals-<?php echo $userID; ?>"
-					 class="button btn-sm btn btn-danger delete ajax inline"
-					 title="Delete this Payment"><i
-						class="far fa-trash-alt"></i></a>
+				<?php echo create_button($delete_button); ?>
 			<?php else: ?>
 				<?php echo create_button($nav_button); ?>
 			<?php endif; ?>

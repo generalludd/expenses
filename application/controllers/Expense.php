@@ -121,9 +121,8 @@ class Expense extends My_Controller
 
 	}
 
-	function edit()
+	function edit($id)
 	{
-		$id = $this->uri->segment(3);
 		$data["action"] = "update";
 		// if user is admin, get a user list keyed pair for generating a menu
 		// for users.
@@ -170,12 +169,17 @@ class Expense extends My_Controller
 		$id = $this->input->post("id");
 		$month = $this->input->post("mo");
 		$year = $this->input->post("yr");
-		if ($this->input->post("action") == "update") {
-			$this->expense->update($id);
-		} elseif ($this->input->post("action") == "delete") {
-			$this->expense->delete($id);
-		}
+		$this->expense->update($id);
 		redirect("expense/show_all/$month/$year");
+	}
+
+	function delete(){
+		$id = $this->input->post('id');
+		$this->expense->delete($id);
+		if($this->input->post('ajax')){
+
+		}
+
 	}
 
 	function select_month()

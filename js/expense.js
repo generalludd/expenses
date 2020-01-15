@@ -43,19 +43,7 @@ $(document).ready(function(){
 		}
 			
 	});
-	
-	
 
-	
-	
-	$(".expense-delete").on("click", function(){
-		var action = confirm("Are you sure you want to delete this? It cannot be undone!");
-		if(action) {
-			$("#action").val("delete");
-			$("#expense_editor").submit();
-		}
-		
-	});
 	
 	
 	

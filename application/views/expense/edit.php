@@ -13,8 +13,6 @@ if ($this->session->userdata("yr")) {
 			action="<?php echo site_url("expense/$action"); ?>" method="post">
 	<input type="hidden" name="id" id="id"
 				 value="<?php echo get_value($expense, "id"); ?>"/>
-	<input type="hidden" name="action" id="action"
-				 value="<?php echo $action; ?>"/>
 	<?php if ($this->session->userdata("role") == "admin"): ?>
 		<label for="user_id">User</label>
 		<?php echo form_dropdown("user_id", $users, get_value($expense, "user_id", $user_id), "id='user_id'"); ?>
@@ -51,11 +49,7 @@ if ($this->session->userdata("yr")) {
 	</p>
 	<div class="button-box">
 		<input type="submit" value="<?php echo ucfirst($action); ?>"
-					 class="button"/>
-		<?php if ($action == "update"): ?>
-			<span
-				class="delete button expense-delete btn-danger btn btn-sm">Delete</span>
-		<?php endif; ?>
+					 class="btn btn-sm btn-warning"/>
 	</div>
 
 </form>
