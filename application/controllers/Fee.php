@@ -100,7 +100,7 @@ class Fee extends MY_Controller {
 			$month = $this->input->post("mo");
 			$year = $this->input->post("yr");
 			$id = $this->fee->insert();
-			redirect("expense/show_all/$month/$year");
+			redirect("expense/show/$month/$year");
 		}
 		else {
 			$data["message"] = "You are not authorized to create fee entries";
@@ -116,7 +116,7 @@ class Fee extends MY_Controller {
 			$year = $this->input->post("yr");
 			$id = $this->input->post("id");
 			$this->fee->update($id);
-			redirect("expense/show_all/$month/$year");
+			redirect("expense/show/$month/$year");
 		}
 		else {
 			$data["message"] = "You are not authorized to create fee entries";
@@ -132,7 +132,7 @@ class Fee extends MY_Controller {
 		if ($current->mo < 10) {
 			$current->mo = "0$current->mo";
 		}
-		redirect("expense/show_all/$current->mo/$current->yr");
+		redirect("expense/show/$current->mo/$current->yr");
 
 	}
 

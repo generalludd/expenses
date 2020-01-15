@@ -1,217 +1,219 @@
 ﻿$(document).ready(function () {
-
-		$(".delete.ajax.inline").on("click", function (e) {
-			e.preventDefault();
-			let my_url = $(this).attr("href");
-			let my_id = $(this).data("id");
-			let my_target = $(this).data('parent');
-			let form_data = {
-				id: my_id,
-				ajax: 1,
-			};
-			let question = confirm("Are you sure you want to delete this? This cannot be undone!");
-			if (question) {
-				$.ajax({
-					url: my_url,
-					type: "post",
-					data: form_data,
-					success: function (data) {
-						$('#' + my_target).html(data);
-						console.log(data);
-					},
-					failure: function (data) {
-						console.log(data);
-					}
-
-				})
-			}
-		});
-
-		$(".edit.ajax.inline").on('click', function (e) {
-			e.preventDefault();
-			let me = $(this);
-			let my_callback = me.attr('href');
-			let my_value = me.data("value");
-			let my_id = me.data("id");
-			let my_name = me.data("field_name");
-			let my_user = me.data("user_id");
-			let my_target =  me.data("parent");
-			let form_data = {
-				id: my_id,
-				user_id: my_user,
-				ajax: 1,
-				field_name: my_name,
-				value: my_value,
-			};
+	$(document).on("click", ".delete.inline", function (e) {
+		e.preventDefault();
+		let my_url = $(this).attr("href");
+		let my_id = $(this).data("id");
+		let my_target = $(this).data('target');
+		let form_data = {
+			id: my_id,
+			ajax: 1,
+		};
+		let question = confirm("Are you sure you want to delete this? This cannot be undone!");
+		if (question) {
 			$.ajax({
-				url: my_callback,
+				url: my_url,
 				type: "post",
 				data: form_data,
 				success: function (data) {
 					$(my_target).html(data);
-					me.removeClass("edit").addClass("update");
+					console.log(data);
 				},
 				failure: function (data) {
 					console.log(data);
 				}
-			});
 
-		});
-		$(document).on("change", ".ajax.inline select", function (e) {
-			let me = $(this);
-			let my_id = me.data("id");
-			let my_value = me.val();
-			let my_name = me.data("name");
-			let form_data = {
-				id: my_id,
-				ajax: 1,
-				field_name: my_name,
-				value: my_value
-			};
-			$.ajax({
-				url: '/transaction/update_value',
-				type: "post",
-				data: form_data,
-				success: function (data) {
-					//my_parent.html(data.my_value);
-				},
-				failure: function(data){
-					console.log(data);
-				}
 			})
+		}
+	});
 
-		});
-		$(document).on("change", ".ajax.inline input", function (e) {
-			let me = $(this);
-			let my_value = me.val();
-			let my_id = me.data("id");
-			let my_name = me.data("name");
-			let form_data = {
-				id: my_id,
-				ajax: 1,
-				field_name: my_name,
-				value: my_value
-			};
-			$.ajax({
-				url: '/transaction/update_value',
-				type: "post",
-				data: form_data,
-				success: function (data) {
-					me.animate({
-						color: "green"
-					}, 1500);
-				},
-				failure: function(data){
-					console.log(data);
-				}
-			})
-
-		});
-		$('.batch-update').on('click', function(e){
-			e.preventDefault();
-			let uri_callback = $(this).data('uri');
-			console.log(uri_callback);
-
-			let data = [];
-			 $('.transaction').each(function(e){
-				data.push($(this).data('id'));
-			});
-			console.log(data);
-
-			form_data = {
-				ajax: 1,
-				transaction_ids: data,
-				return_path: uri_callback
-			};
-
-			window_width = $(window).width();
-			$.ajax({
-				type: "post",
-				data: form_data,
-				url: $(this).attr('href'),
-				success: function (data) {
-					$("#popup").html(data);
-					$("#my_dialog").modal("show");
-				}
-			});
-		});
-
-
-
-
-		$('.edit_preference').on("mouseup", function (event) {
-			var myUser = $('#user_id').val();
-			var myType = this.id;
-			var myValue = $('#' + this.id).val();
-			var myTarget = "stat" + myType;
-			$('#' + myTarget).html("").show();
-			var myUrl = base_url + "index.php/preference/update/";
-			var form_data = {
-				user_id: myUser,
-				type: myType,
-				value: myValue,
-				ajax: 1
-			};
-			$.ajax({
-				url: myUrl,
-				type: "POST",
-				data: form_data,
-				success: function (data) {
-					$('#' + myTarget).html(data).fadeOut(3000);
-				}
-			});
-		});
-
-
-		$(".menu_item_edit").on("click", function () {
-			myId = this.id.split("_")[1];
-			myUrl = base_url + "index.php/menu/edit_item/" + myId;
-			$.ajax({
-				type: "GET",
-				url: myUrl,
-				success: function (data) {
-					showPopup("Edit Menu Item", data, "auto");
-				}
-			});
-		});
-
-
-		$(".menu_item_add").on("click", function () {
-			myUrl = base_url + "index.php/menu/create_item/";
-			$.ajax({
-				type: "GET",
-				url: myUrl,
-				success: function (data) {
-					showPopup("Create Menu Item", data, "auto");
-				}
-			});
-		});
-
-
-		$("#browser_warning").on('click',
-			function () {
-				$(".notice").fadeOut();
+	$(document).on('click', ".edit.inline", function (e) {
+		e.preventDefault();
+		let me = $(this);
+		let my_callback = me.attr('href');
+		let my_value = me.data("value");
+		let my_id = me.data("id");
+		let my_name = me.data("field_name");
+		let my_user = me.data("user_id");
+		let my_target = me.data("target");
+		let form_data = {
+			id: my_id,
+			user_id: my_user,
+			ajax: 1,
+			field_name: my_name,
+			value: my_value,
+		};
+		$.ajax({
+			url: my_callback,
+			type: "post",
+			data: form_data,
+			success: function (data) {
+				$(my_target).html(data);
+				me.removeClass("edit").addClass("update");
+			},
+			failure: function (data) {
+				console.log(data);
 			}
-		);
-
-		$(".new.dialog,.edit.dialog").on("click", function (e) {
-			e.preventDefault();
-			show_popup(this);
-
 		});
 
-		$("select").on("change", function () {
-			let my_parent = $(this).parents(".select-block");
-			if ($(this).val() == "other") {
-				let my_name = $(this).attr("name");
-				my_parent.html("<input type='text' size='15' name='" + my_name + "'  id='" + my_name + "' value=''/>");
-				my_parent.children("input#" + my_name).focus();
+	});
+	$(document).on("change", ".ajax.inline select", function (e) {
+		let me = $(this);
+		let my_id = me.data("id");
+		let my_value = me.val();
+		let my_name = me.data("name");
+		let form_data = {
+			id: my_id,
+			ajax: 1,
+			field_name: my_name,
+			value: my_value
+		};
+		$.ajax({
+			url: '/transaction/update_value',
+			type: "post",
+			data: form_data,
+			success: function (data) {
+				//my_parent.html(data.my_value);
+			},
+			failure: function (data) {
+				console.log(data);
 			}
+		})
 
+	});
+	$(document).on("change", ".ajax.inline input", function (e) {
+		let me = $(this);
+		let my_value = me.val();
+		let my_id = me.data("id");
+		let my_name = me.data("name");
+		let form_data = {
+			id: my_id,
+			ajax: 1,
+			field_name: my_name,
+			value: my_value
+		};
+		$.ajax({
+			url: '/transaction/update_value',
+			type: "post",
+			data: form_data,
+			success: function (data) {
+				me.animate({
+					color: "green"
+				}, 1500);
+			},
+			failure: function (data) {
+				console.log(data);
+			}
+		})
+
+	});
+	$(document).on('click', '.batch-update', function (e) {
+		e.preventDefault();
+		let uri_callback = $(this).data('uri');
+		console.log(uri_callback);
+
+		let data = [];
+		$('.transaction').each(function (e) {
+			data.push($(this).data('id'));
 		});
-	}//end document function
-);//end ready
+		console.log(data);
 
+		let form_data = {
+			ajax: 1,
+			transaction_ids: data,
+			return_path: uri_callback
+		};
+
+		let window_width = $(window).width();
+		$.ajax({
+			type: "post",
+			data: form_data,
+			url: $(this).attr('href'),
+			success: function (data) {
+				$("#popup").html(data);
+				$("#my_dialog").modal("show");
+			}
+		});
+	});
+
+	$(document).on("click",".button.delete.form", function(e){
+		e.preventDefault();
+		let my_form = $(this).data('form');
+		let my_action = $(this).data('action');
+		let my_question = confirm("Are you sure you want to delete this? This cannot be undone!");
+
+	});
+
+	$(document).on("mouseup", ".edit_preference", function (event) {
+		let myUser = $('#user_id').val();
+		let myType = this.id;
+		let myValue = $('#' + this.id).val();
+		let myTarget = "stat" + myType;
+		$('#' + myTarget).html("").show();
+		var myUrl = base_url + "index.php/preference/update/";
+		var form_data = {
+			user_id: myUser,
+			type: myType,
+			value: myValue,
+			ajax: 1
+		};
+		$.ajax({
+			url: myUrl,
+			type: "POST",
+			data: form_data,
+			success: function (data) {
+				$('#' + myTarget).html(data).fadeOut(3000);
+			}
+		});
+	});
+
+
+	$(document).on("click", ".menu_item_edit", function () {
+		myId = this.id.split("_")[1];
+		myUrl = base_url + "index.php/menu/edit_item/" + myId;
+		$.ajax({
+			type: "GET",
+			url: myUrl,
+			success: function (data) {
+				showPopup("Edit Menu Item", data, "auto");
+			}
+		});
+	});
+
+
+	$(document).on("click", ".menu_item_add", function () {
+		myUrl = base_url + "index.php/menu/create_item/";
+		$.ajax({
+			type: "GET",
+			url: myUrl,
+			success: function (data) {
+				showPopup("Create Menu Item", data, "auto");
+			}
+		});
+	});
+
+
+	$(document).on('click', "#browser_warning",
+		function () {
+			$(".notice").fadeOut();
+		}
+	);
+
+	$(document).on("click", ".new.dialog,.edit.dialog", function (e) {
+		e.preventDefault();
+		show_popup(this);
+
+	});
+
+	$("select").on("change", function () {
+		let my_parent = $(this).parents(".select-block");
+		if ($(this).val() == "other") {
+			let my_name = $(this).attr("name");
+			my_parent.html("<input type='text' size='15' name='" + my_name + "'  id='" + my_name + "' value=''/>");
+			my_parent.children("input#" + my_name).focus();
+		}
+
+	});
+});
 
 function showPopup(myTitle, data, popupWidth, x, y) {
 	if (!popupWidth) {
@@ -259,19 +261,17 @@ function toggle_navigation(me, toggle) {
 }
 
 function show_popup(me) {
-	target = $(me).attr("href");
-	form_data = {
+	let target = $(me).attr("href");
+	let form_data = {
 		ajax: 1
 	};
 
-	window_width = $(window).width();
+	let window_width = $(window).width();
 	$.ajax({
 		type: "get",
 		data: form_data,
 		url: target,
 		success: function (data) {
-			console.log(data);
-			console.log(target);
 			$("#popup").html(data);
 			$("#my_dialog").modal("show");
 		}

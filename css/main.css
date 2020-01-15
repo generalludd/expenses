@@ -318,7 +318,7 @@ a.link:hover,input.link:hover {
 	padding-left: 5px;
 }
 
-td.amt {
+td.amt, th.amt {
 	text-align: right;
 }
 

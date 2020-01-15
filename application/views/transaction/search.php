@@ -37,6 +37,6 @@
 			</label>
 		</div>
 
-		<input type="submit" class="btn btn-small btn-secondary" value="Search" title="Search transactions"/>
+		<input type="submit" class="btn btn-sm btn-secondary" value="Search" title="Search transactions"/>
 	</form>
 </div>
