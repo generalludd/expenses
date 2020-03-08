@@ -19,6 +19,7 @@
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/popup.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/mobile.css");?>" />
 <link type="text/css" rel="stylesheet" media="print" href="<?php echo cached_base_url("css/print.css");?>" />
+<link type="text/css" rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
 <!-- jquery scripts -->
 <script type="text/javascript">
 var base_url = '<?php echo base_url();?>';
@@ -27,7 +28,7 @@ var base_url = '<?php echo base_url();?>';
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-
+<script type="text/javascript" src="<?php print base_url("js/highcharts/highcharts.js");?>"></script>
 <!-- General Script  -->
 <script type="text/javascript" src="<?php echo cached_base_url("js/general.js");?>"></script>
 <script type="text/javascript" src="<?php echo cached_base_url("js/expense.js");?>"></script>

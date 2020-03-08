@@ -15,7 +15,8 @@ $buttons[] = [
 	'class' =>'btn btn-sm btn-danger batch-update',
 	'data_attributes' => ['uri'=>$_SERVER['REQUEST_URI']],
 ];
-echo create_button_bar($buttons);
+print create_button_bar($buttons);
+print $chart;
 ?>
 <table class="table">
 	<thead>

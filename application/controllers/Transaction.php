@@ -23,6 +23,8 @@ class Transaction extends MY_Controller {
 	public function search() {
 
 		$this->load->model('account_model', 'account');
+
+
 		$data = [
 			'target' => 'transaction/search',
 			'title' => 'Search Transactions',
@@ -103,15 +105,33 @@ class Transaction extends MY_Controller {
 	}
 
 	public function view() {
+		$this->load->model('account_model', 'account');
 
+		$date_start = date('Y-m-d', strtotime($this->input->get('date_start')));
+		$date_end = date('Y-m-d', strtotime($this->input->get('date_end')));
+		$chart_options = [
+			'date_range' => [
+				'start' => $date_start,
+				'end' => $date_end,
+			],
+			'accounts' => $account_ids = $this->input->get('account_ids'),
+		];
+		$totals = $this->account->get_category_totals($chart_options);
+
+		$chart_data = [
+			'title' => 'Chart',
+			'target' => 'account/chart',
+			'totals' => $totals,
+			'label' => 'Accounts',
+		];
+		$chart = $this->load->view('account/chart', $chart_data, TRUE);
 		$options = [
-			'date_start' => date('Y-m-d', strtotime($this->input->get('date_start'))),
-			'date_end' => date('Y-m-d', strtotime($this->input->get('date_end'))),
+			'date_start' => $date_start,
+			'date_end' => $date_end,
 			'bank_ids' => $this->input->get('bank_ids'),
 			'account_ids' => $this->input->get('account_ids'),
 			'bank_id' => $this->input->get('bank_id'),
 			'vendor' => $this->input->get('vendor'),
-
 		];
 		if ($this->input->get('no_account_sort') != 1) {
 			$options['order_by'] = (object) [
@@ -119,7 +139,6 @@ class Transaction extends MY_Controller {
 				'direction' => 'ASC',
 			];
 		}
-		$this->load->model('account_model', 'account');
 		$transactions = $this->transaction->get_all($options);
 		$grand_total = 0;
 		foreach ($transactions as $transaction) {
@@ -133,12 +152,10 @@ class Transaction extends MY_Controller {
 			'transactions' => $transactions,
 			'grand_total' => $grand_total,
 			'account_subs' => 0,
+			'chart' => $chart,
 		];
 		$data = array_merge($options, $data);
-
-
 		$this->load->view('index', $data);
-
 	}
 
 	public function edit_value() {
@@ -189,7 +206,7 @@ class Transaction extends MY_Controller {
 	}
 
 	public function batch_complete() {
-		$transaction_ids = explode(',',$this->input->post('transaction_ids'));
+		$transaction_ids = explode(',', $this->input->post('transaction_ids'));
 		if (count($transaction_ids) > 0) {
 			$account_id = $this->input->post('account_id');
 			$this->transaction->batch_update_account_ids($transaction_ids, $account_id);
