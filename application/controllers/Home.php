@@ -7,7 +7,6 @@ class Home extends MY_Controller
 	function __construct()
 	{
 		parent::__construct();
-		 
 	}
 
 
@@ -47,6 +46,8 @@ class Home extends MY_Controller
 		$errors = "An email has been sent to your account with instructions for resetting your password.";
 
 	}
+
+
 	
 
 }

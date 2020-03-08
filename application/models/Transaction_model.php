@@ -74,7 +74,6 @@ class Transaction_model extends My_Model {
 		$this->db->order_by('date','ASC');
 		$this->db->select('transaction.*, bank.bank, bank.website');
 		$result =  $this->db->get()->result();
-		$this->_log();
 		return $result;
 	}
 
@@ -86,6 +85,5 @@ class Transaction_model extends My_Model {
 	function batch_update_account_ids($ids, $account_id){
 		$this->db->where_in('id',$ids);
 		$this->db->update('transaction', ['account_id'=>$account_id]);
-		$this->_log();
 	}
 }
