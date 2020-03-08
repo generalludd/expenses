@@ -1,23 +1,10 @@
 <h2><?php print $title; ?></h2>
-
+<div class="info-block">
 <?php
 $this->load->view('transaction/search');
-$buttons[] = [
-	'text' => 'Upload',
-	'href' => base_url('transaction/upload'),
-	'title' => 'Upload new transactions',
-	'class' => 'btn btn-sm btn-warning edit dialog',
-];
-$buttons[] = [
-	'text' => 'Batch Update',
-	'href' => base_url('transaction/batch_start'),
-	'title' => 'Warning: batch alter the found transactions',
-	'class' =>'btn btn-sm btn-danger batch-update',
-	'data_attributes' => ['uri'=>$_SERVER['REQUEST_URI']],
-];
-print create_button_bar($buttons);
 print $chart;
 ?>
+</div>
 <table class="table">
 	<thead>
 	<tr>

@@ -55,7 +55,6 @@ class Account_model extends MY_Model {
 		}
 		$this->db->group_by('account_id');
 		$result =  $this->db->get()->result();
-		$this->_log();
 		return $result;
 	}
 }

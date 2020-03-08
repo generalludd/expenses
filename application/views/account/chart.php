@@ -8,7 +8,7 @@ foreach($totals as $total){
 }
 ?>
 <?php if(!empty($data)):?>
-<div id="container" style="width:100%; height:400px;"></div>
+<div id="container" class="chart"></div>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function () {
 		var myChart = Highcharts.chart('container', {

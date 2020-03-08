@@ -354,3 +354,26 @@ td.amt, th.amt {
 	width: 50%;
 	padding: 1rem;
 }
+
+.info-block {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.info-block .chart{
+	width: 50%;
+	height: 400px;
+}
+
+@media screen and (max-width:768px){
+	.info-block {
+		flex-flow: column wrap;
+	}
+	.info-block .search-block{
+		width: 100%;
+	}
+	.info-block .chart {
+		width: 100%;
+		height: 400px;
+	}
+}
