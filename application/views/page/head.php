@@ -20,6 +20,11 @@
 <link type="text/css" rel="stylesheet" media="all" href="<?php echo cached_base_url("css/mobile.css");?>" />
 <link type="text/css" rel="stylesheet" media="print" href="<?php echo cached_base_url("css/print.css");?>" />
 <link type="text/css" rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"/>
+<?php if(isset($styles)):?>
+<?php foreach($styles as $style):?>
+<link type="text/css" rel="stylesheet" media="<?php print $style->media;?>" href="<?php print $style->url;?>"/>
+<?php endforeach; ?>
+<?php endif; ?>
 <!-- jquery scripts -->
 <script type="text/javascript">
 var base_url = '<?php echo base_url();?>';
@@ -38,4 +43,12 @@ var base_url = '<?php echo base_url();?>';
 <script type="text/javascript" src="<?php echo cached_base_url("js/feedback.js");?>"></script>
 
 <script type="text/javascript" src="<?php echo cached_base_url("js/password.js");?>"></script>
-
+<?php if(isset($scripts)):?>
+<?php foreach($scripts as $script):?>
+	<?php if($script->url):?>
+<script type="text/javascript" src="<?php print $script->url;?>"></script>
+	<?php else: ?>
+	<script type="text/javascript"><?php print $script->code; ?></script>
+	<?php endif;?>
+<?php endforeach;?>
+<?php endif; ?>

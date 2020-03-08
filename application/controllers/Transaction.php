@@ -154,6 +154,17 @@ class Transaction extends MY_Controller {
 			'account_subs' => 0,
 			'chart' => $chart,
 		];
+		$data['scripts'][] = (object)[
+			'url' => base_url('js/chosen/chosen.jquery.min.js'),
+		];
+		$data['scripts'][] = (object) [
+			'url' => FALSE,
+			'code'=> '$(".chosen-select").chosen();',
+		];
+		$data['styles'][] = (object)[
+			'url' => base_url('js/chosen/chosen.css'),
+			'media' => 'screen',
+		];
 		$data = array_merge($options, $data);
 		$this->load->view('index', $data);
 	}

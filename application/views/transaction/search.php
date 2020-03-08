@@ -11,7 +11,7 @@
 			<?php if(count($banks)==1):?>
 			<span>It looks like you haven't set up your bank list yet. Do that first by <a href="<?php echo base_url('bank');?>">clicking here</a></span>
 			<?php endif;?>
-			<?php echo form_multiselect('bank_ids[]', $banks, $this->input->get('bank_ids')); ?>
+			<?php echo form_multiselect('bank_ids[]', $banks, $this->input->get('bank_ids'),['class'=>'chosen-select']); ?>
 		</div>
 		<div class="inline-fields">
 			<label for="date_start">Date Range</label>
@@ -29,7 +29,7 @@
 			<?php if(count($accounts)==1):?>
 			<span>It looks like you haven't set up your chart of accounts list. Do that first by <a href="<?php echo base_url('account');?>">clicking here</a></span>
 			<?php endif;?>
-			<?php echo form_multiselect('account_ids[]', $accounts, $this->input->get('account_ids')); ?>
+			<?php echo form_multiselect('account_ids[]', $accounts, $this->input->get('account_ids'),['class'=>'chosen-select']); ?>
 		</div>
 		<div class="inline-fields">
 			<label for="no_account_sort">Do NOT sort by account:
@@ -40,3 +40,4 @@
 		<input type="submit" class="btn btn-sm btn-secondary" value="Search" title="Search transactions"/>
 	</form>
 </div>
+<script type="text/javascript">$(".chosen-select").chosen();</script>
