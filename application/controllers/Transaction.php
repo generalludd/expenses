@@ -114,9 +114,7 @@ class Transaction extends MY_Controller {
 				'start' => $date_start,
 				'end' => $date_end,
 			],
-			'account_range' => [
-				'start' => 500,
-			],
+			'accounts' => $account_ids = $this->input->get('account_ids'),
 		];
 		$totals = $this->account->get_category_totals($chart_options);
 

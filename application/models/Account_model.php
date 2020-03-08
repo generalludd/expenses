@@ -50,9 +50,12 @@ class Account_model extends MY_Model {
 				$this->db->where('account_id <=', $account_range['end']);
 			}
 		}
+		elseif(array_key_exists('accounts',$options)){
+			$this->db->where_in('account_id',$options['accounts']);
+		}
 		$this->db->group_by('account_id');
 		$result =  $this->db->get()->result();
 		$this->_log();
-return $result;
+		return $result;
 	}
 }

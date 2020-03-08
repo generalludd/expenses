@@ -73,6 +73,8 @@ class Account extends MY_Controller {
 		$this->input->get('start_account'):
 		500;
 		$end_account = $this->input->get('end_account');
+		$account_ids = $this->input->get('account_ids');
+		var_dump($account_ids);
 		$options = [
 			'date_range' => [
 				'start' => $start_date,
