@@ -167,19 +167,6 @@
 	});
 
 
-	$(document).on("click", ".menu_item_edit", function () {
-		myId = this.id.split("_")[1];
-		myUrl = base_url + "index.php/menu/edit_item/" + myId;
-		$.ajax({
-			type: "GET",
-			url: myUrl,
-			success: function (data) {
-				showPopup("Edit Menu Item", data, "auto");
-			}
-		});
-	});
-
-
 	$(document).on("click", ".menu_item_add", function () {
 		myUrl = base_url + "index.php/menu/create_item/";
 		$.ajax({
