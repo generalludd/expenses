@@ -38,7 +38,7 @@ if ($this->session->userdata("role") == "admin") {
 	$nav_buttons['transactions'] = [
 		"text" => "Transactions",
 		"href" => site_url('transaction'),
-		'class' => 'btn btn-sm btn-secondary'
+		'class' => 'btn btn-sm btn-secondary',
 	];
 	$user_buttons['chart_of_accounts'] = [
 		"item" => "account",
@@ -53,21 +53,21 @@ if ($this->session->userdata("role") == "admin") {
 		'href' => site_url('bank'),
 		'class' => 'btn btn-sm btn-secondary',
 	];
+	$user_buttons['backup'] = [
+		'item' => 'backup',
+		'text' => 'Backup',
+		'title' => 'Download a backup of the site database',
+		'href' => site_url('backup'),
+		'class' => 'btn btn-sm btn-warning',
+	];
 	$user_buttons["user_list"] = [
 		"item" => "user",
 		"text" => "User List",
 		"href" => site_url("user/show_all"),
 		"class" => "btn btn-sm btn-secondary show-user-list",
 	];
-}
 
-$user_buttons["preferences"] = [
-	"item" => "preference",
-	"text" => "Preferences",
-	"title" => "Change Your Settings",
-	"href" => site_url("preference/view/" . $this->session->userdata("userID")),
-	"class" => "btn btn-sm btn-secondary",
-];
+}
 
 $user_buttons["log_out"] = [
 	"item" => "user",
