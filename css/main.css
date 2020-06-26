@@ -264,6 +264,10 @@ a.button {
 	margin-top: -5px;
 }
 
+.btn-group a.link {
+	padding-right: 1rem;
+}
+
 td {
 	padding: 5px;
 	border-width: 0px;
