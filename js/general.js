@@ -143,6 +143,15 @@
 
 	});
 
+	$(document).on("change",".select-wrapper select", function(e){
+		let my_value = $(this).val();
+		let my_name = $(this).attr('name');
+		let my_wrapper = $(this).data('wrapper');
+		if(my_value === 'other'){
+			$('#' + my_wrapper).html("<input type='text' name='" + my_name + "' value=''/>") ;
+		}
+	})
+
 	$(document).on("mouseup", ".edit_preference", function (event) {
 		let myUser = $('#user_id').val();
 		let myType = this.id;
