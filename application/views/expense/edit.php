@@ -28,14 +28,14 @@ if ($this->session->userdata("yr")) {
 					 value="<?php echo get_value($expense, "yr", $default_year); ?>"
 					 required size="5" maxlength="4"/>
 	</p>
-	<p><label for="dt">Date</label><input type="date" required name="dt" id="dt"
-																				value="<?php echo get_value($expense, "dt", date("Y-m-d")); ?>"
-																				/></p>
+	<p><label for="dt">Date</label>
+        <input type="date" required name="dt" id="dt" value="<?php echo get_value($expense, "dt", date("Y-m-d")); ?>"/>
+    </p>
 	<p>
 		<label for="type">Enter the Type of Fee:</label>
 
 		<span
-			id="expense-type" class="select-wrapper"><?php echo form_dropdown("type", $types, get_value($expense, "type"), "id='type' required data-wrapper='expense-type'"); ?></span>
+			id="expense-type-selector" class="select-wrapper"><?php echo form_dropdown("type", $types, get_value($expense, "type"), "id='type' required data-wrapper='expense-type-selector'"); ?></span>
 	</p>
 	<p>
 		<label for="description">Describe the Purchase</label>

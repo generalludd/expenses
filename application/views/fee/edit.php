@@ -17,8 +17,8 @@
 	<p>
 		<label for="type">Enter the Type of Fee:</label>
 		<span
-				id="fee-type"
-				class="select-wrapper"><?php echo form_dropdown("type", $types, get_value($fee, "type"), "id='type' required data-wrapper='fee-type'"); ?></span>
+				id="fee-type-selector"
+				class="select-wrapper"><?php echo form_dropdown("type", $types, get_value($fee, "type"), "id='type' required data-wrapper='fee-type-selector'"); ?></span>
 	</p>
 	<p>
 		<label for="amt">Enter the Amount: $</label>

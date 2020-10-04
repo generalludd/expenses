@@ -1,4 +1,6 @@
-$(document).ready(function(){
+jQuery.noConflict();
+
+jQuery(document).ready(function ($) {
 	
 	$(".user-edit").on("click",function(){
 		var myUrl = base_url + "index.php/user/edit";
