@@ -1,7 +1,7 @@
 <?php
 $class = "";
-$is_me = $user->id == $this->session->userdata("userID") ? TRUE : FALSE;
-$is_admin = $this->session->userdata("role") == "admin" ? TRUE : FALSE;
+$is_me = $user->id == $this->session->userdata("userID");
+$is_admin = $this->session->userdata("role") == "admin";
 if ($is_me) {
 	$class = "you";
 }
@@ -61,7 +61,7 @@ if ($is_me) {
 				<?php echo $expense->type . ': ' . $expense->description; ?>
 				</td>
 				<td><?php echo format_date($expense->dt, "no-year"); ?></td>
-				<td class='amt'><?php echo get_as_cash($expense->amt); ?>
+				<td class="amt" data-toggle="tooltip" data-placement="top" data-value="<?php echo $expense->amt; ?>" title="click to copy value"><?php echo get_as_cash($expense->amt); ?>
 					<?php print create_button($delete_button);
 					?></td>
 			</tr>
@@ -69,7 +69,7 @@ if ($is_me) {
 		<?php endforeach; ?>
 		<tr class="total-line">
 			<td colspan="2">Total:</td>
-			<td class="amt"><?php echo get_as_cash($user->expense_total); ?></td>
+			<td class="amt" ><?php echo get_as_cash($user->expense_total); ?></td>
 		</tr>
 		</tbody>
 	</table>
