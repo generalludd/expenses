@@ -33,8 +33,9 @@ if ($this->session->userdata("yr")) {
 																				/></p>
 	<p>
 		<label for="type">Enter the Type of Fee:</label>
+
 		<span
-			id="type_span"><?php echo form_dropdown("type", $types, get_value($expense, "type"), "id='type' required"); ?></span>
+			id="expense-type" class="select-wrapper"><?php echo form_dropdown("type", $types, get_value($expense, "type"), "id='type' required data-wrapper='expense-type'"); ?></span>
 	</p>
 	<p>
 		<label for="description">Describe the Purchase</label>
