@@ -40,7 +40,6 @@ var base_url = '<?php echo base_url();?>';
 <?php if($this->session->userdata("role") == "admin"): ?>
 <script type="text/javascript" src="<?php echo cached_base_url("js/user.js");?>"></script>
 <?php endif; ?>
-<script type="text/javascript" src="<?php echo cached_base_url("js/feedback.js");?>"></script>
 
 <script type="text/javascript" src="<?php echo cached_base_url("js/password.js");?>"></script>
 <?php if(isset($scripts)):?>

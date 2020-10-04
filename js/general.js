@@ -1,4 +1,6 @@
-﻿$(document).ready(function () {
+﻿jQuery.noConflict();
+
+jQuery(document).ready(function ($) {
 	$(document).on("click", ".delete.inline", function (e) {
 		e.preventDefault();
 		let my_url = $(this).attr("href");
@@ -135,22 +137,18 @@
 		});
 	});
 
-	$(document).on("click",".button.delete.form", function(e){
-		e.preventDefault();
-		let my_form = $(this).data('form');
-		let my_action = $(this).data('action');
-		let my_question = confirm("Are you sure you want to delete this? This cannot be undone!");
-
-	});
 
 	$(document).on("change",".select-wrapper select", function(e){
 		let my_value = $(this).val();
 		let my_name = $(this).attr('name');
 		let my_wrapper = $(this).data('wrapper');
+		console.log(my_value);
+		console.log(my_name);
+		console.log(my_wrapper);
 		if(my_value === 'other'){
 			$('#' + my_wrapper).html("<input type='text' name='" + my_name + "' value=''/>") ;
 		}
-	})
+	});
 
 	$(document).on("mouseup", ".edit_preference", function (event) {
 		let myUser = $('#user_id').val();
@@ -158,8 +156,8 @@
 		let myValue = $('#' + this.id).val();
 		let myTarget = "stat" + myType;
 		$('#' + myTarget).html("").show();
-		var myUrl = base_url + "index.php/preference/update/";
-		var form_data = {
+		let myUrl = base_url + "index.php/preference/update/";
+		let form_data = {
 			user_id: myUser,
 			type: myType,
 			value: myValue,
@@ -177,7 +175,7 @@
 
 
 	$(document).on("click", ".menu_item_add", function () {
-		myUrl = base_url + "index.php/menu/create_item/";
+		let myUrl = base_url + "index.php/menu/create_item/";
 		$.ajax({
 			type: "GET",
 			url: myUrl,
@@ -200,22 +198,13 @@
 
 	});
 
-	$("select").on("change", function () {
-		let my_parent = $(this).parents(".select-block");
-		if ($(this).val() == "other") {
-			let my_name = $(this).attr("name");
-			my_parent.html("<input type='text' size='15' name='" + my_name + "'  id='" + my_name + "' value=''/>");
-			my_parent.children("input#" + my_name).focus();
-		}
-
-	});
 });
 
 function showPopup(myTitle, data, popupWidth, x, y) {
 	if (!popupWidth) {
 		popupWidth = 300;
 	}
-	var myDialog = $('<div id="popup">').html(data).dialog({
+	let myDialog = jQuery('<div id="popup">').html(data).dialog({
 		autoOpen: false,
 		title: myTitle,
 		modal: true,
@@ -232,53 +221,43 @@ function showPopup(myTitle, data, popupWidth, x, y) {
 	return false;
 }
 
-function showHelp(myTopic, mySubtopic) {
-	$.get('ajax.switch.php', {target: "help", helpTopic: myTopic, helpSubtopic: mySubtopic},
-		function (data) {
-			var title = "Help with " + myTopic + ": " + mySubtopic;
-			showNewPopup(title, data, "25%");
-		}//end function(data)
-	);//end get
-
-}
-
 function toggle_navigation(me, toggle) {
 	if (toggle == "show") {
-		$("#navigation").fadeIn();
-		$(me).removeClass("show-navigation");
-		$(me).addClass("hide-navigation");
-		$(me).html("Hide Navigation");
+		jQuery("#navigation").fadeIn();
+		jQuery(me).removeClass("show-navigation");
+		jQuery(me).addClass("hide-navigation");
+		jQuery(me).html("Hide Navigation");
 	} else if (toggle == "hide") {
-		$("#navigation").fadeOut();
-		$(me).removeClass("hide-navigation");
-		$(me).addClass("show-navigation");
-		$(me).html("Show Navigation");
+		jQuery("#navigation").fadeOut();
+		jQuery(me).removeClass("hide-navigation");
+		jQuery(me).addClass("show-navigation");
+		jQuery(me).html("Show Navigation");
 	}
 }
 
 function show_popup(me) {
-	let target = $(me).attr("href");
+	let target = jQuery(me).attr("href");
 	let form_data = {
 		ajax: 1
 	};
 
-	let window_width = $(window).width();
-	$.ajax({
+	let window_width = jQuery(window).width();
+	jQuery.ajax({
 		type: "get",
 		data: form_data,
 		url: target,
 		success: function (data) {
-			$("#popup").html(data);
-			$("#my_dialog").modal("show");
+			jQuery("#popup").html(data);
+			jQuery("#my_dialog").modal("show");
 		}
 	});
 }
 
 
 function delete_entity(me) {
-	target = $(me).attr("href");
-	my_id = me.id.split("_")[1];
-	my_parent = $(me).parents(".row").attr("id");
+	let target = jQuery(me).attr("href");
+	let my_id = me.id.split("_")[1];
+	let my_parent = jQuery(me).parents(".row").attr("id");
 
 	question = confirm("Are you sure you want to delete this? This cannot be undone!");
 	if (question) {
@@ -287,18 +266,18 @@ function delete_entity(me) {
 			ajax: 1,
 			id: my_id
 		}
-		$.ajax({
+		jQuery.ajax({
 			type: "post",
 			data: form_data,
 			url: target,
 			success: function (data) {
-				if ($(me).hasClass("inline")) {
-					$("#" + my_parent).remove();
-				} else if ($(me).hasClass("redirect")) {
+				if (jQuery(me).hasClass("inline")) {
+					jQuery("#" + my_parent).remove();
+				} else if (jQuery(me).hasClass("redirect")) {
 					window.location.href = data;
 				} else {
-					$("#popup").html(data);
-					$("#my_dialog").modal("show");
+					jQuery("#popup").html(data);
+					jQuery("#my_dialog").modal("show");
 				}
 			},
 			error: function (data) {
