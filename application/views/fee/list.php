@@ -52,9 +52,9 @@ $create_button =  [
 				<td><?php echo create_button($edit_button); ?>
 				</td>
 				<td><?php echo $fee->type; ?></td>
-				<td class='amt'><?php echo get_as_cash($fee->amt); ?> </td>
+				<td class="amt" data-value="<?php echo $fee->amt; ?>"><?php echo get_as_cash($fee->amt); ?> </td>
 				<td
-					class='amt'><?php echo get_as_cash($fee->amt / $user_count); ?> </td>
+					class="amt" data-value"<?php echo $fee->amt / $user_count; ?>"><?php echo get_as_cash($fee->amt / $user_count); ?> </td>
 				<td>
 					<?php print create_button($delete_button); ?>
 				</td>
