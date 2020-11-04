@@ -10,7 +10,7 @@ $nav_buttons["home"] = [
 	"href" => base_url(),
 	"class" => "btn btn-sm btn-secondary home",
 ];
-$nav_buttons["previous_month"] = [
+/*$nav_buttons["previous_month"] = [
 	"item" => "expense",
 	"text" => '<i class="fas fa-arrow-left"></i> Previous',
 	"href" => site_url("expense/previous_month/$default_month/$default_year"),
@@ -21,7 +21,7 @@ $nav_buttons["next_month"] = [
 	"text" => 'Next <i class="fas fa-arrow-right"></i>',
 	"href" => site_url("expense/next_month/$default_month/$default_year"),
 	"class" => "btn btn-sm btn-secondary show-next-month",
-];
+];*/
 $nav_buttons["show_month"] = [
 	"item" => "expense",
 	"text" => "Select Month",

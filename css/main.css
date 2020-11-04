@@ -369,6 +369,11 @@ td.amt, th.amt {
 	height: 400px;
 }
 
+h3 {
+	display: flex;
+	justify-content: space-between;
+}
+
 @media screen and (max-width:768px){
 	.info-block {
 		flex-flow: column wrap;
