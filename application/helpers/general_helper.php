@@ -250,7 +250,7 @@ function format_month($month, $year){
 		$month = '0' . $month;
 	}
 $date = strtotime($year . '-' . $month . '-01 00:00:00');
-return date('F, Y', $date);
+return date('M. Y', $date);
 }
 
 

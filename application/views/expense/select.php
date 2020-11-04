@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 // select_month.php Chris Dart Dec 29, 2013 5:04:43 PM
 // chrisdart@cerebratorium.com
-
+if(!empty($month_list) && !empty($default_month) && !empty($default_year)):
 ?>
 <form id="select_month" name="select_month"
 			action="<?php echo base_url('expense/select'); ?>" method="get">
@@ -26,3 +26,4 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		]); ?>
 	</p>
 </form>
+<?php endif;

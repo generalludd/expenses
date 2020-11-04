@@ -5,6 +5,7 @@
 /**
  *
  * @param array $data
+ *
  * @return string|boolean
  * $data array
  * required:
@@ -30,14 +31,15 @@
  * $data = array( "text" => "Edit Record",  "type" => "span",  "class" => "button edit-record" "id" => "er_2532",
  * "enclosure" => array("type" => "span", "id" => "edit-record-span" ) );
  * returns:<span id="edit-record-span"><span class="button edit-record" id="er_2532">Edit Record</span></span>
- **/
-function create_button($data)
+ */
+function create_button(array $data)
 {
 	if(array_key_exists("text",$data)){
-		$type = "a";
-		$href = "";
-		$title = "";
-		$target = "";
+		$type = 'a';
+		$href = NULL;
+		$title = NULL;
+		$target = NULL;
+		$description = NULL;
 		$data_attributes = '';
 		$text = $data["text"];
 		if(array_key_exists("type", $data)){
@@ -78,7 +80,7 @@ function create_button($data)
 				$data_attributes = implode(' ', $attributes);
 			}
 
-			$button =  "<$type $href $id $class $target $title $data_attributes>$text</$type>";
+			$button =  "<$type $href $id $class $description $target $title $data_attributes>$text</$type>";
 
 			if(array_key_exists("enclosure", $data)){
 				if(array_key_exists("type", $data["enclosure"])){
@@ -108,7 +110,8 @@ function create_button($data)
 /**
  *
  * @param compound array $buttons
- * @param array $options
+ * @param null $options
+ *
  * @return string
  */
 
@@ -142,10 +145,15 @@ function create_button_bar($buttons, $options = NULL ){
 	}
 
 	$contents = implode("", $button_list);
-	$output = "<div class='btn-toolbar' $id><div class='btn-group'>$contents</div></div>";
-	return $output;
+  return "<div class='btn-toolbar' $id><div class='btn-group'>$contents</div></div>";
 }
 
+/**
+ * @param $data
+ * @param null $user_role
+ *
+ * @return array|false|mixed|string
+ */
 function create_button_object($data,$user_role = NULL)
 {
 
