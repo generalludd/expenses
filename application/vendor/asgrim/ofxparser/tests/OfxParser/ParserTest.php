@@ -2,12 +2,13 @@
 
 namespace OfxParserTest;
 
+use PHPUnit\Framework\TestCase;
 use OfxParser\Parser;
 
 /**
  * @covers OfxParser\Parser
  */
-class ParserTest extends \PHPUnit_Framework_TestCase
+class ParserTest extends TestCase
 {
     public function testCreditCardStatementTransactionsAreLoaded()
     {
@@ -16,6 +17,42 @@ class ParserTest extends \PHPUnit_Framework_TestCase
 
         $account = reset($ofx->bankAccounts);
         self::assertSame('1234567891234567', (string)$account->accountNumber);
+    }
+
+    public function testParseHeader()
+    {
+        $parser = new Parser();
+        $ofx = $parser->loadFromFile(__DIR__ . '/../fixtures/ofxdata.ofx');
+
+        $header = [
+            'OFXHEADER' => '100',
+            'DATA' => 'OFXSGML',
+            'VERSION' => '103',
+            'SECURITY' => 'NONE',
+            'ENCODING' => 'USASCII',
+            'CHARSET' => '1252',
+            'COMPRESSION' => 'NONE',
+            'OLDFILEUID' => 'NONE',
+            'NEWFILEUID' => 'NONE',
+        ];
+
+        self::assertSame($header, $ofx->header);
+    }
+
+    public function testParseXMLHeader()
+    {
+        $parser = new Parser();
+        $ofx = $parser->loadFromFile(__DIR__ . '/../fixtures/ofxdata-xml.ofx');
+
+        $header = [
+            'OFXHEADER' => '200',
+            'VERSION' => '200',
+            'SECURITY' => 'NONE',
+            'OLDFILEUID' => 'NONE',
+            'NEWFILEUID' => 'NONE',
+        ];
+
+        self::assertSame($header, $ofx->header);
     }
 
     public function testXmlLoadStringThrowsExceptionWithInvalidXml()
@@ -29,6 +66,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
             $method->invoke(new Parser(), $invalidXml);
         } catch (\Exception $e) {
             if (stripos($e->getMessage(), 'Failed to parse OFX') !== false) {
+                $this->assertTrue(true);
                 return true;
             }
 
@@ -64,6 +102,7 @@ class ParserTest extends \PHPUnit_Framework_TestCase
             ['<ACCTID>XXXXXXXXXXX</ACCTID>', '<ACCTID>XXXXXXXXXXX</ACCTID>'],
             ['<ACCTID>-198.98</ACCTID>', '<ACCTID>-198.98</ACCTID>'],
             ['<ACCTID>-198.98</ACCTID>', '<ACCTID>-198.98'],
+            ['<MEMO></MEMO>', '<MEMO>'],
         ];
     }
 
@@ -112,6 +151,18 @@ HERE
 <ACCTID>XXXXXXXXXXX</ACCTID>
 <ACCTTYPE>CHECKING</ACCTTYPE>
 </BANKACCTFROM>
+HERE
+            ],[<<<HERE
+<SOMETHING>
+    <FOO>bar & restaurant
+    <BAZ>bat</BAZ>
+</SOMETHING>
+HERE
+        , <<<HERE
+<SOMETHING>
+<FOO>bar &amp; restaurant</FOO>
+<BAZ>bat</BAZ>
+</SOMETHING>
 HERE
             ],
         ];
@@ -167,6 +218,9 @@ HERE
             'ofxdata-credit-card.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-credit-card.ofx'],
             'ofxdata-bpbfc.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-bpbfc.ofx'],
             'ofxdata-memoWithQuotes.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-memoWithQuotes.ofx'],
+            'ofxdata-emptyDateTime.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-emptyDateTime.ofx'],
+            'ofxdata-memoWithAmpersand.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-memoWithAmpersand.ofx'],
+            'ofxdata-banking-xml200.ofx' => [dirname(__DIR__).'/fixtures/ofxdata-banking-xml200.ofx'],
         ];
     }
 
@@ -184,6 +238,28 @@ HERE
         $content = file_get_contents($filename);
 
         $parser = new Parser();
-        $parser->loadFromString($content);
+
+        try {
+            $parser->loadFromString($content);
+        } catch (\Exception $e) {
+            throw $e;
+        }
+
+        $this->assertTrue(true);
+    }
+
+    public function testXmlLoadStringWithSelfClosingTag()
+    {
+        $parser = new Parser();
+
+        try {
+            $ofx = $parser->loadFromFile(__DIR__ . '/../fixtures/ofxdata-selfclose.ofx');
+        } catch (\RuntimeException $e) {
+            if (stripos($e->getMessage(), 'Failed to parse OFX') !== false) {
+                self::assertTrue(false, 'Xml with invalid self closing tag');
+            }
+        }
+
+        self::assertTrue(true);
     }
 }
