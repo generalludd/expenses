@@ -7,7 +7,7 @@ class Transaction extends MY_Controller {
 	function __construct() {
 		parent::__construct();
 		$this->load->model('transaction_model', 'transaction');
-		$this->load->helper('form', 'url');
+		$this->load->helper(['form', 'url']);
 		$this->load->model('bank_model', 'bank');
 		$this->bank_ids = get_keyed_pairs($this->bank->get_banks(), [
 			'id',
@@ -159,7 +159,12 @@ class Transaction extends MY_Controller {
 		];
 		$data['scripts'][] = (object) [
 			'url' => FALSE,
-			'code'=> '$(".chosen-select").chosen();',
+			'code'=> 'jQuery(".chosen-select").chosen();',
+			'location' => 'footer',
+		];
+		$data['scripts'][] = (object) [
+			'url' => base_url('js/transactions.js'),
+			'location' => 'footer',
 		];
 		$data['styles'][] = (object)[
 			'url' => base_url('js/chosen/chosen.css'),

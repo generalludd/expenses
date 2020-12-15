@@ -81,18 +81,3 @@
 	</form>
 
 </div>
-
-
-<script type="text/javascript">$(".chosen-select").chosen();</script>
-<script type="text/javascript">
-	$(document).on('click', '.select-accounts', function (e) {
-		e.preventDefault;
-		$('.account-selector option').prop('selected', true);
-		$('.account-selector').trigger('chosen:updated');
-	});
-	$(document).on('click', '.reset-accounts', function (e) {
-		e.preventDefault;
-		$('.account-selector option:selected').removeAttr('selected');
-		$('.account-selector').trigger('chosen:updated');
-	});
-</script>
