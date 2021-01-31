@@ -58,7 +58,8 @@ class Transaction extends MY_Controller {
 		$config['upload_path'] = '/tmp';
 		$config['allowed_types'] = '*';
 		$this->load->library('upload', $config);
-
+		$this->load->model('account_model');
+		$default_account = $this->account_model->get_default();
 		if (!$this->upload->do_upload('transactions')) {
 			$data['error'] = $this->upload->display_errors();
 			$data['target'] = 'transaction/upload';
@@ -92,7 +93,7 @@ class Transaction extends MY_Controller {
 				$values['check_number'] = $transaction->checknumber;
 				$values['bank_id'] = $this->input->post('bank_id');
 				$values['transaction_id'] = $transaction->uniqueId;
-				$values['account_id'] = $this->account->get_default();
+				$values['account_id'] = $default_account;
 				$this->transaction->insert($values);
 				$iterator++;
 
