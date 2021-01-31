@@ -39,7 +39,11 @@ class Account extends MY_Controller {
 		$id = $this->input->post('id');
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
-		$this->account->insert($id, $name, $description);
+		$is_default = $this->input->post('is_default');
+		if(empty($is_default)){
+			$is_default =0;
+		}
+		$this->account->insert($id, ['id'=>$id, 'name'=> $name, 'description'=> $description,'is_default'=>$is_default]);
 		redirect('account/index');
 	}
 
@@ -64,7 +68,8 @@ class Account extends MY_Controller {
 		$id = $this->input->post('id');
 		$name = $this->input->post('name');
 		$description = $this->input->post('description');
-		$this->account->update($id, $name, $description);
+		$is_default = $this->input->post('is_default');
+		$this->account->update($id, $name, $description, $is_default);
 		redirect('account/index');
 	}
 
@@ -98,5 +103,6 @@ class Account extends MY_Controller {
 		];
 		$this->load->view('index', $data);
 	}
+
 
 }

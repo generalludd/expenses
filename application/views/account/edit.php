@@ -15,6 +15,9 @@
 			<label for="description">Description</label>
 			<textarea name="description" id="description" class="width-full"><?php echo get_value($account, 'description');?></textarea>
 		</div>
+        <div>
+        <input type="checkbox" name="is_default" value="1" <?php echo get_value($account,'is_default') ==1?'checked':''; ?>/> <label for="is_default">This is the default account for all uploads.</label>
+        </div>
 	<input type="submit"  class="btn btn-warning" value="<?php echo ucfirst($action);?>">
 	</div>
 </form>

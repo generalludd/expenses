@@ -8,7 +8,7 @@ class Account_model extends MY_Model {
 		$this->db->order_by('account.id');
 		// get the parents if any by using the ACCOUNT_MODULO
 		$this->db->join('account as parents', ' parents.id = FLOOR(account.id/' . ACCOUNT_MODULO . ') * ' . ACCOUNT_MODULO);
-		$this->db->select('account.id, account.name, account.description, FLOOR(account.id/' . ACCOUNT_MODULO . ') * ' . ACCOUNT_MODULO . ' as parent_id, parents.name as parent_name');
+		$this->db->select('account.id, account.name, account.description, account.is_default, FLOOR(account.id/' . ACCOUNT_MODULO . ') * ' . ACCOUNT_MODULO . ' as parent_id, parents.name as parent_name');
 		$result = $this->db->get()->result();
 		return $result;
 	}
@@ -19,12 +19,21 @@ class Account_model extends MY_Model {
 		return $this->db->get()->row();
 	}
 
-	function update($id, $name, $description) {
-		$this->db->update('account', ['name' => $name,'description'=>$description], 'id = ' . $id);
+	function update($id, $name, $description, $is_default) {
+		if($is_default == 1){
+			$this->reset_default();
+		}
+		$this->db->set( ['name' => $name,'description'=>$description,'is_default'=>$is_default]);
+		$this->db->where( 'id', $id);
+		$this->db->update('account');
+
 	}
 
-	function insert($id, $name, $description) {
-		$this->db->insert('account', ['id' => $id, 'name' => $name,'description'=>$description]);
+	function insert( $values) {
+		if(!empty($values['is_default'] && $values['is_default'] == 1)){
+			$this->reset_default();
+		}
+		$this->db->insert('account',$values);
 	}
 
 	function get_category_totals(array $options) {
@@ -57,4 +66,18 @@ class Account_model extends MY_Model {
 		$result =  $this->db->get()->result();
 		return $result;
 	}
+
+	function reset_default() {
+		$this->db->set(['is_default'=>0]);
+		$this->db->update('account');
+
+	}
+
+	function get_default(){
+		$this->db->from('account');
+		$this->db->where('is_default',1);
+		$result = $this->db->get()->row();
+		return $result->id;
+	}
+
 }
