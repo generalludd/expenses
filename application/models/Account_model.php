@@ -19,12 +19,12 @@ class Account_model extends MY_Model {
 		return $this->db->get()->row();
 	}
 
-	function update($id, $name) {
-		$this->db->update('account', ['name' => $name], 'id = ' . $id);
+	function update($id, $name, $description) {
+		$this->db->update('account', ['name' => $name,'description'=>$description], 'id = ' . $id);
 	}
 
-	function insert($id, $name) {
-		$this->db->insert('account', ['id' => $id, 'name' => $name]);
+	function insert($id, $name, $description) {
+		$this->db->insert('account', ['id' => $id, 'name' => $name,'description'=>$description]);
 	}
 
 	function get_category_totals(array $options) {

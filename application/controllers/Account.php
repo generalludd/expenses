@@ -24,10 +24,12 @@ class Account extends MY_Controller {
 			'title' => 'Create an Account',
 			'account' => FALSE,
 		];
-		if ($this->input->get('ajax')) {
+		if ($this->input->get('ajax'))
+		{
 			$this->load->view('page/modal', $data);
 		}
-		else {
+		else
+		{
 			$this->load->view('index', $data);
 		}
 	}
@@ -36,7 +38,8 @@ class Account extends MY_Controller {
 	function insert() {
 		$id = $this->input->post('id');
 		$name = $this->input->post('name');
-		$this->account->insert($id, $name);
+		$description = $this->input->post('description');
+		$this->account->insert($id, $name, $description);
 		redirect('account/index');
 	}
 
@@ -47,10 +50,12 @@ class Account extends MY_Controller {
 			'account' => $this->account->get($id),
 			'action' => 'update',
 		];
-		if ($this->input->get('ajax')) {
+		if ($this->input->get('ajax'))
+		{
 			$this->load->view('page/modal', $data);
 		}
-		else {
+		else
+		{
 			$this->load->view('index', $data);
 		}
 	}
@@ -58,7 +63,8 @@ class Account extends MY_Controller {
 	function update() {
 		$id = $this->input->post('id');
 		$name = $this->input->post('name');
-		$this->account->update($id, $name);
+		$description = $this->input->post('description');
+		$this->account->update($id, $name, $description);
 		redirect('account/index');
 	}
 
@@ -69,9 +75,9 @@ class Account extends MY_Controller {
 		$end_date = $this->input->get('end_date') ?
 			$this->input->get('end_date') :
 			date('Y-m-d');
-		$start_account = $this->input->get('start_account')?
-		$this->input->get('start_account'):
-		500;
+		$start_account = $this->input->get('start_account') ?
+			$this->input->get('start_account') :
+			500;
 		$end_account = $this->input->get('end_account');
 		$account_ids = $this->input->get('account_ids');
 		var_dump($account_ids);
@@ -92,4 +98,5 @@ class Account extends MY_Controller {
 		];
 		$this->load->view('index', $data);
 	}
+
 }
