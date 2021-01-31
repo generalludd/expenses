@@ -43,7 +43,7 @@ class Account extends MY_Controller {
 		if(empty($is_default)){
 			$is_default =0;
 		}
-		$this->account->insert($id, ['id'=>$id, 'name'=> $name, 'description'=> $description,'is_default'=>$is_default]);
+		$this->account->insert(['id'=>$id, 'name'=> $name, 'description'=> $description,'is_default'=>$is_default]);
 		redirect('account/index');
 	}
 
