@@ -18,7 +18,7 @@
 if ( $_SERVER['SERVER_PORT'] == 443) {
   $config['base_url'] = 'https://exp.cerebratorium.com';
 } else {
-  $config['base_url'] = 'http://docker.test';
+  $config['base_url'] = 'http://exp.test';
 }
 
 /*

@@ -374,6 +374,10 @@ h3 {
 	justify-content: space-between;
 }
 
+textarea.width-full{
+	width: 100%;
+}
+
 @media screen and (max-width:768px){
 	.info-block {
 		flex-flow: column wrap;

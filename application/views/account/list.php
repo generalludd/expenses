@@ -9,6 +9,7 @@ $buttons['add'] = array("account" => "account","text"=>"Add an account","href"=>
 		<th>Id</th>
 		<th>Name</th>
 		<th>Description</th>
+        <th>Upload Default</th>
 	<th></th>
 	</tr>
 	</thead>
@@ -23,6 +24,7 @@ $buttons['add'] = array("account" => "account","text"=>"Add an account","href"=>
 		<td class="account-description">
 			<?php echo $account->description; ?>
 		</td>
+        <td class="account-is-default"><?php echo $account->is_default == 1?'Yes':''; ?></td>
 		<td><?php echo create_button(['text' =>'Edit','class'=>'btn btn-secondary btn-sm edit dialog', 'href'=>base_url('account/edit/' . $account->id)]);?></td>
 	</tr>
 	<?php endforeach; ?>

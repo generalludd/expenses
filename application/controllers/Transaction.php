@@ -92,6 +92,7 @@ class Transaction extends MY_Controller {
 				$values['check_number'] = $transaction->checknumber;
 				$values['bank_id'] = $this->input->post('bank_id');
 				$values['transaction_id'] = $transaction->uniqueId;
+				$values['account_id'] = $this->account->get_default();
 				$this->transaction->insert($values);
 				$iterator++;
 
