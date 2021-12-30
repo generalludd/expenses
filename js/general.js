@@ -2,7 +2,7 @@
 
 jQuery(document).ready(function ($) {
 
-    new ClipboardJS('.copy');
+    new ClipboardJS('.copy[data-clipboard-text]');
     $(function () {
         $('.copy,.payment-row .amt').tooltip({trigger:'click',animation: true,title:"Copied!"}).animate({'fade':500});
     })
@@ -216,12 +216,12 @@ function showPopup(myTitle, data, popupWidth, x, y) {
 }
 
 function toggle_navigation(me, toggle) {
-    if (toggle == "show") {
+    if (toggle === "show") {
         jQuery("#navigation").fadeIn();
         jQuery(me).removeClass("show-navigation");
         jQuery(me).addClass("hide-navigation");
         jQuery(me).html("Hide Navigation");
-    } else if (toggle == "hide") {
+    } else if (toggle === "hide") {
         jQuery("#navigation").fadeOut();
         jQuery(me).removeClass("hide-navigation");
         jQuery(me).addClass("show-navigation");
