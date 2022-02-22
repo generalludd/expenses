@@ -78,11 +78,13 @@ class Fee extends MY_Controller {
 	}
 
 
-	function edit() {
+	function edit($fee_id) {
 		if ($this->session->userdata("role") == "admin") {
-			$id = $this->uri->segment(3);
 			$data["action"] = "update";
-			$data["fee"] = $this->fee->get($id);
+			$fee = $this->fee->get($fee_id);
+			$data['selected_month'] = $fee->mo;
+			$data['selected_year'] = $fee->yr;
+			$data['fee'] = $fee;
 			$months = $this->variable->get("month");
 			$data["months"] = get_keyed_pairs($months, array("name", "value"));
 			$types = $this->fee->distinct("type");
