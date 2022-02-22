@@ -52,8 +52,8 @@
         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
-<script type="text/javascript"
-        src="<?php print base_url("js/highcharts/highcharts.js"); ?>"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
 <!-- General Script  -->
 <script type="text/javascript"
         src="<?php echo cached_base_url("js/general.js"); ?>"></script>
