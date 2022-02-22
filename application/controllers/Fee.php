@@ -42,6 +42,17 @@ class Fee extends MY_Controller {
 
 	function create() {
 		if ($this->session->userdata("role") == "admin") {
+			$data = [];
+			$selected_month = $this->input->get('month');
+			if (empty($selected_month)) {
+				$selected_month = date('m');
+			}
+			$data['selected_month'] = $selected_month;
+			$selected_year = $this->input->get('year');
+			if (empty($selected_year)) {
+				$selected_year = date('Y');
+			}
+			$data['selected_year'] = $selected_year;
 			$data["action"] = "insert";
 			$data["fee"] = FALSE;
 			$months = $this->variable->get("month");

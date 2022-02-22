@@ -8,10 +8,10 @@
 		   value="<?php echo get_value($fee, "id"); ?>"/>
 	<p>
 		<label for="mo">Month</label>
-		<?php echo form_dropdown("mo", $months, get_value($fee, "mo", date("m")), "id='mo' required"); ?>
+		<?php echo form_dropdown("mo", $months, get_value($fee, "mo", $selected_month), "id='mo' required"); ?>
 		<label for="yr">Four-Digit Year</label>
 		<input type="text" name="yr" id="yr" required
-			   value="<?php echo get_value($fee, "yr", date("Y")); ?>" size="5"
+			   value="<?php echo get_value($fee, "yr", $selected_year); ?>" size="5"
 			   maxlength="4"/>
 	</p>
 	<p>
