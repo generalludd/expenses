@@ -2,7 +2,7 @@
 $fee_total = 0;
 $create_button = [
   'item' => 'fee',
-  'href' => base_url('fee/create?month=' . $month . '&year-' . $year),
+  'href' => base_url('fee/create?month=' . $month . '&year=' . $year),
   'text' => '<i class="fas fa-plus-circle"></i>',
   'title' => 'Edit This Fee',
   'class' => 'btn btn-sm btn-warning edit dialog',

@@ -42,6 +42,17 @@ class Fee extends MY_Controller {
 
 	function create() {
 		if ($this->session->userdata("role") == "admin") {
+			$data = [];
+			$selected_month = $this->input->get('month');
+			if (empty($selected_month)) {
+				$selected_month = date('m');
+			}
+			$data['selected_month'] = $selected_month;
+			$selected_year = $this->input->get('year');
+			if (empty($selected_year)) {
+				$selected_year = date('Y');
+			}
+			$data['selected_year'] = $selected_year;
 			$data["action"] = "insert";
 			$data["fee"] = FALSE;
 			$months = $this->variable->get("month");
@@ -67,11 +78,13 @@ class Fee extends MY_Controller {
 	}
 
 
-	function edit() {
+	function edit($fee_id) {
 		if ($this->session->userdata("role") == "admin") {
-			$id = $this->uri->segment(3);
 			$data["action"] = "update";
-			$data["fee"] = $this->fee->get($id);
+			$fee = $this->fee->get($fee_id);
+			$data['selected_month'] = $fee->mo;
+			$data['selected_year'] = $fee->yr;
+			$data['fee'] = $fee;
 			$months = $this->variable->get("month");
 			$data["months"] = get_keyed_pairs($months, array("name", "value"));
 			$types = $this->fee->distinct("type");
