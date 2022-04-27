@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    image: ten7/flight-deck-web:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www/html:cached
+      - ./flight-deck.yml:/secrets/flight-deck-web.yml
+  db:
+    image: ten7/flight-deck-db
+    ports:
+      - 3306:3306
+    volumes:
+      - /var/lib/mysql
+      - .~/Sites/db-backups:/tmp/db-backups:cached
+      - ./flight-deck.yml:/secrets/flight-deck-db.yml
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+     - "8001:80"
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8002:8025"

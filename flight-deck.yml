@@ -1,0 +1,47 @@
+---
+flightdeck_debug: yes
+mysql_root_password: "root"
+mysql_allow_remote_root: yes
+mysql_databases:
+  - name: "expenses"
+    encoding: "latin1"
+    collation: "latin1_general_ci"
+mysql_users:
+  - name: "expenses"
+    host: "%"
+    password: "expenses"
+    priv: "*.*:ALL"
+mysql_key_buffer_size: "256M"
+mysql_max_allowed_packet: "64M"
+mysql_table_open_cache: "256"
+mysql_query_cache_size: "0"
+flightdeck_web:
+  vhosts:
+    - name: "exp.test"
+      docroot: "/var/www/html"
+      aliases:
+        - "docker.test"
+      env:
+        - name: "T7_SITE_ENVIRONMENT"
+          value: "docker"
+  php:
+    upload_max_filesize: "128M"
+    post_max_size: "128M"
+    opcache_revalidate_freq: "1"
+    sendmail_path: "/usr/sbin/sendmail -t -i -S mailhog:1025"
+  # For Docker for macOS or Windows, you need to provide your IP address.
+  #
+  # For macOS, you can create an alias of your loopback (127.0.0.1) address
+  # with the following command:
+  #
+  # sudo ifconfig en0 alias 10.254.254.254 255.255.255.0
+  #
+  # If you are running Linux and sharing your .env with mixed-OS team members,
+  # you can also create a URL alias using the following:
+  #
+  # sudo ip -4 addr add 10.254.254.254/32 dev lo
+  xdebug:
+    enabled: "{{ lookup('env', 'PHP_XDEBUG_ENABLED') | default(false, true) }}"
+    autostart: yes
+    remoteHost: 10.254.254.254
+
