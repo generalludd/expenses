@@ -13,7 +13,7 @@
 // Load the envelope file for secrets if the file exists. 
 
 $hook['pre_system'] = function () {
-    $env_path = __DIR__.'/../../../.env';
+    $env_path = __DIR__.'/../../../../.env';
     if(file_exists($env_path)){
         $dotenv = new Symfony\Component\Dotenv\Dotenv();
         $dotenv->load($env_path);

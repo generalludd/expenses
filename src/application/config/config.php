@@ -400,4 +400,4 @@ spl_autoload_register(function($classname){
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = TRUE;
+$config['composer_autoload'] = 'vendor/autoload.php' ;
