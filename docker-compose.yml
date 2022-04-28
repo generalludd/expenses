@@ -12,6 +12,11 @@ services:
       EXP_PASS: 'exp'
       EXP_DB: 'exp'
       EXP_HOST: 'db'
+      EXP_EMAIL_HOST: 'mailhog'
+      EXP_EMAIL_PORT: 1025
+      EXP_EMAIL_USER: ''
+      EXP_EMAIL_PASS: ''
+      EXP_EMAIL_PATH: ''
   db:
     image: ten7/flightdeck-db-10.4
     ports:
