@@ -1,5 +1,5 @@
-/user_guide
-/application/logs/*
+src/user_guide
+src/application/logs/*
 .buildpath
 .DS_Store
 .settings/*
@@ -8,5 +8,5 @@
 .settings
 .project
 .buildpath
-/vendor/*
+src/vendor
 .vscode
