@@ -1,13 +1,12 @@
-/user_guide
-/application/config/database.php
-/application/config/email.php
-/application/logs/*
+src/user_guide
+src/application/logs/*
 .buildpath
 .DS_Store
-/application/logs/
 .settings/*
 .idea
 .editorconfig
 .settings
 .project
 .buildpath
+src/vendor
+.vscode
