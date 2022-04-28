@@ -19,6 +19,3 @@ services:
       PHP_XDEBUG_ENABLED: 1
       PHP_XDEBUG_AUTOSTART: 1
       PHP_XDEBUG_PROFILE_TRIGGER: XDEBUG_PROFILE
-      MYSQL_USER: expenses
-      MYSQL_PASSWORD: expenses
-      MYSQL_DB: expenses

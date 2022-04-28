@@ -1,19 +1,24 @@
 version: '3'
 services:
   web:
-    image: ten7/flight-deck-web:latest
+    image: ten7/flightdeck-web-7.4
     ports:
       - "80:80"
     volumes:
-      - ./:/var/www/html:cached
+      - ./src:/var/www/html:cached
       - ./flight-deck.yml:/secrets/flight-deck-web.yml
+    environment:
+      EXP_USER: 'exp'
+      EXP_PASS: 'exp'
+      EXP_DB: 'exp'
+      EXP_HOST: 'db'
   db:
-    image: ten7/flight-deck-db
+    image: ten7/flightdeck-db-10.4
     ports:
       - 3306:3306
     volumes:
       - /var/lib/mysql
-      - .~/Sites/db-backups:/tmp/db-backups:cached
+      - ~/Sites/db-backups:/tmp/db-backups:cached
       - ./flight-deck.yml:/secrets/flight-deck-db.yml
   pma:
     image: phpmyadmin/phpmyadmin
