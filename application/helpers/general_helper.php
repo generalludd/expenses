@@ -149,12 +149,19 @@ function grammatical_list ($glue, $list, $conjunction = "and")
 
 function get_as_cash ($value)
 {
-    return sprintf("$%s", number_format($value,2));
+  $number_formatter = new NumberFormatter('en-US', NumberFormatter::CURRENCY);
+  if($value === NULL){
+    $value = 0;
+  }
+  return $number_formatter->format($value);
 }
 
 function get_as_float ($value)
 {
   $number_formatter= new NumberFormatter('en-US', NumberFormatter::CURRENCY );
+  if($value === NULL){
+    $value = 0;
+  }
   return $number_formatter->format($value);
 }
 
