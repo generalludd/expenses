@@ -79,10 +79,10 @@ function prepare_variables ($object, $variables)
  * @param $initial_blank
  * @param $other
  *
- * @return array|bool
+ * @return array
  */
 function get_keyed_pairs ($list, $pairs,  $initial_blank = FALSE,  $other = NULL) {
-	$output = false;
+	$output = [];
 
     if ($initial_blank) {
         $output[] = "";
@@ -103,7 +103,7 @@ function get_keyed_pairs ($list, $pairs,  $initial_blank = FALSE,  $other = NULL
 
 function get_account_pairs ($list, $initial_blank = NULL)
 {
-	$output = false;
+	$output = [];
 
 	if ($initial_blank) {
 		$output[] = "";
@@ -154,7 +154,8 @@ function get_as_cash ($value)
 
 function get_as_float ($value)
 {
-    return money_format('#0n', $value);
+  $number_formatter= new NumberFormatter('en-US', NumberFormatter::CURRENCY );
+  return $number_formatter->format($value);
 }
 
 function get_status ($status)
