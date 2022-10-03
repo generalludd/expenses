@@ -108,9 +108,18 @@ class Transaction extends MY_Controller {
 
 	public function view() {
 		$this->load->model('account_model', 'account');
-
-		$date_start = date('Y-m-d', strtotime($this->input->get('date_start')));
-		$date_end = date('Y-m-d', strtotime($this->input->get('date_end')));
+    if(empty($this->input->get('date_start'))){
+      $date_start = date('Y-m-d');
+    }
+    else {
+      $date_start = date('Y-m-d', strtotime($this->input->get('date_start')));
+    }
+    if(empty($this->input->get('date_end'))){
+      $date_end = date('Y-m-d');
+    }
+    else {
+      $date_end = date('Y-m-d', strtotime($this->input->get('date_end')));
+    }
 		$chart_options = [
 			'date_range' => [
 				'start' => $date_start,
