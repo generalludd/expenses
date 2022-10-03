@@ -63,7 +63,7 @@ class Transaction_model extends My_Model {
 		if(array_key_exists('account_ids', $options)){
 			$this->db->where_in('account_id', $options['account_ids']);
 		}
-		if(array_key_exists('vendor',$options)){
+		if(array_key_exists('vendor',$options ) && !empty($options['vendor'])){
 			$this->db->like('vendor',$options['vendor']);
 		}
 		$this->db->join('bank','transaction.bank_id = bank.id');
