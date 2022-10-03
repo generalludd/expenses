@@ -28,7 +28,8 @@ class Expense extends My_Controller {
 					'yr' => $year
 				]);
 				$user->fee_total = $this->fee->get_totals($month, $year);
-				$user->expense_total = $this->expense->get_user_total($user->id, $month, $year);
+        $expense_total = $this->expense->get_user_total($user->id, $month, $year);
+				$user->expense_total = $expense_total === NULL?0:$expense_total;
 			}
 			$fees = $this->fee->get_by_month($month, $year);
 			$data['user_count'] = count($users);
