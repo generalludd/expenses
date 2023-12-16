@@ -1,7 +1,7 @@
-/user_guide
-/application/config/database.php
-/application/config/email.php
-/application/logs/*
+/web/user_guide
+/web/application/config/database.php
+/web/application/config/email.php
+/web/application/logs/*
 .buildpath
 .DS_Store
 /application/logs/
@@ -11,3 +11,4 @@
 .settings
 .project
 .buildpath
+/web/application/vendor/
