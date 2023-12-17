@@ -181,7 +181,7 @@ nodejs_version: "18"
 # Provide extra flags to the "ngrok http" command, see
 # https://ngrok.com/docs/ngrok-agent/config or run "ngrok http -h"
 
-disable_settings_management: true
+# disable_settings_management: true
 # If true, DDEV will not create CMS-specific settings files like
 # Drupal's settings.php/settings.ddev.php or TYPO3's AdditionalConfiguration.php
 # In this case the user must provide all such settings.
