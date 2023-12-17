@@ -12,6 +12,7 @@ class Fee_model extends CI_Model {
 
 	function __construct() {
 		parent::__construct();
+    $this->load->model('user_model','user');
 	}
 
 
@@ -146,5 +147,16 @@ class Fee_model extends CI_Model {
 		$this->db->where("id", $id);
 		$this->db->delete("fee");
 	}
+
+  function month_has_payments($month,$year){
+   $payments =  $this->db->from('fee')
+      ->join('payment', 'payment.fee_id = fee.id', 'left')
+      ->where('fee.mo', $month)
+      ->where('fee.yr' , $year)
+   ->get()->num_rows();
+   $user_count = $this->user->count_active($month, $year);
+   $fee_count = $this->db->from('fee')->where('fee.mo', $month)->where('fee.yr', $year)->get()->num_rows();
+   return $payments === $user_count * $fee_count;
+  }
 
 }

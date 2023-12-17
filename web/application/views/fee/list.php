@@ -31,9 +31,11 @@ $next_button = [
 <!-- fee/list -->
 <div id="monthly-fees" class='block border'>
     <h3><?php print create_button($previous_button); ?>Fees
-        for <?php print format_month($month, $year) ?><?php print create_button($next_button); ?></h3>
+        for <?php print format_month($month, $year) ?>
 
-    <p><?php print create_button($create_button); ?></p>
+      <?php print  create_button($next_button); ?></h3>
+
+    <p><?php print $is_locked !== 1? create_button($create_button):NULL; ?></p>
     <table class="list table table-sm">
         <thead>
         <tr>
@@ -46,6 +48,7 @@ $next_button = [
         </thead>
         <tbody>
         <?php foreach ($fees as $fee): ?>
+        <?php if($is_locked !== 1):?>
           <?php
           $edit_button = [
             'item' => 'fee',
@@ -69,8 +72,9 @@ $next_button = [
             ],
 
           ]; ?>
+        <?php endif; ?>
             <tr data-id="<?php echo $fee->id; ?>">
-                <td><?php echo create_button($edit_button); ?>
+                <td><?php echo !empty($edit_button)?  create_button($edit_button):''; ?>
                 </td>
                 <td><?php echo $fee->type; ?></td>
                 <td class="amt"
@@ -80,7 +84,7 @@ $next_button = [
                 "<?php echo $fee->amt / $user_count; ?>
                 "><?php echo get_as_cash($fee->amt / $user_count); ?> </td>
                 <td>
-                  <?php print create_button($delete_button); ?>
+                  <?php print !empty($delete_button)? create_button($delete_button):''; ?>
                 </td>
             </tr>
           <?php $fee_total += $fee->amt; ?>

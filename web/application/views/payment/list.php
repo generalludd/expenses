@@ -5,7 +5,7 @@ $grand_total = $fee_total - $expense_total; ?>
 <?php foreach ($payments as $payment): ?>
     <tr id="payment-id-<?php echo $payment->fee_id; ?>-<?php echo $userID; ?>" class="payment-row">
       <?php $clipboard_target = sprintf('#payment-id-%s-%s .amt', $payment->fee_id, $userID);?>
-      <?php if ($is_admin || $is_me):
+      <?php if (($is_admin || $is_me) && $is_locked !== 1):
         $nav_button = [
           "item" => "payment",
           "text" => "<i class=\"fas fa-file-invoice-dollar\"></i>",
@@ -43,7 +43,9 @@ $grand_total = $fee_total - $expense_total; ?>
             -<?php echo get_as_cash($payment->amt); ?>
           <?php if (get_value($payment, 'date_paid')): ?>
             <?php $adjustments += $payment->amt; ?>
+          <?php if(!empty($delete_button)): ?>
             <?php echo create_button($delete_button); ?>
+            <?php endif;?>
           <?php else: ?>
             <?php echo create_button($nav_button); ?>
           <?php endif; ?>

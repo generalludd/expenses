@@ -12,8 +12,7 @@ class Home extends MY_Controller
 
 	function index()
 	{
-		$this->notify("rent_reminder");
-		redirect("expense");
+		redirect('update');
 
 	}
 	function notify($notice_type)

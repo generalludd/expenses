@@ -1,4 +1,4 @@
-<?php ?>
+<?php $this->load->view('month_status/toggle_status'); ?>
 <div id='fees' class='row'>
 <?php $this->load->view("fee/list"); ?>
 </div>

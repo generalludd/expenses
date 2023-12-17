@@ -4,7 +4,11 @@ jQuery(document).ready(function ($) {
 
     new ClipboardJS('.copy[data-clipboard-text]');
     $(function () {
-        $('.copy,.payment-row .amt').tooltip({trigger:'click',animation: true,title:"Copied!"}).animate({'fade':500});
+        $('.copy,.payment-row .amt').tooltip({
+            trigger: 'click',
+            animation: true,
+            title: "Copied!"
+        }).animate({'fade': 500});
     })
     $(document).on("click", ".delete.inline", function (e) {
         e.preventDefault();
@@ -30,6 +34,26 @@ jQuery(document).ready(function ($) {
             })
         }
     });
+
+    $(document).on('click', '#toggle_month_status', function (e) {
+        e.preventDefault();
+        const button = $(this); // Store the button reference
+            console.log(button.data('year'));
+        let form_data = {
+            month: button.data('month'),
+            year: button.data('year'),
+            status: button.data('status'),
+        }
+        $.ajax({
+            url: button.attr('href'),
+            type: 'post',
+            data: form_data,
+            success: function (data) {
+                window.location.href = data;
+            }
+        })
+    });
+
 
     $(document).on('click', ".edit.inline", function (e) {
         e.preventDefault();
