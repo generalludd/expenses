@@ -13,7 +13,7 @@ if ($is_me) {
 	<?php else: ?>
 		<h3><?php echo $user->first_name; ?></h3>
 	<?php endif;
-	if (($is_admin || $is_me) && $is_locked !== 1):
+	if (($is_admin || $is_me) && $is_locked != 1):
 		$nav_buttons["create_expense"] = [
 			"item" => "expense",
 			"text" => "<i class=\"fas fa-plus-circle\"></i>",

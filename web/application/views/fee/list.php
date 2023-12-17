@@ -35,7 +35,7 @@ $next_button = [
 
       <?php print  create_button($next_button); ?></h3>
 
-    <p><?php print $is_locked !== 1? create_button($create_button):NULL; ?></p>
+    <p><?php print $is_locked != 1? create_button($create_button):NULL; ?></p>
     <table class="list table table-sm">
         <thead>
         <tr>
@@ -48,7 +48,7 @@ $next_button = [
         </thead>
         <tbody>
         <?php foreach ($fees as $fee): ?>
-        <?php if($is_locked !== 1):?>
+        <?php if($is_locked != 1):?>
           <?php
           $edit_button = [
             'item' => 'fee',

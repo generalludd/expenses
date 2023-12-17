@@ -5,7 +5,7 @@ $grand_total = $fee_total - $expense_total; ?>
 <?php foreach ($payments as $payment): ?>
     <tr id="payment-id-<?php echo $payment->fee_id; ?>-<?php echo $userID; ?>" class="payment-row">
       <?php $clipboard_target = sprintf('#payment-id-%s-%s .amt', $payment->fee_id, $userID);?>
-      <?php if (($is_admin || $is_me) && $is_locked !== 1):
+      <?php if (($is_admin || $is_me) && $is_locked != 1):
         $nav_button = [
           "item" => "payment",
           "text" => "<i class=\"fas fa-file-invoice-dollar\"></i>",
